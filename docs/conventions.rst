@@ -137,3 +137,20 @@ This convention kicks-in when files with main() functions in parent folder are n
 * tests
 * example
 * examples
+
+html
+----
+Any .html containing ``<script type="text/c++"></script>`` in it is compiled as an **app** convention.
+
+
+Conventions are not enough
+==========================
+It could happen, please contact us so that we can improve nxxm or help you.
+
+We don't recommend it but you can tweak fully or partially the build by adding ``CMakeLists.txt.tpl`` files in the main or sub directories of your project. 
+
+To generate a sample CMakeLists.txt.tpl with the docs embedded of the different variables at your disposal call `nxxm cmaketpl`.
+
+This is however not recommended and there is for sure a way for the convention build to work : less is more.
+
+Or put differently less CMakeLists is more time for your C++. (^^)

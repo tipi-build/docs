@@ -30,6 +30,7 @@ Relaxing & flowing C++
 * 0 setup just coding
 
 .. _every-project-lib-label:
+
 Every project is a library
 ---------------------------
 In a software project there are 2 kinds of entrypoints : 
