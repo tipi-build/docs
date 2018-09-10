@@ -1,8 +1,22 @@
-Template
-========
+nxxm : C++ dependencies & upgrade manager
+========================================
 
-$project will solve your problem of where to start with documentation,
-by providing a basic explanation of how to do it easily.
+Easing C++ development, inciting code reuse and improving application end-users experience by simplifying software updates. 
+
+That's what nxxm will help you with.
+
+Features
+========
+To discover all the marvellous features nxxm offers you can take a look on our https://nxxm.github.io/#about-us engaging website.
+
+* Builds by convention
+* C++ dependency download
+* Software Upgrade for your apps
+
+
+Every project is a library
+This is the core principle behind NXXM, any line of code written for a product development, might at some point be reused. If the opportunity happens, then it should success. Therefore we consider that each project is a set of end-user entrypoints and a library.
+
 
 Look how easy it is to use:
 
