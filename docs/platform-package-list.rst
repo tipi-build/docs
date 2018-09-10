@@ -1,11 +1,19 @@
 
+GitHub.com Dependencies
+=======================
+.. hint:: Specify any GitHub.com dependency as :ref:`dependencies-spec` 
+
+Use the awesome `Github Search Engine <https://github.com/search?l=C%2B%2B&o=desc&q=language%3AC%2B%2B&s=stars&type=Repositories>`_ to find your C++ dependencies, there are more than 763 000 repositories.
+
 .. to generate the list: 
 .. ls -1 | while read line; do echo $line; fgrep target_link_libraries $line; done
 
 .. _package-list:
 
-Platform Package List
-=====================
+Platform Dependencies Shorthands
+================================
+.. hint:: Specify the platform spec as in :ref:`dependencies-spec` 
+
 We rely on the https://docs.hunter.sh/en/latest/ project for the platform dependencies, you can see the version of the platform libraries used by default by ``nxxm`` `in it's Hunter config <https://github.com/nxxm/hunter/blob/nxxm/v0.0.3/cmake/configs/default.cmake>`_.
 
 * accelerate:

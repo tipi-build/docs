@@ -1,6 +1,9 @@
-************
-Dependencies
-************
+
+.. _dependencies-spec:
+
+**************************
+Dependencies Specification
+**************************
 
 If your project isn't dependency free then you can consume any GitHub.com repository or CMake Hunter Provided packages.
 
