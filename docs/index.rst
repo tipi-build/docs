@@ -2,6 +2,9 @@ nxxm documentation : C++ dependencies & upgrade manager
 =======================================================
 Easing C++ development, inciting code reuse and improving application end-users experience by simplifying software updates. 
 
+Getting started
+===============
+`Download nxxm <https://nxxm.github.io/#download>`_  and clone the `Get Started repository <https://github.com/nxxm/get-started>`_ repository.
 
 nxxm features 
 ==============
