@@ -43,8 +43,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Read the Docs Template'
-copyright = u'2014, Read the Docs'
+project = u'nxxm - C++ dependencies & upgrade manager'
+copyright = u'2018, nxxm'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -104,6 +104,11 @@ html_theme = 'default'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #html_theme_options = {}
+html_theme_options = {
+  'navigation_depth': 8,
+  'collapse_navigation': False,
+  'sticky_navigation': True
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []

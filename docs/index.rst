@@ -2,13 +2,6 @@ nxxm documentation : C++ dependencies & upgrade manager
 =======================================================
 Easing C++ development, inciting code reuse and improving application end-users experience by simplifying software updates. 
 
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-
-   *
 
 nxxm features 
 ==============
@@ -49,6 +42,18 @@ nxxm allows you to do a fine-granular selection of your dependencies and pulls i
 
 Opinionated but compromise-ready
 --------------------------------
-While with nxxm you won't need anymore to write build files, you can still customize the parts or all with ``CMakeLists.txt.tpl`` files.
+While with nxxm you won't need anymore to write build files, you can still customize the parts or all with ``CMakeLists.txt.tpl`` files as we drive CMake internally. 
 
 We don't encourage it though. 😇
+
+CMake is a really robust solution that we cherish, but in our opinion it is a too low-level tool in a modern demanding C++ context.
+
+
+Contents:
+=========
+
+.. toctree::
+   :maxdepth: 8
+   :glob:
+
+   *
