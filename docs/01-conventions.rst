@@ -147,10 +147,21 @@ Conventions are not enough
 ==========================
 It could happen, please contact us so that we can improve nxxm or help you.
 
+You can also tweak the build as explained below, this is however not recommended and goes against our vision. But we don't bite. :)
+
+There is for sure a way for the convention build to work : less is more. Or put differently less CMakeLists is more time for your C++. (^^)
+
+Override for one directory convention build
+-------------------------------------------
+This can be useful for really custom test framework or cases, you can give the hand to your CMake skills by adding in the subdiretories you don't want nxxm to do conventional builds.
+
+Simply add an empty marker file `use-cmake.nxxm` and a valid `CMakeLists.txt`. The build will use CMake for this subpart.
+
+Tweak nxxm convention build
+---------------------------
+We rely on CMake on you can tweak how we interract with it.
+
 We don't recommend it but you can tweak fully or partially the build by adding ``CMakeLists.txt.tpl`` files in the main or sub directories of your project. 
 
 To generate a sample CMakeLists.txt.tpl with the docs embedded of the different variables at your disposal call `nxxm cmaketpl`.
 
-This is however not recommended and there is for sure a way for the convention build to work : less is more.
-
-Or put differently less CMakeLists is more time for your C++. (^^)
