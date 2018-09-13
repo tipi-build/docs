@@ -10,7 +10,7 @@ Installing upgrd
 nxxm keeps your deployments up-to-date for you, had it to `.nxxm/deps`:: 
 
   { 
-      "nxxm/upgrd" : { "@" : "v0.0.2" } 
+      "nxxm/upgrd" : { "@" : "v0.0.3" } 
   } 
 
 Add to your app main function the following::
