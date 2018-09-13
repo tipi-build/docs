@@ -50,7 +50,10 @@ The following attributes are possible to declare how the dependencies should be 
           "@" : "<branch/tag/name>"
         , "s" : ["<src-disambiguation>", ...]
         , "x" : ["<exclude dir>", ...]
-        , "requires" : {<nxxm depspec object>}
+
+        , "@:<target>" : "<branch/tag/name>"
+        , "s:<target>" : ["<src-disambiguation>", ...]
+        , "x:<target>" : ["<exclude dir>", ...]
       }
 
      "platform[:target-platform]" : ["<dep>::<component>", ...]
@@ -64,15 +67,27 @@ The following attributes are possible to declare how the dependencies should be 
 - *ommited* : in this case the default branch is taken is fetched each time for the latest version unless ``-n`` is passed to nxxm.
 - a **tag** is fetched only once, then the version is kept. 
 - a **branch name** is fetched each time for the latest version unless ``-n`` is passed to nxxm.
+- You can suffix the key it with the target platform to selectively use a dependency in different platforms.
+  
+  e.g. ``"@:wasm-cxx17" : "v0.0.1"`` will select the version v0.0.1 for WebAssembly but not for the native platforms
 
 s : source dir disambiguation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If a repository has alot of sources directories with uncommon name they can be added to the list of includes or files to link with s. 
 
+You can suffix the key it with the target platform to selectively include implementation dir by platform
+  
+  e.g. ``"s:vs-15-2017-win64-cxx17" : ["src/visual-c"]`` will compile with the ``src/visual-c`` on vs-15-2017 but not on other targets.
+
 x : directory to completely ignore
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Directories that are unneeded to scan. Usually you don't need to specify this.
 Note that directories starting with a .dot will always be ignored.
+
+You can suffix the key it with the target platform to selectively include implementation dir by platform
+  
+  e.g. ``"x:wasm-cxx17" : ["src/native-code"]`` will compile without the native code directory for the WebAssembly platform.
+
 
 requires
 ^^^^^^^^
