@@ -35,8 +35,8 @@ In a software project there are 2 kinds of entrypoints :
 
 Therefore the nxxm tools always prepare out of any project, even if it consists of a single C++ header and implementation file : a library that might be reused and applications that might be shipped.
     
-Don't pay for what you don use
-------------------------------
+Don't pay for what you don't use
+--------------------------------
 This is a core C++ design philosophy, and sadly the world of packages manager obliges you to take more than you need.
 
 By definition a package is a pack of alot of things, and a developer won't need all of them.
