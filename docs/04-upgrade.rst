@@ -10,27 +10,27 @@ Installing upgrd
 nxxm keeps your deployments up-to-date for you, had it to `.nxxm/deps`:: 
 
   { 
-      "nxxm/upgrd" : { "@" : "v0.0.1" } 
+      "nxxm/upgrd" : { "@" : "v0.0.2" } 
   } 
 
 Add to your app main function the following::
 
-#include <upgrd/upgrd.hxx>
+  #include <upgrd/upgrd.hxx>
 
-int main(int argc, char** argv) {
+  int main(int argc, char** argv) {
 
-  // Download Releases out of GitHub Release Page Assets
-  upgrd::manager up{
-    "github-account",
-    "your-github-repo",
-    "v0.0.1",
-    argv[0],
-    std::cout
-  };
-  up.propose_upgrade_when_needed(); 
+    // Download Releases out of GitHub Release Page Assets
+    upgrd::manager up{
+      "github-account",
+      "your-github-repo",
+      "v0.0.1",
+      argv[0],
+      std::cout
+    };
+    up.propose_upgrade_when_needed(); 
 
-  return 0;
-}
+    return 0;
+  }
 
 Relies on GitHub Releases to distribute always the newest version to your users. 
 
