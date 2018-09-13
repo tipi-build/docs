@@ -24,7 +24,8 @@ Add to your app main function the following::
       "github-account",
       "your-github-repo",
       "v0.0.1",
-      argv[0],
+      argc,
+      argv,
       std::cout
     };
     up.propose_upgrade_when_needed(); 
