@@ -433,10 +433,7 @@ Microsoft.* GSL:
 * NASM:
 * ncnn:
 * nlohmann_json:
-    - ``nlohmann_json``
-    - ``nlohmann-json::nlohmann-json``
--  shorten ``)``to
-   ``nlohmann_json)``**no**
+    - ``nlohmann_json::+nlohmann_json``
 * nsync:
     - ``nsync::nsync``
 * odb-boost:
