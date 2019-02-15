@@ -7,7 +7,7 @@ Test it live: https://github.com/nxxm/example-upgrd-app
 Installing upgrd
 ================
 
-nxxm keeps your deployments up-to-date for you, had it to `.nxxm/deps`:: 
+nxxm keeps your deployments up-to-date for you, add upgrd to `.nxxm/deps`:: 
 
   { 
       "nxxm/upgrd" : { "@" : "v0.0.3" } 
