@@ -247,7 +247,7 @@ We rely on the https://docs.hunter.sh/en/latest/ project for the platform depend
     - ``foundation::foundation``
     - ``"-framework Foundation"``
 * freetype:
-    - ``freetype::freetype``
+    - ``freetype::+freetype``
 * frugally-deep:
 * Fruit:
 * FunctionalPlus:
