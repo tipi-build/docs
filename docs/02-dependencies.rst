@@ -54,6 +54,8 @@ The following attributes are possible to declare how the dependencies should be 
         , "@:<target>" : "<branch/tag/name>"
         , "s:<target>" : ["<src-disambiguation>", ...]
         , "x:<target>" : ["<exclude dir>", ...]
+        
+        , "requires" : { ... }
       }
 
      "platform[:target-platform]" : ["<dep>::<component>", ...]
