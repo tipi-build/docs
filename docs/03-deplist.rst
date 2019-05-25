@@ -448,7 +448,7 @@ Microsoft.* GSL:
 * oniguruma:
 * onmt:
 * OpenAL:
-    - ``OpenAL::OpenAL``
+    - ``OpenAL::+OpenAL``
 * OpenBLAS:
     - ``OpenBLAS::OpenBLAS``
 * OpenCL-cpp:
