@@ -24,6 +24,7 @@ Relaxing & flowing C++
 ----------------------
 * Code scanning & conventions over build configuration
 * 0 setup just coding
+
   - Just select one environment from our [supported list](https://github.com/nxxm/polly/tree/master/), or specify your own.
   - nxxm.io will ship the compiler and runtime library automatically
 
