@@ -5,7 +5,7 @@ GitHub.com & Github Enterprise Authentication
 Create a .nxxm/.auth file
 =========================
 
-.. hint:: On Windows it's in `C:\\.nxxm\\.auth`
+.. hint:: On Windows it's in `C:\\\\.nxxm\\\\.auth`
 .. hint:: On other platforms in `${HOME}/.nxxm/.auth`
 
 The file is a JSON Array of credentials to setup on one entry GitHub.com credentials and on mutliple for Github Enterprise :
