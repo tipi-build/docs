@@ -3,6 +3,7 @@ Dependencies of nxxm
 *********************************************
 
 When using nxxm for the first time, the software will create a new directory `.nxxm` 
+
   - On Windows it's in `C:\\\\.nxxm\\\\`
   - On other platforms in `${HOME}/.nxxm/`
 
