@@ -1,5 +1,5 @@
 *********************************************
-Dependencies of nxxm
+nxxm main directory (dependencies & tools cache)
 *********************************************
 
 When using nxxm for the first time, the software will create a new directory `.nxxm` 
