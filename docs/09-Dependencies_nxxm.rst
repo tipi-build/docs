@@ -13,4 +13,4 @@ But you may not have permission to write to this part of the disk. Or that you r
 
 To solve this problem you can tell nxxm to install it's tools and dependencies at the location pointed by : `NXXM_HOME_DIR`.
 
-For example on windows powershell you can specif `$env:NXXM_HOME_DIR = "D:\a\.nxxm"`
+For example on windows powershell you can specify `$env:NXXM_HOME_DIR = "D:\a\.nxxm"`
