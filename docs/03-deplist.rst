@@ -303,9 +303,9 @@ We rely on the https://docs.hunter.sh/en/latest/ project for the platform depend
 * gstreamer:
     - ``PkgConfig::gstreamer-1.0``
 * GTest:
-    - ``GTest::main) # GTest::gtest will be linked automatically``
-    - ``boo GTest::gtest``
-    - ``GMock::main``
+    - ``GTest::+gtest_main) # GTest::gtest will be linked automatically``
+    - ``GTest::+gtest``
+    - ``GMock::+gmock_main``
 * gumbo:
     - ``gumbo::gumbo``
 * h3:
