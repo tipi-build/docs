@@ -41,7 +41,7 @@ If `NXXM_DISTRO_JSON` contains an HTTP(s) url, nxxm will handle the file downloa
 NXXM_DISTRO_JSON_SHA1
 =====================
 
-As nxxm handles the environment variable `NXXM_DISTRO_JSON`, if it contains an HTTP(s) url, nxxm will check the SHA1 got from the environment variable `NXXM_DISTRO_JSON_SHA1` to know if it has to download and override the existing json file.
+As nxxm handles the environment variable `NXXM_DISTRO_JSON`, if it contains an HTTP(s) url, nxxm will check the SHA1 got from the environment variable `NXXM_DISTRO_JSON_SHA1` to know if it needs to download and override the existing json file.
 
 For example:
   - NXXM_DISTRO_JSON = "https://company/nxxm/distro.json"
