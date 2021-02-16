@@ -25,7 +25,7 @@ nxxm uses a json file which contains the required tools used by nxxm to build pr
 
 To allow nxxm usage flexibility, nxxm is ready to use the environment variable `NXXM_DISTRO_JSON` which may point to an absolute or relative file path, or even an HTTP(s) url which point to your own distribution json file.
 
-The original json file can be found at https://nxxm.github.io/distro/distro.json.
+The original json file can be found at https://github.com/nxxm/distro/blob/master/v0.0.12/distro.json.
 
 Below some examples of what you can set as `NXXM_DISTRO_JSON`:
 
