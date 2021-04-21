@@ -39,6 +39,14 @@ In this specific case :
 =================
 A JSON object whose **keys** are GitHub URI and values configurations to consume those repositories as C++ libraries dependencies.
 
+Simple example that would always pull and compile the latest state of the default branch of https://github.com/cpp-pre/json : 
+
+::
+
+  {
+     "cpp-pre/json" : {}
+  }
+
 gh-user/gh-repo
 ---------------
 The following attributes are possible to declare how the dependencies should be consumed.
@@ -50,15 +58,20 @@ The following attributes are possible to declare how the dependencies should be 
           "@" : "<branch/tag/name>"
         , "s" : ["<src-disambiguation>", ...]
         , "x" : ["<exclude dir>", ...]
+        , "u" : <use-cmakelists>
+        , "packages": ["<Package Config name>", ...]
+        , "targets": ["<target name>", ...]
 
         , "@:<target>" : "<branch/tag/name>"
         , "s:<target>" : ["<src-disambiguation>", ...]
         , "x:<target>" : ["<exclude dir>", ...]
+        , "u:<target>" : <use-cmakelists>
         
         , "requires" : { ... }
       }
 
      "platform[:target-platform]" : ["<dep>::<component>", ...]
+     "platform[:target-platform]" : [{ "packages" : [], "targets" : [] }, ...]
 
   }
 
@@ -90,13 +103,32 @@ You can suffix the key it with the target platform to selectively include implem
   
   e.g. ``"x:wasm-cxx17" : ["src/native-code"]`` will compile without the native code directory for the WebAssembly platform.
 
+u : use CMakeLists
+^^^^^^^^^^^^^^^^^^
+Per default nxxm scans the source code of your application and dependencies to build it automagically.
+If that is not wanted it is possible to specify ``"u" : true`` to use the CMakeLists.txt of the project.
+
+packages,  targets
+^^^^^^^^^^^^^^^^^^
+Useful in combination with the option to use CMakeLists from dependency ( i.e. ``"u" : true`` ), it allows to set the packages and targets we expect from the dependency to be searched for via CMake find_package.
+
+Here follows an example to build the library libgit2 with it's own CMakeLists and it's own specific targets.
+
+::
+
+  {
+    "nxxm/libgit2" : { 
+      "@" : "v1.1.0-cmake-findpackage", 
+      "u" : true,
+      "packages": ["libgit2"], "targets": ["libgit2::git2"] 
+    }
+  }  
 
 requires
 ^^^^^^^^
 The requires is a way to adapt a non nxxm dependency which also has dependencies, there are no limits on the nesting you can use. 
 
 It is also really useful to change a transitive dependency, for example if you prefer to use BoringSSL in place of OpenSSL for a libary which would depend on OpenSSL.
-
 
 
 
@@ -121,6 +153,14 @@ The platform libraries have to be specified as follow :
 - "PackageName::component" if the component is to be linked and needs to be fetched separately. ( *e.g.* "Boost::filesystem" is not shipped per-se by Boost it must be declared as to install in sysroot first." ).
  
 - "target::native-name" if the component is already installed on such platforms and should be used. ( *e.g.* linkign to libdl.so on linux can be specified by ``target::dl`` )
+
+::
+
+  "platform[:target-platform]" : [{ "packages" : [], "targets" : [] }, ...]
+  
+Allows to set the packages and targets we expect from the dependency to be searched for via CMake find_package.
+
+This can be useful for platform packages that need to be imported in a specific way, for example accomodating use of complex systems like PkgConfig.
 
 .. tip:: For a list of possible platform libraries please refer to :ref:`package-list`.
 
