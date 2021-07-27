@@ -2,47 +2,62 @@
 Environment variables
 *********************************************
 
-NXXM_HOME_DIR (dependencies & tools cache)
+TIPI_HOME_DIR (dependencies & tools cache)
 ==========================================
-When using nxxm for the first time, the software will create a new directory `.nxxm`
+When using tipi for the first time, the software will create a new directory `.tipi`
 
-  - On Windows it's in `C:\\\\.nxxm\\\\`
-  - On other platforms in `${HOME}/.nxxm/`
+  - On Windows it's in `C:\\\\.tipi\\\\`
+  - On other platforms in `${HOME}/.tipi/`
 
-In this directory nxxm will install dependencies, toolchain files and tools for your environments.
+In this directory tipi will install dependencies, toolchain files and tools for your environments.
 
-But you may not have permission to write to this part of the disk. Or that you run nxxm from another disk.
+But you may not have permission to write to this part of the disk. Or that you run tipi from another disk.
 
-To solve this problem you can tell nxxm to install it's tools and dependencies at the location pointed by : `NXXM_HOME_DIR`.
+To solve this problem you can tell tipi to install it's tools and dependencies at the location pointed by : `NXXM_HOME_DIR`.
 
-For example on windows powershell you can specify `$env:NXXM_HOME_DIR = "D:\\\\a\\\\.nxxm"`
+For example on windows powershell you can specify `$env:NXXM_HOME_DIR = "D:\\\\a\\\\.tipi"`
 
 
+TIPI_ENDPOINT (tipi.build instance)
+===================================
+tipi.build can be run on premise, this specifies the actual https API endpoint that tipi should use.
 
-NXXM_DISTRO_JSON
+
+TIPI_ACCESS_TOKEN, TIPI_REFRESH_TOKEN (command line authentication)
+===================================================================
+These are the token that can be provided so that Continuous Integration machines can log into tipi and get access to the full tipi subscription.
+
+See also `TIPI_VAULT_PASSPHRASE`
+
+TIPI_VAULT_PASSPHRASE
+=====================
+When running login over environment variables, it is also required to decrypt the secure vault that tipi stores. This will be used to decrypt the vault.
+
+
+TIPI_DISTRO_JSON
 ================
-nxxm uses a json file which contains the required tools used by nxxm to build projects, as cmake or make. These tools are automatically downloaded and installed by nxxm at runtime before running projects build.
+tipi uses a json file which contains the required tools used by tipi to build projects, as cmake or make. These tools are automatically downloaded and installed by tipi at runtime before running projects build.
 
-To allow nxxm usage flexibility, nxxm is ready to use the environment variable `NXXM_DISTRO_JSON` which may point to an absolute or relative file path, or even an HTTP(s) url which point to your own distribution json file.
+To allow tipi usage flexibility, tipi is ready to use the environment variable `TIPI_DISTRO_JSON` which may point to an absolute or relative file path, or even an HTTP(s) url which point to your own distribution json file.
 
-The original json file can be found at https://github.com/nxxm/distro/blob/master/v0.0.12/distro.json.
+The original json file can be found at https://github.com/tipi/distro/blob/master/distro.json.
 
-Below some examples of what you can set as `NXXM_DISTRO_JSON`:
+Below some examples of what you can set as `TIPI_DISTRO_JSON`:
 
-  - NXXM_DISTRO_JSON = "~/projects/nxxm/distro.json"
-  - NXXM_DISTRO_JSON = "/home/user/projects/nxxm/distro.json"
-  - NXXM_DISTRO_JSON = "https://company.com/nxxm/distro.json"
+  - TIPI_DISTRO_JSON = "~/projects/tipi/distro.json"
+  - TIPI_DISTRO_JSON = "/home/user/projects/tipi/distro.json"
+  - TIPI_DISTRO_JSON = "https://company.com/tipi/distro.json"
 
-If `NXXM_DISTRO_JSON` contains an absolute or relative file path, it will be used directly by nxxm.
+If `TIPI_DISTRO_JSON` contains an absolute or relative file path, it will be used directly by tipi.
 
-If `NXXM_DISTRO_JSON` contains an HTTP(s) url, nxxm will handle the file download and the environment variable `NXXM_DISTRO_JSON_SHA1` has to be defined too (see :ref:`NXXM_DISTRO_JSON_SHA1`).
+If `TIPI_DISTRO_JSON` contains an HTTP(s) url, tipi will handle the file download and the environment variable `TIPI_DISTRO_JSON_SHA1` has to be defined too (see :ref:`TIPI_DISTRO_JSON_SHA1`).
 
 
-NXXM_DISTRO_JSON_SHA1
+TIPI_DISTRO_JSON_SHA1
 =====================
 
-As nxxm handles the environment variable `NXXM_DISTRO_JSON`, if it contains an HTTP(s) url, nxxm will check the SHA1 got from the environment variable `NXXM_DISTRO_JSON_SHA1` to know if it needs to download and override the existing json file.
+As tipi handles the environment variable `TIPI_DISTRO_JSON`, if it contains an HTTP(s) url, tipi will check the SHA1 got from the environment variable `TIPI_DISTRO_JSON_SHA1` to know if it needs to download and override the existing json file.
 
 For example:
-  - NXXM_DISTRO_JSON = "https://company/nxxm/distro.json"
-  - NXXM_DISTRO_JSON_SHA1 = "4eb777d088ea949709e9ea97bbc8c389a63856e2"
+  - TIPI_DISTRO_JSON = "https://company/tipi/distro.json"
+  - TIPI_DISTRO_JSON_SHA1 = "4eb777d088ea949709e9ea97bbc8c389a63856e2"
