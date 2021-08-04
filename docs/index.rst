@@ -10,12 +10,9 @@ tipi features
 ==============
 To discover all the marvellous features tipi offers you can take a look on our https://tipi.build/ website.
 
-* tipi makes it intuitive to build a C++ project
-    - Requires absolutely no build recipes
-    - Builds by conventions with ``tipi .``
-* tipi is a dependency manager for C++ which fetches and compile any C++ project hosted on `GitHub.com <https://github.com/>`_ . 
-* adds software upgrade support to your apps.
-* WebAssembly Ready but not only.
+* tipi speeds up your workflow with autoprovisioned cloud environments : toolchain, compilers, tools.
+* tipi is a dependency manager for C++ which fetches and compile any C++ project. 
+* tipi builds superfast with cloud powered build distribution
 
 tipi key principles
 ====================
@@ -48,11 +45,11 @@ tipi allows you to do a fine-granular selection of your dependencies and pulls i
 
 Opinionated but compromise-ready
 --------------------------------
-While with tipi you won't need anymore to write build files, you can still customize the parts or all with ``CMakeLists.txt.tpl`` files as we drive CMake internally. 
+While with tipi you won't need anymore to write build files, you can still customize the parts or all with ``CMakeLists.txt.tpl`` or ``use-cmake.tipi`` files as we drive CMake internally. 
 
 We don't encourage it though. 😇
 
-CMake is a really robust solution that we cherish, but in our opinion it is a too low-level tool in a modern demanding C++ context.
+CMake is a really robust solution that we cherish, but in our opinion it is a too low-level tool for a developer to face in it's daily development tasks.
 
 
 Contents:
