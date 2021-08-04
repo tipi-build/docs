@@ -43,8 +43,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'nxxm - C++ dependencies & upgrade manager'
-copyright = u'2018, nxxm'
+project = u'tipi.build - C and C++ compiler as a service'
+copyright = u'2021, tipi technologies Ltd.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -176,7 +176,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'nxxm - C++ dependencies & upgrade manager'
+htmlhelp_basename = 'tipi.build - C and C++ compiler as a service'
 
 
 # -- Options for LaTeX output ---------------------------------------------

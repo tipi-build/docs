@@ -5,7 +5,7 @@ Builds by Conventions
 
 Why ?
 =====
-Why did we ever write makefiles ? CMakeLists.txt or configured IDE project settings ? And why can we stop ?
+Why did we ever write makefiles ? CMakeLists.txt or configured IDE project settings ? And why couldn't we stop ?
 
 Andrew Koenig once coined FTSE, the `Fundamental theorem of software engineering <https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering>`_ : 
 
