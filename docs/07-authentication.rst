@@ -1,35 +1,25 @@
-*********************************************
-GitHub.com & Github Enterprise Authentication 
-*********************************************
+*************************
+Authentication
+**************
 
-Create a .tipi/.auth file
-=========================
+tipi.build authentication allows accessing your tipi.build cores and nodes, it also allows tipi.build to access the source code repositories you need on Github.
 
-.. hint:: On Windows it's in `C:\\\\.tipi\\\\.auth`
-.. hint:: On other platforms in `${HOME}/.tipi/.auth`
+It's possible to add additional authentication methods, user/password and tokens in your personal vault.
 
-If you have modified the environment variable ($env:TIPI_HOME_DIR), the authentication token must be in the `$TIPI_HOME_DIR/.tipi/.auth` .
+The vault is encrypted with strong cryptography on the user local machine. ( _c.f._ `Learn about the vault strong security <https://github.com/tipi-build/vault>` )
 
-The file is a JSON Array of credentials to setup on one entry GitHub.com credentials and on mutliple for Github Enterprise :
+Authenticating to tipi.build
+============================
+
+Run the `tipi connect` command :
 
 ::
 
-  [
-    {
-      "auth_info" : {
-        "user" : "<GitHub.com username>",
-        "pass" : "<GitHub.com password or Personal Access Token (if you have 2FA on)>"
-      }
-    },
-    {
-      "endpoint" : "https://github.your-enterprise.com",
+  tipi connect
 
-      "auth_info" : {
-        "user" : "<username>",
-        "pass" : "<GitHub.com password or Personal Access Token (if you have 2FA on)>"
-      }
-    }
+This will prompt you with a link to authenticate the device on tipi.build, after downloading the vault the vault passphrase will be asked for.
 
-  ]
+.. note::
+  You can connect to your own tipi.build instance by specifying the `TIPI_ENDPOINT` environment variable. 
 
-To create a personal access token, please refer to the `GitHub documentation <https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/> `_ .
+.. hint:: The vault will be stored in `$TIPI_HOME_DIR/.tipi/.auth` .

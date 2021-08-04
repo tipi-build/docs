@@ -4,11 +4,11 @@ Easing C++ development, inciting code reuse and improving application end-users 
 
 Getting started
 ===============
-`Download tipi <https://tipi.github.io/#download>`_  and clone the `Get Started repository <https://github.com/tipi/get-started>`_ repository.
+`Download tipi <https://tipi.build/>`_  by signing in and follow the online setup wizard.
 
 tipi features 
 ==============
-To discover all the marvellous features tipi offers you can take a look on our https://tipi.github.io/ website.
+To discover all the marvellous features tipi offers you can take a look on our https://tipi.build/ website.
 
 * tipi makes it intuitive to build a C++ project
     - Requires absolutely no build recipes
