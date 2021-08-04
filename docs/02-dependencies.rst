@@ -7,12 +7,12 @@ Dependencies Specification
 
 If your project isn't dependency free then you can consume any GitHub.com repository or CMake Hunter Provided packages.
 
-This simply can be specified in a ``.nxxm/deps`` which can look like this::
+This simply can be specified in a ``.tipi/deps`` which can look like this::
 
   {
       "gh-user/repo" : {}
 
-    , "nxxm/gh"      : { "@" : "v0.0.1" }
+    , "tipi/gh"      : { "@" : "v0.0.1" }
 
     , "platform" : [ "Boost::+boost" ]
   }
@@ -23,19 +23,19 @@ This dependency specification ( *i.e.* depspec ) file tells which libraries your
 Every *key* of the JSON object represent a github URI. 
 
 - "gh-user/repo": repository at https://github.com/gh-user/repo
-- "nxxm/gh": repository at https://github.com/nxxm/gh
-- "platform" however specifies a commonly consumed package that have been tested and integrated on all the toolchains supported by nxxm.
+- "tipi/gh": repository at https://github.com/tipi/gh
+- "platform" however specifies a commonly consumed package that have been tested and integrated on all the toolchains supported by tipi.
 
-The effect of having such a ``.nxxm/deps`` file is that on ``nxxm .`` call the GitHub.com repositories will be fetched, compiled by convention and installed within the ``/build/<platform>/sysroot``.
+The effect of having such a ``.tipi/deps`` file is that on ``tipi .`` call the GitHub.com repositories will be fetched, compiled by convention and installed within the ``/build/<platform>/sysroot``.
 
 In this specific case :
 
-* "gh-user/repo" default branch ( usually master ) will be taken and always the latest. Unless ``nxxm . -n`` is passed which relies then only on it's previously downloaded cache.
-* nxxm/gh tag v0.0.1 will be fetched once and always used
+* "gh-user/repo" default branch ( usually master ) will be taken and always the latest. Unless ``tipi . -n`` is passed which relies then only on it's previously downloaded cache.
+* tipi/gh tag v0.0.1 will be fetched once and always used
 * Boost headers distribution will be downloaded once and installed to the build thanks to CMake Hunter.
 
 
-.nxxm/deps syntax
+.tipi/deps syntax
 =================
 A JSON object whose **keys** are GitHub URI and values configurations to consume those repositories as C++ libraries dependencies.
 
@@ -79,9 +79,9 @@ The following attributes are possible to declare how the dependencies should be 
 
 @ : tag or branch name
 ^^^^^^^^^^^^^^^^^^^^^^
-- *ommited* : in this case the default branch is taken is fetched each time for the latest version unless ``-n`` is passed to nxxm.
+- *ommited* : in this case the default branch is taken is fetched each time for the latest version unless ``-n`` is passed to tipi.
 - a **tag** is fetched only once, then the version is kept. 
-- a **branch name** is fetched each time for the latest version unless ``-n`` is passed to nxxm.
+- a **branch name** is fetched each time for the latest version unless ``-n`` is passed to tipi.
 - You can suffix the key it with the target platform to selectively use a dependency in different platforms.
   
   e.g. ``"@:wasm-cxx17" : "v0.0.1"`` will select the version v0.0.1 for WebAssembly but not for the native platforms
@@ -105,7 +105,7 @@ You can suffix the key it with the target platform to selectively include implem
 
 u : use CMakeLists
 ^^^^^^^^^^^^^^^^^^
-Per default nxxm scans the source code of your application and dependencies to build it automagically.
+Per default tipi scans the source code of your application and dependencies to build it automagically.
 If that is not wanted it is possible to specify ``"u" : true`` to use the CMakeLists.txt of the project.
 
 packages,  targets
@@ -117,7 +117,7 @@ Here follows an example to build the library libgit2 with it's own CMakeLists an
 ::
 
   {
-    "nxxm/libgit2" : { 
+    "tipi/libgit2" : { 
       "@" : "v1.1.0-cmake-findpackage", 
       "u" : true,
       "packages": ["libgit2"], "targets": ["libgit2::git2"] 
@@ -126,7 +126,7 @@ Here follows an example to build the library libgit2 with it's own CMakeLists an
 
 requires
 ^^^^^^^^
-The requires is a way to adapt a non nxxm dependency which also has dependencies, there are no limits on the nesting you can use. 
+The requires is a way to adapt a non tipi dependency which also has dependencies, there are no limits on the nesting you can use. 
 
 It is also really useful to change a transitive dependency, for example if you prefer to use BoringSSL in place of OpenSSL for a libary which would depend on OpenSSL.
 
@@ -142,7 +142,7 @@ platform[:target-platform]
 
 It's possible to specify dependencies that we consider platform provided. Meaning they are really common and used accross almost any project, but still needs to be specified.
 
-``:target-platform`` can be appended to selectively include dependencies only on certain target platform, hence the key name. The target platform is selected after the `nxxm -t target-platform` parameter.
+``:target-platform`` can be appended to selectively include dependencies only on certain target platform, hence the key name. The target platform is selected after the `tipi -t target-platform` parameter.
 
 If there is a ``platform`` and a ``platform::target`` both will be used together. 
 

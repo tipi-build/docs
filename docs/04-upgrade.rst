@@ -2,15 +2,15 @@
 Upgrade your users
 ******************
 
-Test it live: https://github.com/nxxm/example-upgrd-app
+Test it live: https://github.com/tipi/example-upgrd-app
 
 Installing upgrd
 ================
 
-nxxm keeps your deployments up-to-date for you, add upgrd to `.nxxm/deps`:: 
+tipi keeps your deployments up-to-date for you, add upgrd to `.tipi/deps`:: 
 
   { 
-      "nxxm/upgrd" : { "@" : "v0.0.3" } 
+      "tipi/upgrd" : { "@" : "v0.0.3" } 
   } 
 
 Add to your app main function the following::
@@ -38,7 +38,7 @@ Relies on GitHub Releases to distribute always the newest version to your users.
 Publishing Releases
 ===================
 
-Look at an example: https://github.com/nxxm/example-upgrd-app/releases
+Look at an example: https://github.com/tipi/example-upgrd-app/releases
 
 - Add a zip file with your binary to a GitHub Release. Simply add in the zip name respective to each platform :
   * `windows`

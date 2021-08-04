@@ -1,23 +1,23 @@
-nxxm documentation : C++ dependencies & upgrade manager
+tipi documentation : C++ dependencies & upgrade manager
 =======================================================
 Easing C++ development, inciting code reuse and improving application end-users experience by simplifying software updates. 
 
 Getting started
 ===============
-`Download nxxm <https://nxxm.github.io/#download>`_  and clone the `Get Started repository <https://github.com/nxxm/get-started>`_ repository.
+`Download tipi <https://tipi.github.io/#download>`_  and clone the `Get Started repository <https://github.com/tipi/get-started>`_ repository.
 
-nxxm features 
+tipi features 
 ==============
-To discover all the marvellous features nxxm offers you can take a look on our https://nxxm.github.io/ website.
+To discover all the marvellous features tipi offers you can take a look on our https://tipi.github.io/ website.
 
-* nxxm makes it intuitive to build a C++ project
+* tipi makes it intuitive to build a C++ project
     - Requires absolutely no build recipes
-    - Builds by conventions with ``nxxm .``
-* nxxm is a dependency manager for C++ which fetches and compile any C++ project hosted on `GitHub.com <https://github.com/>`_ . 
+    - Builds by conventions with ``tipi .``
+* tipi is a dependency manager for C++ which fetches and compile any C++ project hosted on `GitHub.com <https://github.com/>`_ . 
 * adds software upgrade support to your apps.
 * WebAssembly Ready but not only.
 
-nxxm key principles
+tipi key principles
 ====================
 
 Relaxing & flowing C++ 
@@ -25,8 +25,8 @@ Relaxing & flowing C++
 * Code scanning & conventions over build configuration
 * 0 setup just coding
 
-  - Just select one environment from our `Supported list <https://github.com/nxxm/polly/tree/master/>`_ or specify your own.
-  - nxxm.io will download & install the compiler and libraries automatically in an isolated sandbox.
+  - Just select one environment from our `Supported list <https://github.com/tipi/polly/tree/master/>`_ or specify your own.
+  - tipi.io will download & install the compiler and libraries automatically in an isolated sandbox.
 
 .. _every-project-lib-label:
 
@@ -36,7 +36,7 @@ In a software project there are 2 kinds of entrypoints :
   - Developers entrypoints for code reuse
   - End-user entrypoints for application use
 
-Therefore the nxxm tools always prepare out of any project, even if it consists of a single C++ header and implementation file : a library that might be reused and applications that might be shipped.
+Therefore the tipi tools always prepare out of any project, even if it consists of a single C++ header and implementation file : a library that might be reused and applications that might be shipped.
     
 Don't pay for what you don't use
 --------------------------------
@@ -44,11 +44,11 @@ This is a core C++ design philosophy, and sadly the world of packages manager ob
 
 By definition a package is a pack of alot of things, and a developer won't need all of them.
 
-nxxm allows you to do a fine-granular selection of your dependencies and pulls in your final application, thanks to modern C++ compilers only the needed bits.
+tipi allows you to do a fine-granular selection of your dependencies and pulls in your final application, thanks to modern C++ compilers only the needed bits.
 
 Opinionated but compromise-ready
 --------------------------------
-While with nxxm you won't need anymore to write build files, you can still customize the parts or all with ``CMakeLists.txt.tpl`` files as we drive CMake internally. 
+While with tipi you won't need anymore to write build files, you can still customize the parts or all with ``CMakeLists.txt.tpl`` files as we drive CMake internally. 
 
 We don't encourage it though. 😇
 

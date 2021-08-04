@@ -13,9 +13,9 @@ In this directory tipi will install dependencies, toolchain files and tools for 
 
 But you may not have permission to write to this part of the disk. Or that you run tipi from another disk.
 
-To solve this problem you can tell tipi to install it's tools and dependencies at the location pointed by : `NXXM_HOME_DIR`.
+To solve this problem you can tell tipi to install it's tools and dependencies at the location pointed by : `TIPI_HOME_DIR`.
 
-For example on windows powershell you can specify `$env:NXXM_HOME_DIR = "D:\\\\a\\\\.tipi"`
+For example on windows powershell you can specify `$env:TIPI_HOME_DIR = "D:\\\\a\\\\.tipi"`
 
 
 TIPI_ENDPOINT (tipi.build instance)

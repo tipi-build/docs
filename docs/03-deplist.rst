@@ -14,7 +14,7 @@ Platform Dependencies Shorthands
 ================================
 .. hint:: Specify the platform spec as in :ref:`dependencies-spec` 
 
-We rely on the https://docs.hunter.sh/en/latest/ project for the platform dependencies, you can see the version of the platform libraries used by default by ``nxxm`` `in it's Hunter config <https://github.com/nxxm/hunter/blob/nxxm/v0.0.3/cmake/configs/default.cmake>`_.
+We rely on the https://docs.hunter.sh/en/latest/ project for the platform dependencies, you can see the version of the platform libraries used by default by ``tipi`` `in it's Hunter config <https://github.com/tipi/hunter/blob/tipi/v0.0.3/cmake/configs/default.cmake>`_.
 
 * accelerate:
     - ``accelerate::accelerate``

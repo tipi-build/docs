@@ -2,13 +2,13 @@
 GitHub.com & Github Enterprise Authentication 
 *********************************************
 
-Create a .nxxm/.auth file
+Create a .tipi/.auth file
 =========================
 
-.. hint:: On Windows it's in `C:\\\\.nxxm\\\\.auth`
-.. hint:: On other platforms in `${HOME}/.nxxm/.auth`
+.. hint:: On Windows it's in `C:\\\\.tipi\\\\.auth`
+.. hint:: On other platforms in `${HOME}/.tipi/.auth`
 
-If you have modified the environment variable ($env:NXXM_HOME_DIR), the authentication token must be in the `$NXXM_HOME_DIR/.nxxm/.auth` .
+If you have modified the environment variable ($env:TIPI_HOME_DIR), the authentication token must be in the `$TIPI_HOME_DIR/.tipi/.auth` .
 
 The file is a JSON Array of credentials to setup on one entry GitHub.com credentials and on mutliple for Github Enterprise :
 
