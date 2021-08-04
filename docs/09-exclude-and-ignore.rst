@@ -1,5 +1,5 @@
 **************************
-`.tipiignore` Exclud and Ignore
+`.tipiignore` Exclude and Ignore
 **************************
 
 tipiignore files
