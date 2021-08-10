@@ -22,4 +22,4 @@ This will prompt you with a link to authenticate the device on tipi.build, after
 .. note::
   You can connect to your own tipi.build instance by specifying the `TIPI_ENDPOINT` environment variable. 
 
-.. hint:: The vault will be stored in `$TIPI_HOME_DIR/.tipi/.auth` .
+.. hint:: tipi connect will store your credentials persistently. On continuous integration nodes you can authenticate with the following set of environment variables : TIPI_ACCESS_TOKEN, TIPI_REFRESH_TOKEN, TIPI_VAULT_PASSPHRASE.
