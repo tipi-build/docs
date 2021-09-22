@@ -27,4 +27,4 @@ Authenticating to tipi.build : Continuous Integration
 ============================
 On machines without user facing it is possible to provide the authentication secrets with the following set of environment variables : TIPI_ACCESS_TOKEN, TIPI_REFRESH_TOKEN, TIPI_VAULT_PASSPHRASE.
 
-See `tipi auth variables`_ for more details. 
+See `tipi auth variables`_ for more details.
