@@ -22,8 +22,13 @@ Relaxing & flowing C++
 * Code scanning & conventions over build configuration
 * 0 setup just coding
 
-  - Just select one environment from our `Supported list <https://github.com/tipi-build/environments/>`_ or specify your own.
+  - Just select one environment from our `Supported list <https://github.com/tipi-build/environments>`_ or specify your own.
   - tipi.build will download & install the compiler and libraries automatically in an isolated distro folder.
+
+Environments on demand
+----------------------
+tipi.build autoprovision repeatable build environments on powerful cloud build machines.
+The environments based on CMake toolchains and System images, learn more : `tipi-build-environment-label`_
 
 .. _every-project-lib-label:
 
