@@ -1,6 +1,6 @@
-tipi documentation : C++ dependencies & upgrade manager
-=======================================================
-Easing C++ development, inciting code reuse and improving application end-users experience by simplifying software updates. 
+tipi documentation : C++ compiler as a Service
+==============================================
+Easing C++ development, inciting code reuse and speeding up build workflows !
 
 Getting started
 ===============
@@ -22,8 +22,8 @@ Relaxing & flowing C++
 * Code scanning & conventions over build configuration
 * 0 setup just coding
 
-  - Just select one environment from our `Supported list <https://github.com/tipi/polly/tree/master/>`_ or specify your own.
-  - tipi.io will download & install the compiler and libraries automatically in an isolated sandbox.
+  - Just select one environment from our `Supported list <https://github.com/tipi/environments/tree/master/>`_ or specify your own.
+  - tipi.build will download & install the compiler and libraries automatically in an isolated distro folder.
 
 .. _every-project-lib-label:
 
@@ -39,17 +39,15 @@ Don't pay for what you don't use
 --------------------------------
 This is a core C++ design philosophy, and sadly the world of packages manager obliges you to take more than you need.
 
-By definition a package is a pack of alot of things, and a developer won't need all of them.
+By definition a package is a pack of alot of things, and the final application won't need all of them.
 
 tipi allows you to do a fine-granular selection of your dependencies and pulls in your final application, thanks to modern C++ compilers only the needed bits.
 
 Opinionated but compromise-ready
 --------------------------------
-While with tipi you won't need anymore to write build files, you can still customize the parts or all with ``CMakeLists.txt.tpl`` or ``use-cmake.tipi`` files as we drive CMake internally. 
+While with tipi we push for builds without complex scripts, you can still customize the parts or all with ``CMakeLists.txt.tpl`` or ``CMakeLists.txt`` associated with ``use-cmake.tipi`` files as tipi is built on top of CMake, which has a great acceptance in the C and C++ community.
 
-We don't encourage it though. 😇
-
-CMake is a really robust solution that we cherish, but in our opinion it is a too low-level tool for a developer to face in it's daily development tasks.
+In our opinion CMakeLists should be used only were real is a really robust solution that we cherish, but in our opinion it is a too low-level tool for a developer to face in daily development tasks. 
 
 
 Contents:

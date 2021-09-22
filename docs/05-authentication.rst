@@ -6,7 +6,7 @@ tipi.build authentication allows accessing your tipi.build cores and nodes, it a
 
 It's possible to add additional authentication methods, user/password and tokens in your personal vault.
 
-The vault is encrypted with strong cryptography on the user local machine. ( _c.f._ `Learn about the vault strong security <https://github.com/tipi-build/vault>` )
+The vault is encrypted with strong cryptography on the user local machine.
 
 Authenticating to tipi.build
 ============================
@@ -22,4 +22,9 @@ This will prompt you with a link to authenticate the device on tipi.build, after
 .. note::
   You can connect to your own tipi.build instance by specifying the `TIPI_ENDPOINT` environment variable. 
 
-.. hint:: tipi connect will store your credentials persistently. On continuous integration nodes you can authenticate with the following set of environment variables : TIPI_ACCESS_TOKEN, TIPI_REFRESH_TOKEN, TIPI_VAULT_PASSPHRASE.
+
+Authenticating to tipi.build : Continuous Integration
+============================
+On machines without user facing it is possible to provide the authentication secrets with the following set of environment variables : TIPI_ACCESS_TOKEN, TIPI_REFRESH_TOKEN, TIPI_VAULT_PASSPHRASE.
+
+See `tipi auth variables`_ for more details. 

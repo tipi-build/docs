@@ -9,7 +9,7 @@ Create a Github secret
 
 In order for tipi to be able to pull from your private Github repositories, it needs the credentials you created for authentication_.
 
-After creating it you can copy its content and paste it in a `Github secret`__ with the name of TIPI_AUTH.
+After creating it you can provide the TIPI_ACCESS_TOKEN, TIPI_REFRESH_TOKEN and TIPI_VAULT_PASSPHRASE as github secrets. See `tipi auth variables`_ for more details.
 
 .. _github_secrets_link: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
 
