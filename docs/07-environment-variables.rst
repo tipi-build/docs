@@ -17,7 +17,7 @@ To solve this problem you can tell tipi to install it's tools and dependencies a
 
 For example on windows powershell you can specify `$env:TIPI_HOME_DIR = "D:\\\\a\\\\.tipi"`
 
-.. _tipi auth variables:
+.. _tipi authvariables:
 
 TIPI_ENDPOINT (tipi.build instance)
 ===================================
