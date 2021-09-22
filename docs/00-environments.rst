@@ -28,7 +28,9 @@ Building in the tipi.build cloud
 
   tipi build . -t linux-cxx17 
 
-This will launch the ``~/.tipi/<distro>/environments/windows.pkr.js`` environment on tipi.build and run the build on a massive parallel build farm.
+This will launch the ``~/.tipi/<distro>/environments/linux.pkr.js`` environment on tipi.build and run the build on our cloud.
+
+If a file ``linux-cxx17.pkr.js`` was present it would create a more specific environment, but in this case the linux system is the same for C++17 non C++17 builds.
 
 A file synchronization mechanism will bring the data back to your machine if you either need to transmit them or run them.
 
