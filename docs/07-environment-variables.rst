@@ -17,10 +17,11 @@ To solve this problem you can tell tipi to install it's tools and dependencies a
 
 For example on windows powershell you can specify `$env:TIPI_HOME_DIR = "D:\\\\a\\\\.tipi"`
 
-.. _tipi authvariables:
 
 TIPI_ENDPOINT (tipi.build instance)
 ===================================
+.. _tipi authvariables:
+
 tipi.build can be run on premise, this specifies the actual https API endpoint that tipi should use.
 
 
