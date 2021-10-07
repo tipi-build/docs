@@ -12,7 +12,7 @@ Eclipse CDT Integration
 =======================
 tipi augments the Eclipse CDT Integration by properly setting the source directory and adding custom targets to build on the tipi.build remote compiler cloud.
 
-To setup an eclipse project with tipi, simply run : ``tipi build . -G "Eclipse CDT4 - Unix Makefiles" ``
+To setup an eclipse project with tipi, simply run : ``tipi build . -G "Eclipse CDT4 - Unix Makefiles"``
 
 
 build_engine_mapping.json
