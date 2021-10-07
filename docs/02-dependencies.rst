@@ -51,9 +51,10 @@ Simple example that would always pull and compile the latest state of the defaul
      "cpp-pre/json" : {}
   }
 
-The key "cpp-pre/json" is a github repository path (behind the github.com URI). It can be a : 
+The key "cpp-pre/json" is a github repository path (behind the github.com URI). It can be any of the following : 
 `
-  - ``file://`` : URI to represent a local dependency.
+  - ``gh-user/gh-repo`` : Github repository path   
+  - ``file://`` : URI to represent a local dependency within the current project.
   - ``gh-user/gh-repo@file://libs/sublibrary`` : Allows to depend of one part of a remote repository.
 
 If the provided folders with ``file://`` contains a .tipi they will be interpreted from within the project context.
