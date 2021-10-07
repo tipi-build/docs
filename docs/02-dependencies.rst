@@ -12,6 +12,10 @@ This simply can be specified in a ``.tipi/deps`` which can look like this::
   {
       "gh-user/repo" : {}
 
+    , "gh-user/repo@file://subfolder" : {}
+
+    , "file://subfolder" : {}
+
     , "tipi/gh"      : { "@" : "v0.0.1" }
 
     , "platform" : [ "Boost::+boost" ]
@@ -47,9 +51,17 @@ Simple example that would always pull and compile the latest state of the defaul
      "cpp-pre/json" : {}
   }
 
+The key "cpp-pre/json" is a github repository path (behind the github.com URI). It can be any of the following : 
+`
+  - ``gh-user/gh-repo`` : Github repository path   
+  - ``file://`` : URI to represent a local dependency within the current project.
+  - ``gh-user/gh-repo@file://libs/sublibrary`` : Allows to depend of one part of a remote repository.
+
+If the provided folders with ``file://`` contains a .tipi they will be interpreted from within the project context.
+
 gh-user/gh-repo
 ---------------
-The following attributes are possible to declare how the dependencies should be consumed.
+The following attributes can be used to determine how the dependencies should be consumed.
 
 ::
 
