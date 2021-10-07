@@ -89,6 +89,7 @@ The following attributes are possible to declare how the dependencies should be 
 s : source dir disambiguation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If a repository has alot of sources directories with uncommon name they can be added to the list of includes or files to link with s. 
+This disables most of the magic detection of required C++ and include paths in the build process.
 
 You can suffix the key it with the target platform to selectively include implementation dir by platform
   
