@@ -5,6 +5,14 @@ Pass them simply via ``tipi . -DSOME_OPTION=1 -DOTHER_OPTION=OK``.
 
 .. hint:: The defines will transitively be passed to all your dependencies build as well.
 
+*******************************
+Passing CMake argument
+*******************************
+You can pass all the arguments you want to cmake during the configuration.
+For this you can use the option: --
+This option must be passed last on the command line.
+
+for eg : ``tipi . -- -DSOME_OPTION=1 -DOTHER_OPTION=OK``
 
 ***************
 Compile options
