@@ -70,7 +70,6 @@ TIPI_DISTRO_MODE
 
 By default tipi installs a subset of the build tools to build remotely on tipi.build.
 For local builds you can install them locally. 
-This will download 7GB.
 
 For example:
   - TIPI_DISTRO_MODE = "all"
