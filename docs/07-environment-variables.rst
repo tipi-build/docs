@@ -63,3 +63,15 @@ As tipi handles the environment variable `TIPI_DISTRO_JSON`, if it contains an H
 For example:
   - TIPI_DISTRO_JSON = "https://company/tipi/distro.json"
   - TIPI_DISTRO_JSON_SHA1 = "4eb777d088ea949709e9ea97bbc8c389a63856e2"
+
+
+TIPI_DISTRO_MODE
+=====================
+
+By default tipi installs a subset of the build tools to build remotely on tipi.build.
+For local builds you can install them locally. 
+
+For example:
+  - TIPI_DISTRO_MODE = "all"
+  or 
+  - TIPI_DISTRO_MODE = "default"
