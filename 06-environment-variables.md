@@ -86,3 +86,14 @@ export TIPI_DISTRO_MODE = "all" # "full" install - takes ~7gb in TIPI_HOME_DIR
  - or -
 export TIPI_DISTRO_MODE = "default" # "light" install for remote builds
 ```
+## Upgrade remote tipi `TIPI_UGPRADE_REMOTE`
+
+By default _tipi_ does not update itself in remote 
+The tipi build team at each release tries to update the _tipi_ in the remotes 
+But to force the update you can give the option `--force-upgrade` or set the environment variable `TIPI_UGPRADE_REMOTE`
+
+For example:
+
+```bash
+export TIPI_UGPRADE_REMOTE = "yes" 
+```
