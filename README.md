@@ -28,8 +28,8 @@ Tipi solves three of the most common problems C++ developper face day to day: de
 ```powershell
 # Windows 10 / 11 in Powershell
 [Net.ServicePointManager]::SecurityProtocol = "Tls, Tls11, Tls12, Ssl3"
-. { \ 
-  `iwr -useb https://raw.githubusercontent.com/tipi-build/cli/master/install/install_for_windows.ps1` \
+. { `
+  iwr -useb https://raw.githubusercontent.com/tipi-build/cli/master/install/install_for_windows.ps1 `
 } | iex
 
 # P.S.: we highly recommend you give a the new Windows Terminal app a try. It truly augments your 
