@@ -78,7 +78,7 @@ In addition to the basic _library in repository_ information following configura
   },
 
   "platform[:target-platform]" : ["<dep>::<component>", ...],
-  "platform[:target-platform]" : [{ "packages" : [], "targets" : [] }, ...]
+  "platform[:target-platform]" : [{ "packages" : [], "targets" : [], "find_mode": "" }, ...]
 
 }
 ```
@@ -122,7 +122,7 @@ Setting this to `true` will disable the convention build and have tipi rely on t
 
 > Note: this property expect a `boolean` value, so the deps specification shall not contain quotation marks 
 
-#### - `packages` and `targets`
+#### - `packages`, `targets`
 
 Useful in combination with the option `u` / use CMakeLists as it allows to set the packages and targets we expect from the dependency to be searched for via CMake find_package.
 
@@ -171,19 +171,26 @@ By adding a `:target-platform` suffix dependencies can be selectively included o
 
 If both `platform` and a matching `platform::target` the union set of both will be used.
 
-The platform librariy dependencies have to be specified as follows:
+The platform library dependencies have to be specified as follows:
 
 - `"PackageName::+component"` if the component is an option of PackageName to be linked but is always shipped with PackageName ( *e.g.* header only Boost distribution via `"Boost::+boost"` if our project uses that)
 - `"PackageName::component"` if the component is to be linked and needs to be fetched separately. ( *e.g.* `"Boost::filesystem"` is not shipped in the header only distribution of Boost, so it has to be declared explicitely) 
 - `"target::native-name"` if the component is already installed on the environment and should be used. ( *e.g.* linking against `libdl.so` on Linux can be specified by adding `"linux::dl"` )
 
-Further narrowing the specification for CMake `find_package` by setting `packages` and `targets` can be achieved by:
+##### CMake built platform dependencies
+Further narrowing the specification for CMake `find_package` by setting `packages`, `targets` and `find_mode` can be achieved by:
 
 ```json
-"platform[:target-platform]" : [{ "packages" : [], "targets" : [] }, ...]
+"platform[:target-platform]" : [{ "packages" : [], "targets" : [], "find_mode" : "" }, ...]
 ```
 
-This can be useful for platform packages that need to be imported in a specific way, for example when accomodating for the use of complex systems like PkgConfig.
+This can be useful for platform packages that need to be imported in a specific way, for example when accomodating for the use of complex systems like PkgConfig or because the package needs to be searched in CMake `CONFIG` modes.
+
+An example would be depending on the ICU unicode library : 
+
+```json
+"platform":[{"find_mode":"CONFIG", "packages" : ["ICU"], "targets" : ["ICU::uc"] }]
+```
 
 Note: For a list of available platform libraries please refer to [^2] .
 
