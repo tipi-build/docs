@@ -30,3 +30,25 @@ You will be prompted with a link to authenticate the device on tipi.build. After
 ## Authentication in Continuous Integration context
 
 On non-interactive usages of `tipi` credentials can be provided by setting the following environment variables: `TIPI_ACCESS_TOKEN`, `TIPI_REFRESH_TOKEN`, `TIPI_VAULT_PASSPHRASE`.
+
+## Authentication with a Personal Access Token on Github
+
+You can add a Personal Access Token to your vault. This allows you to have access to the directories of an organization that has not yet accepted tipi-build as an application 
+
+To do this :
+    - go on [tipi.build](https://tipi.build)
+    - Go to the page from your vault and unlock your vault
+    - Click on add credentials
+
+    You must have this page now 
+
+<div class="columns">
+  <div class="column is-10">
+    <content-img-figure src="./assets/add-credentials.png">
+      Credentials add page
+    </content-img-figure>
+  </div>
+</div>
+
+    - Fill in all the fields and click on save.
+    - Now with the `tipi` CLI use `tipi connect`
