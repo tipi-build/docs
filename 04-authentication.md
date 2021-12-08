@@ -53,5 +53,4 @@ The personal access token are secured by the vault and are only used by you on y
   </div>
 </div>
 
-    - Fill in all the fields and click on save.
-    - Now with the `tipi` cli you can refresh your authentication data with `tipi connect`
+Now with the `tipi` cli you can refresh your authentication data with `tipi connect`.
