@@ -33,14 +33,17 @@ On non-interactive usages of `tipi` credentials can be provided by setting the f
 
 ## Authentication with a Personal Access Token on Github
 
-You can add a Personal Access Token to your vault. This allows you to have access to the directories of an organization that has not yet accepted tipi-build as an application 
+tipi.build grants access to your repositories automatically during the onboarding. 
 
-To do this :
-    - go on [tipi.build](https://tipi.build)
-    - Go to the page from your vault and unlock your vault
-    - Click on add credentials
+However if you want to grant different access level to repositories from an organization, from another account or that weren't authorized yet to use tipi.build you can add a [Github Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to your vault. 
 
-    You must have this page now 
+The personal access token are secured by the vault and are only used by you on your local tipi builds or by the short-lived remote build instances. 
+
+
+  1. Create a [Github Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+  2. Open your [tipi.build secure vault](https://tipi.build/dashboard/vault)
+  3. Unlock the vault (this happens in your browser, nothing is transmitted to tipi.build)
+  4. Add your Personal Access Token credentials by adding an additional `https://github.com` or any Github Enterprise endpoint.
 
 <div class="columns">
   <div class="column is-10">
@@ -51,4 +54,4 @@ To do this :
 </div>
 
     - Fill in all the fields and click on save.
-    - Now with the `tipi` CLI use `tipi connect`
+    - Now with the `tipi` cli you can refresh your authentication data with `tipi connect`
