@@ -10,7 +10,7 @@ account to be able to access private repositories and your subscription informat
 
 In order to enable a frictionless usage _tipi_ comes with a crendetials store dubbed _tipi vault_ which is essentially a zero-knowledge encrypted storage linked to your account.
 
-## Creating of the vault
+## Creation of the vault
 
 During the onboarding on [tipi.build](https://tipi.build) you will be asked to create said _vault_ and to provide a
 passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
@@ -18,7 +18,7 @@ passphrase for it. That passphrase is used during the browser session to encrypt
 In the following onboarding steps you will be given the opportunity to grant your account access to private
 repositories on Github.com which is required if you want to consume privatly listed dependencies. 
 
-That access can be granted at any time using the [vault dashboard on tipi.build](/onboarding/step2).
+That access can be granted at any time using the [vault dashboard on tipi.build](/dashboard/vault).
 
 ## Authenticating to tipi.build with `tipi` CLI
 
@@ -41,16 +41,10 @@ The personal access token are secured by the vault and are only used by you on y
 
 
   1. Create a [Github Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-  2. Open your [tipi.build secure vault](https://tipi.build/dashboard/vault)
+  2. Open your [tipi.build secure vault](/dashboard/vault)
   3. Unlock the vault (this happens in your browser, nothing is transmitted to tipi.build)
   4. Add your Personal Access Token credentials by adding an additional `https://github.com` or any Github Enterprise endpoint.
 
-<div class="columns">
-  <div class="column is-10">
-    <content-img-figure src="./assets/add-credentials.png">
-      Credentials add page
-    </content-img-figure>
-  </div>
-</div>
+  ![](./assets/add-credentials.png)
 
 Now with the `tipi` cli you can refresh your authentication data with `tipi connect`.
