@@ -8,8 +8,8 @@ order: 8
 You can create an ignore file named `.tipiignore` in the root of your project.
 The syntax is identical to the syntax of `.gitignore` (official documentation for https://git-scm.com/docs/gitignore)
 
-> Files that are ignored by your `.gitignore` are also ignored during tipi source scan, however you can counter this by adding a symetric rule with a `!` symbol in front in your `.tipiignore`.
->
+> Files that are ignored by your `.gitignore` are **not ignored** during tipi source scan
+
 > Ignore rules can be provided as well via the `-x <ignorerule>` command line switch and `x` attribute in the [depspec](/documentation/02-dependencies)
 
 #### Examples
