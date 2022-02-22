@@ -100,7 +100,7 @@ In addition to the basic _library in repository_ information following configura
 #### - `s` : source dir disambiguation
 
 If a repository contains multiple sources directories with uncommon name they can be added to the list of includes 
-or files to link with by using the source dir disambiguation attribut `s`.
+or files to link with by using the source dir disambiguation attribute `s`.
 
 *This disables most of the smart inclusion detection and lists the paths in the build process.*
 
