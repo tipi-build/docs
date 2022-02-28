@@ -119,7 +119,7 @@ Wonderful JSON formatter with tipi is cool !
 
 - Code scanning & conventions over build configuration
 - 0 setup - just coding
-    - select one environment from our [supported list](https://github.com/tipi-build/environments) or specify your own
+    - select one environment from our [supported list](https://github.com/tipi-build/environments) or [specify your own](https://tipi.build/documentation/00-environments#customizing-environments)
     - tipi downloads & installs the compiler and libraries in an isolated distro folder automatically
 
 ### Environments on demand
