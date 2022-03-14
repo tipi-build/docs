@@ -1,6 +1,6 @@
 ---
 title: Ignore and exclude
-order: 8
+order: 9
 ---
 
 # Exclude and ignore using `.tipiignore`

@@ -1,6 +1,6 @@
 ---
 title: Compile options
-order: 4
+order: 5
 ---
 
 # Compile options
