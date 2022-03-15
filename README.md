@@ -68,8 +68,8 @@ int main(int argc, char** argv) {
     - your local machine: `tipi . -t linux-cxx17`
 
 7. run the resulting binary using:
-    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi .run /build/linux-cxx17/bin/example -t linux-cxx17`
-    - your local machine: `tipi run /build/linux-cxx17/bin/example` [^1]
+    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi .run build/remote/linux-cxx17/bin/example -t linux-cxx17`
+    - your local machine: `tipi run build/linux-cxx17/bin/example` [^1]
 
 8. Add a dependency from Github: we're going to add a json manipulation library from: [github.com/nlohmann/json](https://github.com/nlohmann/json)
     - create a file `.tipi/deps` with content
