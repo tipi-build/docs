@@ -130,7 +130,7 @@ The following example shows how to build the library `libgit2` using the provide
 
 ```json
 {
-  "nxxm/libgit2" : { 
+  "tipi-build/libgit2" : { 
     "@" : "v1.1.0-cmake-findpackage", 
     "u" : true,
     "packages": ["libgit2"], "targets": ["libgit2::git2"] 
