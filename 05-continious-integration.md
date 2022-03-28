@@ -1,6 +1,6 @@
 ---
 title: Continuous integration
-order: 7
+order: 6
 ---
 
 ## Continous integration with GitHub actions 
