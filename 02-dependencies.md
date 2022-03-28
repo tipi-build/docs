@@ -1,5 +1,5 @@
 ---
-title: Dependencies
+title: Dependencies and project configuration
 order: 3
 ---
 ## Intro and Examples
@@ -199,6 +199,27 @@ Note: For a list of available platform libraries please refer to [^2] .
 _tipi_ was built around a few opinionated choices among which was the descision to provide the ability to consume widely used C++ libraries via the "platform" library specification.
 
 This makes their usage more common and via a single inclusion without needing to search the exact repository on github.
+
+## How to create a project configuration ?
+
+You can define the configuration of a project in the file : `.tipi/deps`
+
+The syntax of the configuration is the same as for the dependencies. Also you can add dependencies after the configuration or in the require part of the configuration.
+
+configuration example:  
+
+```json
+{
+    "s" : ["<src-disambiguation>", ...], 
+    "x" : ["<excluded-directory>", ...],
+    "u" : <use-cmakelists::Boolean>,
+    "packages": ["<Package Config name>", ...],
+    "targets": ["<target name>", ...], 
+    "find_mode": "",
+    "requires" : { ... }
+}
+```
+> All project configuration attributes are optional and can be ommitted.
 
 [^1]: Unless the `-n` switch is used which then uses any previously downloaded revision
 
