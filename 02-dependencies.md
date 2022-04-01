@@ -1,5 +1,5 @@
 ---
-title: Dependencies
+title: Dependencies and project configuration
 order: 3
 ---
 ## Intro and Examples
@@ -40,7 +40,7 @@ In this specific case :
 
 ## depspec syntax
 
-The `<project>/.tipi/deps` file contais a JSON object whose **keys** are _library in repository URI_ and the corresponding **value** contains the configuration required to consume those libraries as C++ dependencies.
+The `<project>/.tipi/deps` file contais a JSON object whose **keys** are either _configuration entries for the local project_ **or** _library in repository URI_ and the corresponding **value** contains the configuration required to consume those libraries as C++ dependencies.
 
 The simple example below would have _tipi_ always pull and compile the latest revision of the default branch of https://github.com/cpp-pre/json : 
 
@@ -78,12 +78,22 @@ In addition to the basic _library in repository_ information following configura
   },
 
   "platform[:target-platform]" : ["<dep>::<component>", ...],
-  "platform[:target-platform]" : [{ "packages" : [], "targets" : [], "find_mode": "" }, ...]
+  "platform[:target-platform]" : [{ "packages" : [], "targets" : [], "find_mode": "" }, ...],
 
+  "s" : ["<src-disambiguation>", ...], 
+  "x" : ["<excluded-directory>", ...],
+  "u" : <use-cmakelists::Boolean>,
+  "s:<target>" : ["<src-disambiguation>", ...],
+  "x:<target>" : ["<exclude dir>", ...],
+  "u:<target>" : <use-cmakelists::Boolean>, 
+  "packages": ["<Package Config name>", ...],
+  "targets": ["<target name>", ...], 
+  "find_mode": "",
+  "requires" : { ... }
 }
 ```
 
-> All dependency configuration attributes are optional and can be ommitted.
+> All configuration attributes are optional and can be ommitted.
 
 ### Details
 
@@ -96,6 +106,8 @@ In addition to the basic _library in repository_ information following configura
 > You can suffix the key with the target platform to selectively use a specific dependency version on certain platforms, e.g.
 > specifying `"@:wasm-cxx17" : "v0.0.1"` will select the version v0.0.1 for the `WebAssembly` target and fall back to the latest
 > revision of the default branch for all other targets
+>
+> This attribut **cannot** be specified in the _local project context_
 
 #### - `s` : source dir disambiguation
 
@@ -130,7 +142,7 @@ The following example shows how to build the library `libgit2` using the provide
 
 ```json
 {
-  "tipi/libgit2" : { 
+  "tipi-build/libgit2" : { 
     "@" : "v1.1.0-cmake-findpackage", 
     "u" : true,
     "packages": ["libgit2"], "targets": ["libgit2::git2"] 
@@ -199,6 +211,28 @@ Note: For a list of available platform libraries please refer to [^2] .
 _tipi_ was built around a few opinionated choices among which was the descision to provide the ability to consume widely used C++ libraries via the "platform" library specification.
 
 This makes their usage more common and via a single inclusion without needing to search the exact repository on github.
+
+### Local project configuration
+
+In order to provide configuration options for the local project (the project containing the `.tipi/deps` file) you can use the same configuration attributes as
+for dependencies at the root level of the configuration object.
+
+```json
+{
+    "s" : ["<src-disambiguation>", ...], 
+    "x" : ["<excluded-directory>", ...],
+    "u" : <use-cmakelists::Boolean>,
+    "s:<target>" : ["<src-disambiguation>", ...],
+    "x:<target>" : ["<exclude dir>", ...],
+    "u:<target>" : <use-cmakelists::Boolean>, 
+    "packages": ["<Package Config name>", ...],
+    "targets": ["<target name>", ...], 
+    "find_mode": "",
+    "requires" : { ... }
+}
+```
+
+> All configuration properties except the `@` section are available, including the option to specify build target specific source desambiguation or inclusion rules.
 
 [^1]: Unless the `-n` switch is used which then uses any previously downloaded revision
 
