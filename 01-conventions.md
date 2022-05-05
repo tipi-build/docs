@@ -162,7 +162,7 @@ Any `.html` file containing ``<script type="text/c++"></script>`` in it is compi
 
 In some cases you may find that the convention based build doesn't suit your needs or fails on certain edge-cases.
 
-In such a case please reach out using our [https://github.com/tipi-build/community-support](community support forum) or your premium support option.
+In such a case please reach out using our [community support forum](https://github.com/tipi-build/community-support) or your premium support option.
 
 Alternatively you can also try to tweak the build as explained in the chapters below. We'd really love to hear about your issues with the smart build algorithm still in order to improve _tipi_ and find a way for the convention build to work, because we firmly believe that _less CMakeLists is more time for your C++_.
 

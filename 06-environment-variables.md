@@ -55,11 +55,11 @@ The original json file can be found at https://github.com/tipi-build/distro/blob
 Below some examples of what you can set as `TIPI_DISTRO_JSON`:
 
 ```bash
-export TIPI_DISTRO_JSON= "~/projects/tipi/distro.json"
+export TIPI_DISTRO_JSON="~/projects/tipi/distro.json"
 - or -
-export TIPI_DISTRO_JSON= "/home/user/projects/tipi/distro.json"
+export TIPI_DISTRO_JSON="/home/user/projects/tipi/distro.json"
 - or -
-export TIPI_DISTRO_JSON= "https://company.com/tipi/distro.json"
+export TIPI_DISTRO_JSON="https://company.com/tipi/distro.json"
 ```
 
 If `TIPI_DISTRO_JSON` is a HTTP(s) url, tipi will download the file and check file integrity agains the value in the environment variable `TIPI_DISTRO_JSON_SHA1`
@@ -70,8 +70,8 @@ When a customized `TIPI_DISTRO_JSON` is downloaded via HTTP(s) _tipi_ performs a
 
 For example:
 ```bash
-export TIPI_DISTRO_JSON = "https://company/tipi/distro.json"
-export TIPI_DISTRO_JSON_SHA1 = "4eb777d088ea949709e9ea97bbc8c389a63856e2"
+export TIPI_DISTRO_JSON="https://company/tipi/distro.json"
+export TIPI_DISTRO_JSON_SHA1="4eb777d088ea949709e9ea97bbc8c389a63856e2"
 ```
 
 ## Distro installation mode `TIPI_DISTRO_MODE`
@@ -82,7 +82,7 @@ For local builds you can install force the installation of the required tools lo
 For example:
 
 ```bash
-export TIPI_DISTRO_MODE = "all" # "full" install - takes ~7gb in TIPI_HOME_DIR 
+export TIPI_DISTRO_MODE="all" # "full" install - takes ~7gb in TIPI_HOME_DIR 
  - or -
-export TIPI_DISTRO_MODE = "default" # "light" install for remote builds
+export TIPI_DISTRO_MODE="default" # "light" install for remote builds
 ```
