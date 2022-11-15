@@ -11,4 +11,4 @@ Starting from `v0.0.35` tipi provides an automatic versioning-abiding build cach
 
 ## Usage
 
-The build cache is **enabled by _default_ on remote builds**. This means that _any_ build executed on tipi.build cloud machines will benefit from automatic caching: see [how to build for different targets in the **tipi build cloud](/explore/remote-build).
+The build cache is **enabled by _default_ on remote builds**. This means that _any_ build executed on tipi.build cloud machines will benefit from automatic caching: see [how to build for different targets in the *tipi build cloud*](/explore/remote-build).
