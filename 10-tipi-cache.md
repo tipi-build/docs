@@ -21,7 +21,7 @@ At tipi we decided to provide a solution based on __always building everything f
 
 This naturally alone would results in correct but very slow compilation. That's why tipi.build provides a Global Build Cache connected to revision control.
 
-Each git revision is cached incrementally in a very space efficient _comprehensive pack_ file allowing the advantages of pre-built binaries and build from sources. 
+Each git revision is cached incrementally in a very space efficient _comprehensive pack_ file combining the advantages of pre-built binaries and build from sources. 
 
 ## Source mirroring
 
@@ -29,15 +29,17 @@ Each git revision is cached incrementally in a very space efficient _comprehensi
 
 tipi achieves cacheable, correct and repeatable builds for any codebase with caching by relying on the tipi source mirroring mechanisms. This avoids the requirement of required relocatable build or install tree for source code with manually written build scripts and avoids the necessity to patch cached files on extraction.
 
-Whenever you launch a build with tipi, tipi will produce a mirror of your sources either locally or remotely. This mirroring happens with git by also taking in account your uncommited or ignored data for the build hash.
+Whenever you launch a build tipi will produce a mirror of your sources either locally or remotely. This mirroring happens with git by also taking in account your uncommited or ignored data for the build hash.
 
 If you want to fully ignore data for the build you can add them to the `.tipiignore` file.
 
 
-## Comprehensive packs : how the cache stored
+## Comprehensive packs
 ![Multiple revisions are packed together](./assets/cache/04-comprehensive-packs.png)
 
-The cache mechanism for all builds made first queries the `cache.tipi.build` storage, if the code compiled has already been built by the secure tipi.build cloud runners for the same compiler and set of flags ( i.e. So-called _abi-hash_ ) the cache is pulled from the global build cache. The `cache.tipi.build` contains a curated list of open-source projects cached for the default toolchains delivered by tipi.
+The cache mechanism first queries the global `cache.tipi.build` storage. If the code compiled has already been built by a secure tipi.build cloud runner for the same compiler and set of flags ( i.e. So-called _abi-hash_ ) the cache is pulled from the global build cache. 
+
+The global `cache.tipi.build` contains a curated list of open-source projects cached for the default toolchains delivered by tipi.
 
 If the project has never been built by tipi.build or is private, a build is started and the build is made in isolation and stored in the user private build cache. The cache is always stored privately linked to the user source code hosting account under the repository `username/cache.tipi.build` (tipi creates this repository as private repository automatically when the cache is active).
 
