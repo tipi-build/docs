@@ -6,25 +6,8 @@ order: 7
 # Environment variables
 
 
-## Dependencies & tools cache: `TIPI_HOME_DIR`
 
-When launching `tipi` for the first time, a `TIPI_HOME_DIR` will be created at:
 
-  - On Windows: `C:\.tipi\`
-  - On other platforms: `${HOME}/.tipi/`
-
-_tipi_ will install dependencies, environment descriptions and tools for your environments in that location.
-
-I case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk) 
-you can set the environment variable `TIPI_HOME_DIR`:
-
-For example on Windows, in Powershell you can specify:
-
-```ps1
-$env:TIPI_HOME_DIR = "D:\a\.tipi"
-```
-
-Note: tipi will re-download the requisite tools etc... on the next "first" launch.
 
 ## Using a private tipi.build instance: `TIPI_ENDPOINT`
 

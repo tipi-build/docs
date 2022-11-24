@@ -149,3 +149,18 @@ tipi allows you to do a fine-granular selection of your dependencies and pulls o
 While tipi clearly is set out to enable you to _build anything_ without complex scripts, we don't hold you back to customize parts (or all of) the build with `CMakeLists.txt.tpl` or `CMakeLists.txt` files associated with `use-cmake.tipi` files.
 
 [^1]: by using `tipi run` to launch the binary you make sure your OS as has all the required libraries in its search path, for ex. the `libstdc++6` on windows.
+
+
+### tipi installation location ( former TIPI_HOME_DIR )
+
+When launching `tipi` for the first time tipi will be installed at : 
+
+  - On Windows: `C:\.tipi\`
+  - On other platforms: `/usr/local/share/.tipi/`
+
+_tipi_ will install dependencies, environment descriptions and tools for your environments in that location.
+
+I case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk) 
+you should use the mechanisms of filesystem junctions and bind mounts.
+
+We guarantee the paths even in non-containerized builds to enable caching of artifacts. 
