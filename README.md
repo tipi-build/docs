@@ -64,11 +64,11 @@ int main(int argc, char** argv) {
 > When using your tipi subscription to build or run, a cloud node of the corresponding platform is deployed in the tipi cloud.
 
 6. build the example using either:
-    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi build . -t linux-cxx17`
-    - your local machine: `tipi . -t linux-cxx17`
+    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi -t linux-cxx17 build .`
+    - your local machine: `tipi -t linux-cxx17 .`
 
 7. run the resulting binary using:
-    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi .run build/linux-cxx17/bin/example -t linux-cxx17`
+    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi -t linux-cxx17 .run build/linux-cxx17/bin/example`
     - your local machine: `tipi run build/linux-cxx17/bin/example` [^1]
 
 8. Add a dependency from Github: we're going to add a json manipulation library from: [github.com/nlohmann/json](https://github.com/nlohmann/json)
