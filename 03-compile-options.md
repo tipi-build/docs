@@ -30,7 +30,7 @@ You may specify project and target specific opts by creating `opts[.target-platf
 The opts files have to contain valid CMake syntax. For example to pass #defines or compile options this way simply add:
 
 ```cmake
-add_compile_options( -fmath-errno -Wextra )
+add_compile_options( -Wextra )
 add_compile_definitions( DEFINE_TO_PASS_WITHOUT_D_BEFORE=1 )
 ```
 

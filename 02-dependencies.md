@@ -144,7 +144,7 @@ Enables setting compile time definitions and options in the project/dependecy co
 ```json
 {
   (...snip...),
-  "opts": "add_compile_options( -fmath-errno -Wextra )\r\nadd_compile_definitions( DEFINE_TO_PASS_WITHOUT_D_BEFORE=1 )"
+  "opts": "add_compile_options( -Wextra )\r\nadd_compile_definitions( DEFINE_TO_PASS_WITHOUT_D_BEFORE=1 )"
 }
 ```
 
