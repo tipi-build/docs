@@ -33,7 +33,7 @@ Variations specifiying C++ standard versions are also available (adding the suff
 tipi build . -t linux-cxx17 
 ```
 
-Will provision an environment as described in `~/.tipi/<distro>/environments/linux.pkr.js` (or `%TIPI_HOME%\<distro>\environments\linux.pkr.js`) on the tipi.build and run the build using your tipi subscription.
+Will provision an environment as described in `/usr/local/share/.tipi/<distro>/environments/linux.pkr.js` (or `C:\.tipi\<distro>\environments\linux.pkr.js`) on the tipi.build and run the build using your tipi subscription.
 
 All required files will be synchronized bidirectionally to and from the tipi build node as necessary.
 
@@ -72,7 +72,7 @@ Tipi environments can be customized to your need by creating the required set of
 
 Examples can be found at [tipi-build/environments](https://github.com/tipi-build/environments) .
 
-Once they are stored in `~/.tipi/<distro>/environments/<environment>.pkr.js` and `~/.tipi/<distro>/environments/<environment>.cmake` a `tipi build . -t <environment>` will start the image creation the tipi cloud and then build the current sources.
+Once they are stored in `/usr/local/share/.tipi/<distro>/environments/<environment>.pkr.js` and `/usr/local/share/.tipi/<distro>/environments/<environment>.cmake` a `tipi build . -t <environment>` will start the image creation the tipi cloud and then build the current sources.
 
 Image creation and storage are billed on your subscription. Non-currated images[^1] are stored for 14 days after the last usage before being evicted from cache. Tipi provides consulting services for the creation of custom images is required, please contact us for more information.
 
