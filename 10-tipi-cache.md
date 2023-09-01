@@ -45,10 +45,19 @@ Assuming we have a structure like this:
 │  └── stringstream_mayham.cpp
 ```
 
-We can now build the sources remotely like this:
+We can now build for `linux-cxx17` the sources remotely like this:
 ```sh
 tipi -t linux-cxx17 build .
 ```
+
+### Download a single file
+
+Finally we can download the complete binary like this:
+```sh
+tipi -t linux-cxx17 download "./build/linux-cxx17/bin/src/string_to_json"
+```
+
+### Download multiple files with a wildcard
 
 Finally we can download the complete binaries like this:
 ```sh
