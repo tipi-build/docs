@@ -35,7 +35,7 @@ If you want to fully ignore data for the build you can add them to the `.tipiign
 
 ## Downloading remote build results
 
-With tipi `v0.0.51` you can download build results directly onto your machine without downloading the full (potentially very big) build directory.
+With tipi `v0.0.51` you can download build results directly onto your machine without downloading the full build directory.
 
 Assuming we have a structure like this:
 ```sh
