@@ -68,11 +68,13 @@ In addition to the basic _library in repository_ information following configura
     "u" : <use-cmakelists::Boolean>,
     "packages": ["<Package Config name>", ...],
     "targets": ["<target name>", ...], 
+    "opts": "...",
     
     "@:<target>" : "<branch/tag/name>", 
     "s:<target>" : ["<src-disambiguation>", ...],
     "x:<target>" : ["<exclude dir>", ...],
     "u:<target>" : <use-cmakelists::Boolean>, 
+    "opts:<target>": "...",
     
     "requires" : { ... }
   },
@@ -89,6 +91,7 @@ In addition to the basic _library in repository_ information following configura
   "packages": ["<Package Config name>", ...],
   "targets": ["<target name>", ...], 
   "find_mode": "",
+  "opts:<target>": "...",
   "requires" : { ... }
 }
 ```
@@ -133,6 +136,19 @@ Directories can be explicitely excluded from source scanning by listing them in 
 Setting this to `true` will disable the convention build and have tipi rely on the `CMakeLists.txt` file found in the project.
 
 > Note: this property expect a `boolean` value, so the deps specification shall not contain quotation marks 
+
+#### - `opts` : defines and compile-time options
+
+Enables setting compile time definitions and options in the project/dependecy context. Theses `opts` have to contain valid CMake Syntax. For example to pass _#defines_ or compile options this way simply add:
+
+```json
+{
+  (...snip...),
+  "opts": "add_compile_options( -Wextra )\r\nadd_compile_definitions( DEFINE_TO_PASS_WITHOUT_D_BEFORE=1 )"
+}
+```
+
+This dependency configuration key can be passed plain or `opts:<target>` to specify target specific opts.
 
 #### - `packages`, `targets`
 
@@ -222,9 +238,11 @@ for dependencies at the root level of the configuration object.
     "s" : ["<src-disambiguation>", ...], 
     "x" : ["<excluded-directory>", ...],
     "u" : <use-cmakelists::Boolean>,
+    "opts": "...",
     "s:<target>" : ["<src-disambiguation>", ...],
     "x:<target>" : ["<exclude dir>", ...],
     "u:<target>" : <use-cmakelists::Boolean>, 
+    "opts:<target>": "...",
     "packages": ["<Package Config name>", ...],
     "targets": ["<target name>", ...], 
     "find_mode": "",
