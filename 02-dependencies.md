@@ -1,6 +1,6 @@
 ---
 title: Dependencies and project configuration
-order: 3
+order: 6
 ---
 ## Intro and Examples
 
@@ -102,7 +102,7 @@ In addition to the basic _library in repository_ information following configura
 
 - if *ommited* the default branch of the dependency is fetched on every build (unless `-n` used [^1])
 - if a **tag** is specified is fetched once, then will be pulled from local cache on subsequent build
-- if a **branch name** is specified, the latestest revision of the _branch_ is fetched on every build (unless `-n` used [^1])
+- if a **branch name** is specified, the latest revision of the _branch_ is fetched on every build (unless `-n` used [^1])
 
 > You can suffix the key with the target platform to selectively use a specific dependency version on certain platforms, e.g.
 > specifying `"@:wasm-cxx17" : "v0.0.1"` will select the version v0.0.1 for the `WebAssembly` target and fall back to the latest

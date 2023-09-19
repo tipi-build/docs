@@ -1,6 +1,6 @@
 ---
 title: IDE Integration
-order: 9
+order: 10 
 ---
 
 # Integration in IDEs and Native build systems

@@ -1,6 +1,6 @@
 ---
 title: Build cache
-order: 6
+order: 7 
 ---
 
 # Tipi build cache

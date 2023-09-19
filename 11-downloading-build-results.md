@@ -1,6 +1,6 @@
 ---
-title: Running tests
-order: 4
+title: Downloading remote build results
+order: 9
 ---
 
 # Downloading remote build results

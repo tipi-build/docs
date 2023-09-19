@@ -1,6 +1,6 @@
 ---
 title: Running tests
-order: 4
+order:  8
 ---
 
 # Running tests

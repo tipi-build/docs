@@ -74,6 +74,4 @@ Examples can be found at [tipi-build/environments](https://github.com/tipi-build
 
 Once they are stored in `/usr/local/share/.tipi/<distro>/environments/<environment>.pkr.js` and `/usr/local/share/.tipi/<distro>/environments/<environment>.cmake` a `tipi build . -t <environment>` will start the image creation the tipi cloud and then build the current sources.
 
-Image creation and storage are billed on your subscription. Non-currated images[^1] are stored for 14 days after the last usage before being evicted from cache. Tipi provides consulting services for the creation of custom images is required, please contact us for more information.
-
 [^1]: to have an environment definition currated, please submit a pull request to [tipi-build/environments](https://github.com/tipi-build/environments) on Github. Tipi will then take care of having the images maintained and deployment ready at all time.
