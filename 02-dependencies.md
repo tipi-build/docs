@@ -11,10 +11,10 @@ Dependencies are specified in a project specific `.tipi/deps` file which can loo
 ```json
 {
   "gh-user/repo": {},
-  "tipi/gh": { "@" : "v0.0.1" },
+  "gh-user/repo-specific-commit": { "@" : ":b6928ae5c92e21a04bbe17a558e6e066dbe632f6" },
+  "boostorg/boost": { "@" : "boost-1.82.0", "u" : true },
   "gh-user/another-repo@file://repo-sub/folder": {},
-  "file://local-subfolder": {},  
-  "platform": [ "Boost::+boost" ]
+  "file://local-subfolder": {}  
 }
 ```
 
@@ -23,12 +23,11 @@ This dependency specification ( *aka* depspec ) file tells _tipi_ on which libra
 Every *key* of the JSON object represent a _library in repository URI_. 
 
 - `"gh-user/repo"`: repository at `https://github.com/gh-user/repo`
-- `"tipi/gh"`: repository at `https://github.com/tipi/gh`
+- `"boostorg/boost"`: repository at `https://github.com/boostorg/boost` with the specific tag "boost-1.82.0" and requested to be built by cmake.
 - `"gh-user/another-repo@file://repo-sub/folder"`: library residing in `./repo-sub/folder/` of the _GitHub.com_ repository at `https://github.com/gh-user/another-repo`
 - `"file://local-subfolder"`: library residing in the same file tree at `./local-subfolder`
-- `"platform"`: however specifies a dependency on a commonly consumed package that is shipped as a part of the _tipi_ currated "platform" package (that have been tested and integrated on all the supported toolchains).
 
-Dependencies from remote repositories will be fetched by `tipi` at build time and compiled by convention and finally installed into `./build/<platform>/sysroot`.
+Dependencies from remote repositories will be fetched by `tipi` at build time and finally installed into `./build/<platform>/installed`.
 
 In this specific case :
 
@@ -36,11 +35,10 @@ In this specific case :
 - for `tipi/gh` release/tag `v0.0.1` will be fetched once and always used from cache
 - for `gh-user/another-repo@file://repo-sub/folder` the specified sub-folder of latests revision of the default branch will be fetched and built
 - for `file://local-subfolder` the locally residing library in `./local-subfolder` will be built and installed
-- Boost headers distribution will be downloaded once and installed to the build using to _CMake Hunter_.
 
 ## depspec syntax
 
-The `<project>/.tipi/deps` file contais a JSON object whose **keys** are either _configuration entries for the local project_ **or** _library in repository URI_ and the corresponding **value** contains the configuration required to consume those libraries as C++ dependencies.
+The `<project>/.tipi/deps` file contains a JSON object whose **keys** are either _configuration entries for the local project_ **or** _library in repository URI_ and the corresponding **value** contains the configuration required to consume those libraries as C++ dependencies.
 
 The simple example below would have _tipi_ always pull and compile the latest revision of the default branch of https://github.com/cpp-pre/json : 
 
