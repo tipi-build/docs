@@ -1,6 +1,6 @@
 ---
 title: IDE Integration
-order: 10 
+aliases: [ "08-IDE-integrations" ]
 ---
 
 # Integration in IDEs and Native build systems

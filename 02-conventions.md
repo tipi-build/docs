@@ -1,23 +1,23 @@
 ---
 title: Build by convention
-order: 2
+aliases: [ "01-conventions" ]
 ---
 
 ## Why ?
 
-Why did we ever write makefiles, CMakeLists.txt or configure IDE project settings? And why are we still doing it ?
+Why did we ever write Makefile, CMakeLists.txt or configure IDE project settings? And why are we still doing it ?
 
 Andrew Koenig once coined FTSE, the [Fundamental theorem of software engineering](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering): 
 
 > **"We can solve any problem by introducing an extra level of indirection."**
 
-Building applications is an extremely complex problem, and the layers are almost infinite: linker, assembler, compiler, frontend, build-system ( *I.e.* `make` ), meta-build-system ( *I.e.* `cmake` ) to quote only a few.
+Building applications is an extremely complex problem, and the layers are almost infinite: linker, assembler, compiler, front-end, build-system ( *I.e.* `make` ), meta-build-system ( *I.e.* `cmake` ) to quote only a few.
 
 _Tipi_ leverages all the fabulous work done in these layer to finally make building C++ a humane task.
 
 ## Because
 
-- C++ code expresses explicitely enough what is an application entrypoint and what is reusable library code.
+- C++ code expresses explicitly enough what is an application entry-point and what is reusable library code.
 - There's no need to learn a new language to specify how to build.
 - _We are tired of specifying each single file that should be built._
 
@@ -51,11 +51,11 @@ The main function may look like:
   </div>
 </div>
 
-During the can of `src/` _tipi_ classifies the `*.hpp` and `*.cpp` which do not have any entrypoint to the library code ( *i.e.* the game domain).
+During the can of `src/` _tipi_ classifies the `*.hpp` and `*.cpp` which do not have any entry-point to the library code ( *i.e.* the game domain).
 
 In `tools/` `map_editor.cpp` and `texture_editor.cpp` are found to both have `main()` functions, which has the **apps** convention kick-in.
 
-The **apps** convention allows to have supporting file residing locally, therefore `common.cpp is` linked to `map_editor` and `texture_editor`. The header `common.hpp` is accessible via `#include "common.hpp"` or `#include <common.hpp>` while the classes in `src/game_classes/*` are exported on the compiler include dirs which makes them usable via `#include <game_classes/*.hpp>`.
+The **apps** convention allows to have supporting file residing locally, therefore `common.cpp is` linked to `map_editor` and `texture_editor`. The header `common.hpp` is accessible via `#include "common.hpp"` or `#include <common.hpp>` while the classes in `src/game_classes/*` are exported on the compiler include directories which makes them usable via `#include <game_classes/*.hpp>`.
 
 tipi will give the following summary: 
 
@@ -90,7 +90,7 @@ Main conventions:
 > It is possible to specify or reduce the scope of a library within a project in case the detection fails or hinting is required:
 >
 > - by adding parameters: `tipi -s library-dir`
-> - by adding dependency descriptors in the `.tipi/deps` file: `"dependency/repo": { "s" : [ "library-dir" ] }`
+> - by adding dependency descriptors in the `.tipi/deps` file: `"dependency/repo": { "s" : [ "library-dir"" ] }`
 >
 > ...with `-s` (or the `s` key) specifying the additional search path for _source_ files. Multiple entries can be specified 
 > both a multiple `-s` parameters or multiple entries in the `s` key.
@@ -105,11 +105,11 @@ Main conventions:
       └── impl.cpp
 ```
 
-One typical kind of C++ project is when headers and implementation files are split in different folders. _tipi_ will consider the `include/` folder to be the publicly installable headers and `src/` folder to contain the implementation files constituing the library.
+One typical kind of C++ project is when headers and implementation files are split in different folders. _tipi_ will consider the `include/` folder to be the publicly installable headers and `src/` folder to contain the implementation files constituting the library.
 
 > _tipi_ checks the presence of `include/`, `inc/`, `src/` and `sources/` to infer this convention.
 
-#### Samedir libs
+#### Same directory libraries
 
 ```
   .
@@ -122,31 +122,31 @@ Another typical convention C++ programmers use is having implementation and head
 
 > _tipi_ checks the presence of `src/` and `sources/` to infer this convention and the absence of main() functions in the files.
 
-#### toplevel libs
+#### Top-level libraries
 
 These are libraries that don't have any special source folder, their headers are directly rooted at the top of their repositories.
 
-When this is detected the same mechanism as for **samedir libs** applies. 
+When this is detected the same mechanism as for **Same directory libraries** applies. 
 
 > In this kind of structure disambiguation it might be required to to tell which directories are part of the lib using the `tipi -s` switch or the matching `.tipi/deps` configuration.
 
-#### headeronly libs
+#### Header-only libraries
 
 <!-- ::::TODO rewrite this part:::: -->
 
-It is possible to have code which is completely header only while application entrypoints are in .cpp files aside materializing either lib **examples** or a corresponding **app**.
+It is possible to have code which is completely header only while application entry-points are in .cpp files aside materializing either lib **examples** or a corresponding **app**.
 
 The headers will be put at disposal like in the aforementioned conventions with ``#include <>``.
 
 #### apps
 
-Any .cpp file with an entrypoint is considered to be an app.
+Any .cpp file with an entry-point is considered to be an app.
 
 For example any file containing a `main()` function or a macro instantiating a `main()` function (as commonly used in unit testing frameworks) will be compiled as an application.
 
 > apps are always linked to the project library.
 >
-> if others .cpp files reside at same or deeper filesystem directories they get linked with the applications in question. Exception to this rule are those directories explicitely declared in the `s`/ `-s` configuration.
+> if others .cpp files reside at same or deeper file-system directories they get linked with the applications in question. Exception to this rule are those directories explicitly declared in the `s`/ `-s` configuration.
 
 #### tests or examples
 
@@ -154,7 +154,7 @@ Equivalent to the **apps** convention, however they will registered within the C
 
 This convention kicks-in when files with `main()` functions in parent folder are named after one of `test`, `tests`, `example`, `examples`
 
-#### html
+#### HTML
 
 Any `.html` file containing ``<script type="text/c++"></script>`` in it is compiled using the **app** convention.
 

@@ -1,6 +1,6 @@
 ---
 title: Ignore and exclude
-order: 6
+aliases: [ "07-exclude-and-ignore" ]
 ---
 
 ## Exclude and ignore using `.tipiignore`
@@ -15,7 +15,7 @@ The syntax is identical to the syntax of `.gitignore` (official documentation fo
 ### Target specific ignore rules using `.tipiignore.<target>`
 
 If you find the need to specify target specific rules for your build (for example t exclude a target OS specific test or example from your otherwise
-fully cross platform compatible library) you can create **target sepcific** `.tipiignore.<target>` files in your project.
+fully cross platform compatible library) you can create **target specific** `.tipiignore.<target>` files in your project.
 
 > Please note that the `<target>` part requires an exact match (ex. for a `tipi . -t linux-cxx17` build you'd create a `.tipiignore.linux-cxx17` file).
 > 

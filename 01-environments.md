@@ -1,29 +1,29 @@
 ---
 title: Environments
-order: 1
+aliases: [ "00-environments" ]
 ---
 
 ## Environments
 
-A _tipi.build_ environment consits of 2 elements:
+A _tipi.build_ environment consist of 2 elements:
 
-- CMake toolchain file
+- CMake tool-chain file
 - OS image
 
 The OS images are described via the help of Packer files and can be automatically deployed on the tipi.build cloud as many-core build agent or as execution environment for unit test.
 
-Officially supported environments can be found as `<environment>.pkr.js` + `<environment>.cmake` file pairs in the [tipi-build/environments](https://github.com/tipi-build/environments) github repository.
+Officially supported environments can be found as `<environment>.pkr.js` + `<environment>.cmake` file pairs in the [tipi-build/environments](https://github.com/tipi-build/environments) GitHub repository.
 
 While emphasizes on providing a default environment for each major platform, community maintained or private environments are welcome.
 
-As a good starting point tipi always provides at clean and up-to-date clang with libc++ STL for following environments:
+As a good starting point tipi always provides at clean and up-to-date clang with `libc++` STL for following environments:
 
 - Webassembly: `tipi build . -t wasm`
 - Linux:  `tipi build . -t linux`
 - Windows: `tipi build . -t windows`
-- macOS: `tipi build . -t macos`
+- MacOS: `tipi build . -t macos`
 
-Variations specifiying C++ standard versions are also available (adding the suffix `-cxx17` or `-cxx20`).
+Variations specifying C++ standard versions are also available (adding the suffix `-cxx17` or `-cxx20`).
 
 > hint: The `.` (dot) in the commands above can be any path containing C++ source files or a C++ CMake project.
 
@@ -43,7 +43,7 @@ All required files will be synchronized bidirectionally to and from the tipi bui
 tipi . -t linux-cxx17
 ```
 
-When your machine fits your target environment you can also use the tipi provided toolchain to build locally.
+When your machine fits your target environment you can also use the tipi provided tool-chain to build locally.
 
 ## Running apps on remote environments
 
@@ -55,7 +55,7 @@ tipi -t macos-cxx17 .run build/bin/app
 
 > Notes:
 >
-> - all paramters after `.run` are forwarded to the remote environment
+> - all parameters after `.run` are forwarded to the remote environment
 > - the standard IO is redirected to the calling console
 
 ## Running within the tipi environment for your local machine
@@ -64,14 +64,14 @@ tipi -t macos-cxx17 .run build/bin/app
 tipi run build/bin/app
 ```
 
-Will run a command within the tipi environment on your local machine. Note the abscence of `.` in front of `run` vs.
+Will run a command within the tipi environment on your local machine. Note the absence of `.` in front of `run` vs.
 
 ## Customizing environments
 
-Tipi environments can be customized to your need by creating the required set of CMake toolchain and Packer file.
+Tipi environments can be customized to your need by creating the required set of CMake tool-chain and Packer file.
 
 Examples can be found at [tipi-build/environments](https://github.com/tipi-build/environments) .
 
 Once they are stored in `/usr/local/share/.tipi/<distro>/environments/<environment>.pkr.js` and `/usr/local/share/.tipi/<distro>/environments/<environment>.cmake` a `tipi build . -t <environment>` will start the image creation the tipi cloud and then build the current sources.
 
-[^1]: to have an environment definition currated, please submit a pull request to [tipi-build/environments](https://github.com/tipi-build/environments) on Github. Tipi will then take care of having the images maintained and deployment ready at all time.
+[^1]: to have an environment definition curated, please submit a pull request to [tipi-build/environments](https://github.com/tipi-build/environments) on GitHub. Tipi will then take care of having the images maintained and deployment ready at all time.

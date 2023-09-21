@@ -1,6 +1,6 @@
 ---
 title: Running tests
-order:  8
+aliases: [ "12-running-tests" ]
 ---
 
 # Running tests
@@ -49,7 +49,7 @@ tipi . --test all --exclude-test "mytest1|mytest2"
 Use the `--test-args <value>` command line parameter of tipi if you need to pass command line arguments to the test executable:
 
 
-_Example:_ disable the test "intro" output and use minimal logging in a [doctest](https://github.com/doctest/doctest/blob/master/doc/markdown/commandline.md) based test:
+_Example:_ disable the test "intro" output and use minimal logging in a [doc-test](https://github.com/doctest/doctest/blob/master/doc/markdown/commandline.md) based test:
 
 ```bash
 tipi . -t linux-cxx17 --test test/mytest --test-args "--no-intro=true --minimal" 
@@ -88,13 +88,13 @@ _Then the test:_
 tipi .
 ```
 
-_Note:_ any newline or CR+LF character in the file content will be replaced by a _single white space_ from the file content, so you may specify the passed parameters on distinct lines
+_Note:_ any newline `\n` or `CR+LF` characters in the file content will be replaced by a _single white space_ from the file content, so you may specify the passed parameters on distinct lines.
 
 ## Test execution concurrency
 
 By default tipi will execute the test executables using the same concurrency level as set by the `-j` / compile jobs parameter (which defaults to the number of hardware threads of the system CPU).
 
-If you want to change this setting independenty you can specify `--test-jobs <N>` with `<N>` the number of concurrently executed binaries.
+If you want to change this setting independently you can specify `--test-jobs <N>` with `<N>` the number of concurrently executed binaries.
 
 _Example 1:_ linear (one at a time) test execution (while compiling with default concurrency):
 
@@ -102,7 +102,7 @@ _Example 1:_ linear (one at a time) test execution (while compiling with default
 tipi . --test all --test-jobs 1
 ```
 
-_Example 2:_ linear (one at a time) test execution and compiling at `-j4`
+_Example 2:_ linear (one at a time) test execution and compiling at `-j4`:
 
 ```bash
 tipi . --test all --test-jobs 1 -j4

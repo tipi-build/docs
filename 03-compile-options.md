@@ -1,6 +1,6 @@
 ---
 title: Compile options
-order: 3
+aliases: []
 ---
 
 # Compile options
@@ -19,9 +19,9 @@ _Note:_ these definitions only affect the _local project_ and are not passed dow
 
 _Tipi_ relies on the CMake project, which allows you to tweak the compilation flags even though _tipi_ typically sets sane defaults for you.
 
-You may add your own toolchain files in `<tipi-home>/environments/<distro>` which is the preferred option.
+You may add your own tool-chain files in `<tipi-home>/environments/<distro>` which is the preferred option.
 
-If you specify compile options, they will be applied to all projects in the build tree in the context of the toolchain specific sysroot.
+If you specify compile options, they will be applied to all projects in the build tree in the context of the tool-chain and target specific build directory aka `sysroot`.
 
 ## `opts` files
 
@@ -41,9 +41,9 @@ _Note:_ these definitions only affect the _local project_ and are not passed dow
 
 ## `opts.toolchain` file
 
-If you need to inject some compiler setting in the CMake toolchain for your project and target and all its dependencies you may add a `opts.toolchain[.target-platform]` file(s) to your project.
+If you need to inject some compiler setting in the CMake tool-chain for your project and target and all its dependencies you may add a `opts.toolchain[.target-platform]` file(s) to your project.
 
-As for the `.tipi/opts` files, this has to contain valid CMake systax.
+As for the `.tipi/opts` files, this has to contain valid CMake syntax.
 
 _Note:_ setting `opts.toolchain` affects cache hits as it changes the ABI-hash of the whole project.
 

@@ -1,6 +1,6 @@
 ---
 title: Downloading remote build results
-order: 9
+aliases: [ "11-downloading-build-results" ]
 ---
 
 # Downloading remote build results

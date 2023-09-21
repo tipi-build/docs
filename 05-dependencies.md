@@ -1,6 +1,6 @@
 ---
 title: Dependencies and project configuration
-order: 6
+aliases: [ "02-dependencies" ]
 ---
 ## Intro and Examples
 
@@ -23,7 +23,7 @@ This dependency specification ( *aka* depspec ) file tells _tipi_ on which libra
 Every *key* of the JSON object represent a _library in repository URI_. 
 
 - `"gh-user/repo"`: repository at `https://github.com/gh-user/repo`
-- `"boostorg/boost"`: repository at `https://github.com/boostorg/boost` with the specific tag "boost-1.82.0" and requested to be built by cmake.
+- `"boostorg/boost"`: repository at `https://github.com/boostorg/boost` with the specific tag "boost-1.82.0" and requested to be built by CMake.
 - `"gh-user/another-repo@file://repo-sub/folder"`: library residing in `./repo-sub/folder/` of the _GitHub.com_ repository at `https://github.com/gh-user/another-repo`
 - `"file://local-subfolder"`: library residing in the same file tree at `./local-subfolder`
 
@@ -33,7 +33,7 @@ In this specific case :
 
 - for `gh-user/repo` the latest revision of the default branch (usually `master`) will be fetched on every build[^1]. 
 - for `tipi/gh` release/tag `v0.0.1` will be fetched once and always used from cache
-- for `gh-user/another-repo@file://repo-sub/folder` the specified sub-folder of latests revision of the default branch will be fetched and built
+- for `gh-user/another-repo@file://repo-sub/folder` the specified sub-folder of latest revision of the default branch will be fetched and built
 - for `file://local-subfolder` the locally residing library in `./local-subfolder` will be built and installed
 
 ## depspec syntax
@@ -48,9 +48,9 @@ The simple example below would have _tipi_ always pull and compile the latest re
 }
 ```
 
-The key `"cpp-pre/json"` is a github repository path (URI fragment "after" the `github.com/` URI). It can be any of the following : 
+The key `"cpp-pre/json"` is a GitHub repository path (URI fragment "after" the `github.com/` URI). It can be any of the following : 
 
-- `gh-user/gh-repo` : Github.com repository path
+- `gh-user/gh-repo` : GitHub.com repository path
 - `file://local/path` URI to represent a local dependency within the current project
 - `gh-user/gh-repo@file://libs/sublibrary` dependency to a _part_ of a remote repository
 
@@ -94,13 +94,13 @@ In addition to the basic _library in repository_ information following configura
 }
 ```
 
-> All configuration attributes are optional and can be ommitted.
+> All configuration attributes are optional and can be omitted.
 
 ### Details
 
 #### - `@` : tag or branch name
 
-- if *ommited* the default branch of the dependency is fetched on every build (unless `-n` used [^1])
+- if *omitted* the default branch of the dependency is fetched on every build (unless `-n` used [^1])
 - if a **tag** is specified is fetched once, then will be pulled from local cache on subsequent build
 - if a **branch name** is specified, the latest revision of the _branch_ is fetched on every build (unless `-n` used [^1])
 
@@ -108,12 +108,12 @@ In addition to the basic _library in repository_ information following configura
 > specifying `"@:wasm-cxx17" : "v0.0.1"` will select the version v0.0.1 for the `WebAssembly` target and fall back to the latest
 > revision of the default branch for all other targets
 >
-> This attribut **cannot** be specified in the _local project context_
+> This attribute **cannot** be specified in the _local project context_
 
-#### - `s` : source dir disambiguation
+#### - `s` : source directory disambiguation
 
 If a repository contains multiple sources directories with uncommon name they can be added to the list of includes 
-or files to link with by using the source dir disambiguation attribute `s`.
+or files to link with by using the source directory disambiguation attribute `s`.
 
 *This disables most of the smart inclusion detection and lists the paths in the build process.*
 
@@ -123,9 +123,9 @@ or files to link with by using the source dir disambiguation attribute `s`.
 
 #### - `x` : exclude directory from scan
 
-Directories can be explicitely excluded from source scanning by listing them in the `x` attribute. Directories starting with a `.` (dot) are ignored by default
+Directories can be explicitly excluded from source scanning by listing them in the `x` attribute. Directories starting with a `.` (dot) are ignored by default
 
-> You can suffix the key it with the target platform to selectively include implementation dir by platform
+> You can suffix the key it with the target platform to selectively include implementation directory by platform
 >  
 > Specifying ``"x:wasm-cxx17" : ["src/native-code"]`` will compile the project without the sources found in the `src/native-code` directory for the WebAssembly target.
 
@@ -133,11 +133,11 @@ Directories can be explicitely excluded from source scanning by listing them in 
 
 Setting this to `true` will disable the convention build and have tipi rely on the `CMakeLists.txt` file found in the project.
 
-> Note: this property expect a `boolean` value, so the deps specification shall not contain quotation marks 
+> Note: this property expect a `boolean` value, so the dependency specification shall not contain quotation marks 
 
 #### - `opts` : defines and compile-time options
 
-Enables setting compile time definitions and options in the project/dependecy context. Theses `opts` have to contain valid CMake Syntax. For example to pass _#defines_ or compile options this way simply add:
+Enables setting compile time definitions and options in the project/dependency context. Theses `opts` have to contain valid CMake Syntax. For example to pass _#defines_ or compile options this way simply add:
 
 ```json
 {
@@ -183,11 +183,11 @@ When using non-tipi dependencies the `requires` attribute allows you to specify 
 
 With the value of `requires` being a full "sub-depspec" (with unlimited nesting).
 
-This attribution can be useful to change a transitive dependency, for example if you prefer to use `BoringSSL` in place of `OpenSSL` for a libary which would depend on `OpenSSL`.
+This attribution can be useful to change a transitive dependency, for example if you prefer to use `BoringSSL` in place of `OpenSSL` for a library which would depend on `OpenSSL`.
 
 #### - `platform[:target-platform]` tipi platform libraries
 
-You can specify _tipi_ provided dependencies from a currated list of platform dependencies[^2]. These libraries are considered to be widely used and are generally tested on the supported platforms and environments.
+You can specify _tipi_ provided dependencies from a curated list of platform dependencies[^2]. These libraries are considered to be widely used and are generally tested on the supported platforms and environments.
 
 ```json
 "platform[:target-platform]" : ["<dep>::<component>", ...]
@@ -199,8 +199,8 @@ If both `platform` and a matching `platform::target` the union set of both will 
 
 The platform library dependencies have to be specified as follows:
 
-- `"PackageName::+component"` if the component is an option of PackageName to be linked but is always shipped with PackageName ( *e.g.* header only Boost distribution via `"Boost::+boost"` if our project uses that)
-- `"PackageName::component"` if the component is to be linked and needs to be fetched separately. ( *e.g.* `"Boost::filesystem"` is not shipped in the header only distribution of Boost, so it has to be declared explicitely) 
+- `"PackageName::+component"` if the component is an option of said package that is always shipped with inside but must be linked explicitly ( *e.g.* header only Boost distribution via `"Boost::+boost"` if our project uses that)
+- `"PackageName::component"` if the component is to be linked and needs to be fetched separately. ( *e.g.* `"Boost::filesystem"` is not shipped in the header only distribution of Boost, so it has to be declared explicitly) 
 - `"target::native-name"` if the component is already installed on the environment and should be used. ( *e.g.* linking against `libdl.so` on Linux can be specified by adding `"linux::dl"` )
 
 ##### CMake built platform dependencies
@@ -210,9 +210,9 @@ Further narrowing the specification for CMake `find_package` by setting `package
 "platform[:target-platform]" : [{ "packages" : [], "targets" : [], "find_mode" : "" }, ...]
 ```
 
-This can be useful for platform packages that need to be imported in a specific way, for example when accomodating for the use of complex systems like PkgConfig or because the package needs to be searched in CMake `CONFIG` modes.
+This can be useful for platform packages that need to be imported in a specific way, for example when accommodating for the use of complex systems like PkgConfig or because the package needs to be searched in CMake `CONFIG` modes.
 
-An example would be depending on the ICU unicode library : 
+An example would be depending on the ICU Unicode library : 
 
 ```json
 "platform":[{"find_mode":"CONFIG", "packages" : ["ICU"], "targets" : ["ICU::uc"] }]
@@ -222,9 +222,9 @@ Note: For a list of available platform libraries please refer to [^2] .
 
 ### platform packages vs tipi dependencies
 
-_tipi_ was built around a few opinionated choices among which was the descision to provide the ability to consume widely used C++ libraries via the "platform" library specification.
+_tipi_ was built around a few opinionated choices among which was the decision to provide the ability to consume widely used C++ libraries via the "platform" library specification.
 
-This makes their usage more common and via a single inclusion without needing to search the exact repository on github.
+This makes their usage more common and via a single inclusion without needing to search the exact repository on GitHub.
 
 ### Local project configuration
 
@@ -248,7 +248,7 @@ for dependencies at the root level of the configuration object.
 }
 ```
 
-> All configuration properties except the `@` section are available, including the option to specify build target specific source desambiguation or inclusion rules.
+> All configuration properties except the `@` section are available, including the option to specify build target specific source disambiguation or inclusion rules.
 
 [^1]: Unless the `-n` switch is used which then uses any previously downloaded revision
 
