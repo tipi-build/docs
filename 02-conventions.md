@@ -1,5 +1,5 @@
 ---
-title: Build by convention
+title: Build by Convention
 aliases: [ "01-conventions" ]
 ---
 
