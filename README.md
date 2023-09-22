@@ -5,11 +5,17 @@ aliases: []
 
 # Introduction
 
-Tipi solves three of the most common problems C++ developer face day to day: dependency management, long build times and environments:
+Tipi solves three of the most common problems C++ developers face day to day:
 
-- speed up your workflow with powerful multi-platform cloud environments
-- fetch dependencies straight from git repositories, no need to wait for package definitions
-- shipped with a useful set of tools on three platforms
+1. dependency management
+2. long build times and
+3. environments
+
+by giving you:
+
+- fetching dependencies straight from git repositories, no need to wait for package definitions
+- speeding up your workflow with powerful multi-platform cloud environments
+- shipping with a useful set of tools on Linux, MacOS, and Windows platforms
 
 
 ## Getting started
@@ -37,14 +43,14 @@ Tipi solves three of the most common problems C++ developer face day to day: dep
 ```
 
 3. run `tipi connect` and link your installation to your [tipi.build](https://tipi.build/) account so you can use your tipi subscription
-4. create an empty folder for the example project on your disk
-5. create an `example.cpp` and write a simple hello world:
+4. create an empty folder for the example project on your disk and `cd` into it
+5. create an `example.cpp` inside that folder and write a simple hello world:
 
 ```cpp
 #include <iostream>
 
 int main(int argc, char** argv) {
-  std::cout << "tipi is cool ! " << std::endl;
+  std::cout << "tipi is cool!" << std::endl;
   return 0;
 }
 ```
@@ -64,23 +70,33 @@ int main(int argc, char** argv) {
 > When using your tipi subscription to build or run, a cloud node of the corresponding platform is deployed in the tipi cloud.
 
 6. build the example using either:
-    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi -t linux-cxx17 build .`
-    - your local machine: `tipi -t linux-cxx17 .`
+    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi -t linux-cxx20 build . `
+    - your local machine[^1]: `tipi -t linux-cxx20 . `
 
 7. run the resulting binary using:
-    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi -t linux-cxx17 .run build/linux-cxx17/bin/example`
-    - your local machine: `tipi run build/linux-cxx17/bin/example` [^1]
+    - your [tipi subscription](https://tipi.build/dashboard/subscription): `tipi -t linux-cxx20 .run build/linux-cxx20/bin/example`
+    - your local machine[^1]: `tipi run build/linux-cxx20/bin/example`
 
 8. Add a dependency from GitHub: we're going to add a JSON manipulation library from: [github.com/nlohmann/json](https://github.com/nlohmann/json)
     - create a file `.tipi/deps` with content
 
 ```json
 {
-	"nlohmann/json" : { "@" : "v3.10.4" }
+	"nlohmann/json" : {
+		"@" : "v3.11.2",
+		"u": false,
+		"x": [
+			"benchmarks",
+			"/tests",
+			"/docs",
+			"/tools"
+		]
+	}
 }
+
 ```
   
-> Note: we are pinning the version of the dependency to the tagger release `v3.10.4` (list can be found under 
+> Note: we are pinning the version of the dependency to the tagger release `v3.11.2` (list can be found under 
 > [nlohmann/json/releases](https://github.com/nlohmann/json/releases) ). At time of building tipi will
 > pull the release from the GitHub repository and build it. If you want to live on the edge, you can remove
 > the `@` pin or write a branch name like `master` in there.
@@ -93,7 +109,7 @@ int main(int argc, char** argv) {
 
 int main(int argc, char** argv) {
 
-  std::cout << "Wonderful JSON formatter with tipi is cool ! " << std::endl;
+  std::cout << "Wonderful JSON formatter with tipi is cool!" << std::endl;
 
   auto json = nlohmann::json::parse(argv[1]);
   std::cout << json.dump(2) << std::endl;
@@ -104,14 +120,17 @@ int main(int argc, char** argv) {
 10. Compile and run (see #6 and #7 above):
 
 ```bash
-$> tipi run ./build/linux-cxx17/bin/example '[4,52,25]'
-Wonderful JSON formatter with tipi is cool ! 
+$> tipi -t linux-cxx20 build .
+$> tipi -t linux-cxx20 .run ./build/linux-cxx20/bin/example '[4,52,25]'
+Wonderful JSON formatter with tipi is cool!
 [
   4,
   52,
   25
 ]
 ```
+
+
 
 ## Key principles and goals
 
@@ -122,10 +141,12 @@ Wonderful JSON formatter with tipi is cool !
     - select one environment from our [supported list](https://github.com/tipi-build/environments) or [specify your own](https://tipi.build/documentation/01-environments#customizing-environments)
     - tipi downloads & installs the compiler and libraries in an isolated distro folder automatically
 
-### Environments on demand
+
+    ### Environments on demand
 
 We automatically provision repeatable build environments on powerful cloud build machines when you need them.
 Learn more about how tipi environments are specified: [environment](/documentation/01-environments)
+
 
 ### Every project is a library
 
@@ -134,7 +155,8 @@ In a software project there are 2 kinds of entry-points:
 - Developer entry-points for code reuse
 - End-user entry-points for application use
 
-By default tipi automatically builds both a library and an application (if something like a `main()` is found) from your sources to ease reuse.
+By default tipi automatically builds both a library and an application (if something like a `main()` is found) from your sources to ease *reuse*.
+
 
 ### Don't pay for what you don't use
 
@@ -146,14 +168,13 @@ tipi allows you to do a fine-granular selection of your dependencies and pulls o
 
 ### Opinionated defaults (but you choose)
 
-While tipi clearly is set out to enable you to _build anything_ without complex scripts, we don't hold you back to customize parts (or all of) the build with `CMakeLists.txt.tpl` or `CMakeLists.txt` files associated with `use-cmake.tipi` files.
+While tipi clearly is set out to enable you to *build anything* without complex scripts, we don't hold you back to customize parts (or all of) the build with `CMakeLists.txt.tpl` or `CMakeLists.txt` files associated with `use-cmake.tipi` files.
 
-[^1]: by using `tipi run` to launch the binary you make sure your OS as has all the required libraries in its search path, for ex. the `libstdc++6` on windows.
 
 
 ### tipi installation location ( former TIPI_HOME_DIR )
 
-When launching `tipi` for the first time tipi will be installed at : 
+When launching `tipi` for the first time tipi[^1] will be installed at: 
 
   - On Windows: `C:\.tipi\`
   - On other platforms: `/usr/local/share/.tipi/`
@@ -164,3 +185,5 @@ I case you want to specify an alternate location (if you don't have much space o
 you should use the mechanisms of file-system junctions and bind mounts.
 
 We guarantee the paths even in non-containerized builds to enable caching of artifacts. 
+
+[^1]: by using `tipi run` to launch the binary you make sure your OS as has all the required libraries in its search path, for ex. the `libstdc++6` on windows.

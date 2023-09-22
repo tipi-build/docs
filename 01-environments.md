@@ -18,10 +18,10 @@ While emphasizes on providing a default environment for each major platform, com
 
 As a good starting point tipi always provides at clean and up-to-date clang with `libc++` STL for following environments:
 
-- Webassembly: `tipi build . -t wasm`
-- Linux:  `tipi build . -t linux`
-- Windows: `tipi build . -t windows`
-- MacOS: `tipi build . -t macos`
+- WebAssembly: `tipi -t wasm build . `
+- Linux:  `tipi -t linux build . `
+- Windows: `tipi -t windows build . `
+- MacOS: `tipi -t macos build . `
 
 Variations specifying C++ standard versions are also available (adding the suffix `-cxx17` or `-cxx20`).
 
@@ -30,7 +30,7 @@ Variations specifying C++ standard versions are also available (adding the suffi
 ## Building in the tipi.build cloud
 
 ```bash
-tipi build . -t linux-cxx17 
+tipi  -t linux-cxx17 build .
 ```
 
 Will provision an environment as described in `/usr/local/share/.tipi/<distro>/environments/linux.pkr.js` (or `C:\.tipi\<distro>\environments\linux.pkr.js`) on the tipi.build and run the build using your tipi subscription.
@@ -40,14 +40,16 @@ All required files will be synchronized bidirectionally to and from the tipi bui
 ## Building on your local machine
 
 ```bash
-tipi . -t linux-cxx17
+tipi -t linux-cxx17 .
 ```
 
 When your machine fits your target environment you can also use the tipi provided tool-chain to build locally.
 
 ## Running apps on remote environments
 
-Make use of your subscription to run your application on the remote tipi node:
+**Note:** Make use of your subscription to run your application on the remote tipi node.
+
+Run the binary built from the `./app.cpp` source file:
 
 ```bash
 tipi -t macos-cxx17 .run build/bin/app
@@ -64,7 +66,7 @@ tipi -t macos-cxx17 .run build/bin/app
 tipi run build/bin/app
 ```
 
-Will run a command within the tipi environment on your local machine. Note the absence of `.` in front of `run` vs.
+Will run a command within the tipi environment on your local machine. Note the absence of `.` in front of `run` vs. `.run` from the previos example.
 
 ## Customizing environments
 
