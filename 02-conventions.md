@@ -25,11 +25,11 @@ _Tipi_ leverages all the fabulous work done in these layer to finally make build
 
 Take the idea of building a game project. This game project will contain: 
 
-1. the game domain with the player characters, game menu and so on
-2. the game app itself
-3. tools apps like game maps and texture editor
+1. The game domain with the player characters, game menu and so on
+2. The game app itself
+3. Tools apps like game maps and texture editor
 
-The directory could look like this
+The directory could look like this:
 
 <div class="columns">
   <div class="column is-10">
@@ -53,9 +53,10 @@ The main function may look like:
 
 During the can of `src/` _tipi_ classifies the `*.hpp` and `*.cpp` which do not have any entry-point to the library code ( *i.e.* the game domain).
 
-In `tools/` `map_editor.cpp` and `texture_editor.cpp` are found to both have `main()` functions, which has the **apps** convention kick-in.
+In `tools/` tipi detects a `main()` function both `map_editor.cpp` and `texture_editor.cpp`, which has the **apps** convention kick-in.
 
-The **apps** convention allows to have supporting file residing locally, therefore `common.cpp is` linked to `map_editor` and `texture_editor`. The header `common.hpp` is accessible via `#include "common.hpp"` or `#include <common.hpp>` while the classes in `src/game_classes/*` are exported on the compiler include directories which makes them usable via `#include <game_classes/*.hpp>`.
+The **apps** convention allows to have supporting file residing locally, therefore `tools/common.cpp` is linked to `map_editor` and `texture_editor`.
+The header `tools/common.hpp` is accessible via `#include "common.hpp"` or `#include <common.hpp>` while the classes in `src/game_classes/*` are exported on the compiler include directories which makes them usable via `#include <game_classes/*.hpp>`.
 
 tipi will give the following summary: 
 
@@ -78,19 +79,20 @@ Resulting in a bin folder like the following:
       └── texture_editor.exe  // common.cpp, texture_editor.cpp
 ```
 
+
 ### Conventions Types
 
 Main conventions:
 
-- **every project is a library**. ( *ref:* [every project is a library](/documentation/#every-project-is-a-library))
-- each git repositories passed to `tipi` results in one library
+- **Every project is a library**. ( *ref:* [every project is a library](/documentation/#every-project-is-a-library))
+- Each git repositories passed to `tipi` results in one library
 
 > All the conventions described are applied if required and/or possible based on tipi's smart detection
 >
 > It is possible to specify or reduce the scope of a library within a project in case the detection fails or hinting is required:
 >
 > - by adding parameters: `tipi -s library-dir`
-> - by adding dependency descriptors in the `.tipi/deps` file: `"dependency/repo": { "s" : [ "library-dir"" ] }`
+> - by adding dependency descriptors in the `.tipi/deps` file: `"dependency/repo": { "s" : [ "library-dir" ] }`
 >
 > ...with `-s` (or the `s` key) specifying the additional search path for _source_ files. Multiple entries can be specified 
 > both a multiple `-s` parameters or multiple entries in the `s` key.
@@ -126,7 +128,7 @@ Another typical convention C++ programmers use is having implementation and head
 
 These are libraries that don't have any special source folder, their headers are directly rooted at the top of their repositories.
 
-When this is detected the same mechanism as for **Same directory libraries** applies. 
+When this is detected the same mechanism as for **same directory libraries** applies. 
 
 > In this kind of structure disambiguation it might be required to to tell which directories are part of the lib using the `tipi -s` switch or the matching `.tipi/deps` configuration.
 
@@ -136,25 +138,25 @@ When this is detected the same mechanism as for **Same directory libraries** app
 
 It is possible to have code which is completely header only while application entry-points are in .cpp files aside materializing either lib **examples** or a corresponding **app**.
 
-The headers will be put at disposal like in the aforementioned conventions with ``#include <>``.
+The headers will be put at disposal like in the aforementioned conventions with ``#include <...>``.
 
-#### apps
+#### Apps
 
-Any .cpp file with an entry-point is considered to be an app.
+Any `.cpp` file with an entry-point is considered to be an app.
 
 For example any file containing a `main()` function or a macro instantiating a `main()` function (as commonly used in unit testing frameworks) will be compiled as an application.
 
 > apps are always linked to the project library.
 >
-> if others .cpp files reside at same or deeper file-system directories they get linked with the applications in question. Exception to this rule are those directories explicitly declared in the `s`/ `-s` configuration.
+> if others `.cpp` files reside at same or deeper file-system directories they get linked with the applications in question. Exception to this rule are those directories explicitly declared in the `s`/ `-s` configuration.
 
-#### tests or examples
+#### Tests or Examples
 
 Equivalent to the **apps** convention, however they will registered within the CMake CTest test driver and calling ``tipi . --test all`` will run them all and report result status.
 
 This convention kicks-in when files with `main()` functions in parent folder are named after one of `test`, `tests`, `example`, `examples`
 
-#### HTML
+#### HTML and WebAssembly
 
 Any `.html` file containing ``<script type="text/c++"></script>`` in it is compiled using the **app** convention.
 
@@ -178,4 +180,4 @@ _Tipi_ relies on CMake and the way me use it can be customized by adding `CMakeL
 
 The `CMakeLists.txt.tpl` can be placed anywhere in the project and are applied to the matching sub-tree.
 
-To generate a sample CMakeLists.txt.tpl with the docs embedded of the different variables at your disposal run `tipi cmaketpl` in any project folder.
+Run `tipi cmaketpl` in any project folder to generate a sample `CMakeLists.txt.tpl` with the docs embedded of the different variables at your disposal.
