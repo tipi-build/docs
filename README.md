@@ -3,7 +3,6 @@ title: Intro and getting started
 aliases: []
 ---
 
-# Introduction
 
 Tipi solves three of the most common problems C++ developers face day to day:
 

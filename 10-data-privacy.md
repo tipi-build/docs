@@ -3,8 +3,6 @@ title: Data Security and Privacy
 aliases: [ "09-data-privacy" ]
 ---
 
-# Data Security and Privacy
-
 ## Website data
 The first data tipi.build gets are from visitors and user of the tipi.build web-app. As you might have noted, tipi doesn't require submitting cookie preferences. It's because we don't use any third party cookies to track users and tipi doesn't share any user data to a separate analytics platform or third parties.
 

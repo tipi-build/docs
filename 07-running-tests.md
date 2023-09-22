@@ -3,8 +3,6 @@ title: Running tests
 aliases: [ "12-running-tests" ]
 ---
 
-# Running tests
-
 Tipi can detect and run _tests_ and _examples_ as specified in [tipi build conventions](./01-conventions#tests-or-examples).
 
 ## Executing **all** tests

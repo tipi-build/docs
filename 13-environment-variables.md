@@ -3,9 +3,6 @@ title: Environment variables
 aliases: [ "06-environment-variables" ]
 ---
 
-# Environment variables
-
-
 
 
 ## Using a private tipi.build instance: `TIPI_ENDPOINT`

@@ -3,9 +3,7 @@ title: Downloading remote build results
 aliases: [ "11-downloading-build-results" ]
 ---
 
-# Downloading remote build results
-
-With tipi `v0.0.51` you can download build results directly onto your machine without downloading the full build directory.
+Starting with tipi `v0.0.51` you can download build results directly onto your machine without downloading the full build directory.
 
 Assuming we have a structure like this:
 ```sh

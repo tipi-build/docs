@@ -3,8 +3,6 @@ title: Environments
 aliases: [ "00-environments" ]
 ---
 
-## Environments
-
 A _tipi.build_ environment consist of 2 elements:
 
 - CMake tool-chain file

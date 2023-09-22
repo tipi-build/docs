@@ -3,17 +3,15 @@ title: Authentication
 aliases: []
 ---
 
-# Authentication
 
-Both your local _tipi_ CLI installation as well as your tipi.build cores and nodes require access to your tipi
+Both your local _tipi_ CLI installation as well as your [tipi.build](https://tipi.build) cores and nodes require access to your tipi
 account to be able to access private repositories and your subscription information.
 
 In order to enable a friction-less usage _tipi_ comes with a credentials store dubbed _tipi vault_ which is essentially a zero-knowledge encrypted storage linked to your account.
 
 ## Creation of the vault
 
-During the on-boarding on [tipi.build](https://tipi.build) you will be asked to create said _vault_ and to provide a
-passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
+During the on-boarding on [tipi.build](https://tipi.build) you will be asked to create said _vault_ and to provide a passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
 
 In the following on-boarding steps you will be given the opportunity to grant your account access to private
 repositories on GitHub.com which is required if you want to consume privately listed dependencies. 
@@ -40,11 +38,11 @@ However if you want to grant different access level to repositories from an orga
 The personal access token are secured by the vault and are only used by you on your local tipi builds or by the short-lived remote build instances. 
 
 
-  1. Create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-  2. Open your [tipi.build secure vault](/dashboard/vault)
-  3. Unlock the vault (this happens in your browser, nothing is transmitted to tipi.build)
-  4. Add your Personal Access Token credentials by adding an additional `https://github.com` or any GitHub Enterprise endpoint.
+1. Create a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+2. Open your [tipi.build secure vault](/dashboard/vault)
+3. Unlock the vault (this happens in your browser, nothing is transmitted to tipi.build)
+4. Add your Personal Access Token credentials by adding an additional `https://github.com` or any GitHub Enterprise endpoint.
 
-  ![](./assets/add-credentials.png)
+![Add credentials screenshot](./assets/add-credentials.png)
 
 Now with the `tipi` CLI you can refresh your authentication data with `tipi connect`.

@@ -2,9 +2,10 @@
 title: Dependencies and project configuration
 aliases: [ "02-dependencies" ]
 ---
+
 ## Intro and Examples
 
-_Tipi_ enables comfortable consumption of dependencies from multiple source like _GitHub.com_ repositories or _CMake Hunter_ provided packages.
+_Tipi_ enables comfortable consumption of dependencies from multiple source like *GitHub.com* repositories or *CMake Hunter* provided packages.
 
 Dependencies are specified in a project specific `.tipi/deps` file which can look like this:
 

@@ -3,17 +3,24 @@ title: Compile options
 aliases: []
 ---
 
-# Compile options
 
-## Passing `-D` defines
+## Passing `-D` defines constants
 
 _Example:_
 
 ```bash
-tipi . -DSOME_OPTION=1 -DOTHER_OPTION=OK
+tipi -t linux . -DSOME_OPTION=1 -DOTHER_OPTION=OK
 ```
 
-_Note:_ these definitions only affect the _local project_ and are not passed down to dependencies. If you need to set options of dependencies of your projects you can use the `opts` facilities in the `.tipi/deps` file [(see Dependencies and Project Configuration §`opts` : defines and compile-time options)](./02-dependencies#--opts--defines-and-compile-time-options)  or use the `<project-root>/.tipi/opts.toolchain` file instead.
+**Note:** these definitions only affect the _local project_ and are not passed down to dependencies. 
+
+### Defining constants for remote builds
+
+Constants are defined per project in the `<project-root>/.tipi/deps` file [(see Dependencies and Project Configuration §`opts` : defines and compile-time options)](./02-dependencies#--opts--defines-and-compile-time-options) with the `opts` member or using the `<project-root>/.tipi/opts.toolchain` file instead.
+
+<!-- TODO what happens if one does both? -->
+
+
 
 ## Compile options
 
@@ -22,6 +29,8 @@ _Tipi_ relies on the CMake project, which allows you to tweak the compilation fl
 You may add your own tool-chain files in `<tipi-home>/environments/<distro>` which is the preferred option.
 
 If you specify compile options, they will be applied to all projects in the build tree in the context of the tool-chain and target specific build directory aka `sysroot`.
+
+
 
 ## `opts` files
 
@@ -34,7 +43,8 @@ add_compile_options( -Wextra )
 add_compile_definitions( DEFINE_TO_PASS_WITHOUT_D_BEFORE=1 )
 ```
 
-_Note:_ these definitions only affect the _local project_ and are not passed down to dependencies. If you need to set options of dependencies of your projects you can use the `opts` facilities in the `.tipi/deps` file [(see Dependencies and Project Configuration §`opts` : defines and compile-time options)](./02-dependencies#--opts--defines-and-compile-time-options)  or use the `<project-root>/.tipi/opts.toolchain` file instead.
+**Note:** these definitions only affect the _local project_ and are not passed down to dependencies. 
+If you need to set options of dependencies of your projects you can use the `opts` facilities in the `.tipi/deps` file [(see Dependencies and Project Configuration §`opts` : defines and compile-time options)](./02-dependencies#--opts--defines-and-compile-time-options)  or use the `<project-root>/.tipi/opts.toolchain` file instead.
 
 > If both a matching target-platform `.tipi/opts.target-platform` file *and* a non specific `.tipi/opts` file are defined the contents of both are injected into the build
 
