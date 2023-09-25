@@ -36,7 +36,7 @@ If you want to fully ignore data for the build you can add them to the `.tipiign
 ## Comprehensive packs
 ![Multiple revisions are packed together](./assets/cache/04-comprehensive-packs.png)
 
-The cache mechanism first queries the global `cache.tipi.build` storage. If the code compiled has already been built by a secure tipi.build cloud runner for the same compiler and set of flags ( i.e. So-called _abi-hash_ ) the cache is pulled from the global build cache. 
+The cache mechanism first queries the global `cache.tipi.build` storage. If the code compiled has already been built by a secure tipi.build cloud runner for the same compiler and set of flags ( i.e. So-called _ABI-hash_ ) the cache is pulled from the global build cache.
 
 The global `cache.tipi.build` contains a curated list of open-source projects cached for the default tool-chains delivered by tipi.
 
