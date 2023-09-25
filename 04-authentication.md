@@ -3,27 +3,42 @@ title: Authentication
 aliases: []
 ---
 
+With your **tipi vault** you get a secure storage for - among other things - the access tokens to your private (GitHub) repositories, 
+meaning that tipi instances on machines you linked to your account get to access privates repositories (that you authorized).
+
+During the on-boarding on [tipi.build](https://tipi.build) you will be asked to create said _vault_ and to provide a passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
+
+In the following on-boarding steps you will be given the opportunity to grant your account access to private repositories on GitHub.com which is required if you want to consume privately listed dependencies. 
+
+That access can be managed at any time using the [vault dashboard on tipi.build](/dashboard/vault).
+
+## Connect your machine to your account
+
+To _pair_ a tipi installation with your tipi account use the `connect` verb and follow the instructions:
+
+```sh
+$ tipi connect
+tipi needs your tipi.build account to work remotely, authorize this machine by visiting:
+
+         https://tipi.build/dashboard/tokens/validate?exchange=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+
+
+         Pairing code : NNNNNN
+```
+
+After granting access to your vault in your tipi dashboard the `tipi` cli will ask for your _passphrase_ after which your machine will be able
+to decrypt the vault and the pairing process is completed.
+
+> For private cloud and on premise users: you can connect to your private deployment of tipi.build by specifying the `TIPI_ENDPOINT` environment variable
+
+### Re-Pair your machine
+
+In case you need to reset the settings on your machine you can do a `tipi connect --clean`.
 
 Both your local _tipi_ CLI installation as well as your [tipi.build](https://tipi.build) cores and nodes require access to your tipi
 account to be able to access private repositories and your subscription information.
 
-In order to enable a friction-less usage _tipi_ comes with a credentials store dubbed _tipi vault_ which is essentially a zero-knowledge encrypted storage linked to your account.
 
-## Creation of the vault
-
-During the on-boarding on [tipi.build](https://tipi.build) you will be asked to create said _vault_ and to provide a passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
-
-In the following on-boarding steps you will be given the opportunity to grant your account access to private
-repositories on GitHub.com which is required if you want to consume privately listed dependencies. 
-
-That access can be granted at any time using the [vault dashboard on tipi.build](/dashboard/vault).
-
-## Authenticating to tipi.build with `tipi` CLI
-
-Run the `tipi connect` command and follow the instructions. 
-You will be prompted with a link to authenticate the device on tipi.build. After confirming the access to your vault the CLI will ask for your _vault passphrase_.
-
-> For private cloud and on premise users: you can connect to your private deployment of tipi.build by specifying the `TIPI_ENDPOINT` environment variable
 
 ## Authentication in Continuous Integration context
 
