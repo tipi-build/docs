@@ -17,9 +17,9 @@ If you want to learn more about Tipi check our Key principles and goals.
 
 ### What can I do with Tipi?
 Tipi is a suite that combines 3 main tools to achieve fast, easy and scalable C++ development:
-a package manager that fetches dependencies straight from git repositories, no need to wait for package definitions
-build environments provisioning on powerful cloud build machines from 2 to 128 cores with up to 2TB RAM
-cross platform shipping on Linux, Windows or MacOS
+* a package manager that fetches dependencies straight from git repositories, no need to wait for package definitions
+* build environments provisioning on powerful cloud build machines from 2 to 128 cores with up to 2TB RAM
+* cross platform compilation on Linux, Windows or MacOS
 
 ### How can I start building with Tipi  in the cloud?
 To get the full Tipi experience we offer our users a free trail. If you want to extend you free trial time please get in touch. We are happy to support users to keep enjoying the value of Tipi and to learn from them.
