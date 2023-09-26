@@ -42,4 +42,4 @@ We love uptime, but sometimes systems fail in our complex environment. We monito
 ### 🧑‍🚀 We are here to help
 
 💡 Tipi is just getting started! Come back regularly for updates and new solutions.
-We absolutely love feedback! Please get in touch at `hello [at] tipi.build` for any questions or to discuss your project ideas.
+We absolutely love feedback! Please get in touch at `hello@tipi.build` for any questions or to discuss your project ideas.
