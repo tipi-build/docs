@@ -1,5 +1,5 @@
 ---
-title: 👋 Welcome to the Tipi Documentation & FAQ 🙋
+title: 👋 Welcome to the Tipi Documentation
 aliases: []
 ---
 
@@ -12,8 +12,6 @@ We are regularly adding new features and products and will publish updates on ou
 To get started with Tipi and create your account follow the instruction in our Start building with Tipi documentation.
 If you want to learn more about Tipi check our Key principles and goals.
 
-
-## 🙋 FAQ
 
 ### What can I do with Tipi?
 Tipi is a suite that combines 3 main tools to achieve fast, easy and scalable C++ development:
