@@ -3,6 +3,29 @@ title: Compile options
 aliases: []
 ---
 
+Specify the compiletime environment with CLI arguments or store in the `opts` files.
+
+## Changing build parallelity
+By default tipi figures out the best parallelity for the current machine you are using based on the available RAM and CPU counts available.
+Use the `-j` parameter to specify another build parallelity (number of cores to use).
+
+
+```bash
+tipi . -t linux-cxx17 -j 8
+```
+
+_The `-j 8` parameter sets the build parallelity to 8 cores/threads_
+
+
+```bash
+tipi build . -t linux-cxx17 -j 128
+```
+
+_The `-j128` parameter sets the build parallelity to 128 cores/threads and selects the appropriately sized remote machine in the tipi build cloud_
+
+Please note that when using this parameter in conjunction with remote builds it becomes part of the target specification. This means that specifying, meaning that targeting `-t linux-cxx17 -j8` targets a different machine than targetting `-t linux-cxx17 -j32`
+
+
 
 ## Passing `-D` defines constants
 
