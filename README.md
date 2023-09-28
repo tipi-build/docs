@@ -8,8 +8,8 @@ Tipi.build is a solution for native developers who want to accelerate their buil
 We are regularly adding new features and will publish updates on our blog frequently. Please get in touch to learn more about our ideas and roadmap.
 
 ## Building with tipi 
-To get started with Tipi and create your account follow the instruction in our Start building with Tipi documentation.
-If you want to learn more about Tipi check our Key principles and goals.
+* To get started with Tipi follow the steps [here](/documentation/0050-getting-started-cpp)
+* If you want to learn more about Tipi check our [Key principles and goals](/documentation/0200-key-principles).
 
 ### Supported Languages
 | Programming Language | Support Status |
@@ -18,6 +18,7 @@ If you want to learn more about Tipi check our Key principles and goals.
 | [rust](/documentation/0100-getting-started-rust)                 | <span class="tag is-warning">alpha</span>          |
 | swift                | <span class="tag is-warning">alpha</span>          |
 
+_Missing your favorite language ? You can support it by adding a fitting [tipi-build/environments](/documentation/0400-environments)._
 
 ### What can I do with Tipi?
 Tipi is a suite that combines 3 main tools to achieve fast, easy and scalable Rust and C++ development:
