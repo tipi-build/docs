@@ -1,6 +1,6 @@
 ---
 title: 🚀 Getting started C++
-aliases: []
+aliases: [ "00-getting-started" ]
 ---
 
 Setup your machine:

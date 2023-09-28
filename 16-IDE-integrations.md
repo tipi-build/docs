@@ -4,7 +4,7 @@ aliases: [ "08-IDE-integrations" ]
 ---
 
 
-_Tipi_ is available as a [command line tool](/documentation#getting-started) and an official [<img src="~/assets/vscode.png" style="height: 1em; vertical-align: middle;">&nbsp; Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=tipi.tipi-build).
+_Tipi_ is available as a [command line tool](00-getting-started-cpp) and an official [<img src="~/assets/vscode.png" style="height: 1em; vertical-align: middle;">&nbsp; Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=tipi.tipi-build).
 
 Additionally it is easy to integrate _tipi_ with IDEs and other build systems as it relies on CMake internally. 
 

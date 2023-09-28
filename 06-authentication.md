@@ -1,12 +1,12 @@
 ---
 title: Authentication
-aliases: []
+aliases: [ "04-authentication" ]
 ---
 
 With your **tipi vault** you get a secure storage for - among other things - the access tokens to your private (GitHub) repositories, 
 meaning that tipi instances on machines you linked to your account get to access privates repositories (that you authorized).
 
-During the on-boarding on [tipi.build](https://tipi.build) you will be asked to create said _vault_ and to provide a passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
+During the on-boarding on [tipi.build](/) you will be asked to create said _vault_ and to provide a passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
 
 In the following on-boarding steps you will be given the opportunity to grant your account access to private repositories on GitHub.com which is required if you want to consume privately listed dependencies. 
 
@@ -35,7 +35,7 @@ to decrypt the vault and the pairing process is completed.
 
 In case you need to reset the settings on your machine you can do a `tipi connect --clean`.
 
-Both your local _tipi_ CLI installation as well as your [tipi.build](https://tipi.build) cores and nodes require access to your tipi
+Both your local _tipi_ CLI installation as well as your [tipi.build](/) cores and nodes require access to your tipi
 account to be able to access private repositories and your subscription information.
 
 

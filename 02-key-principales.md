@@ -27,7 +27,7 @@ by giving developers:
 ### Environments on demand
 
 We automatically provision repeatable build environments on powerful cloud build machines when you need them.
-Learn more about how tipi environments are specified: [environment](/documentation/01-environments)
+Learn more about how tipi environments are specified: [environment](/documentation/04-environments)
 
 
 ### Every project is a library

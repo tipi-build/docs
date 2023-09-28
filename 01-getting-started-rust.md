@@ -1,5 +1,6 @@
 ---
 title: 🦀 Getting started Rust (alpha)
+aliases: []
 ---
 
 As we have mentioned on [our blog post](/blog/20230309-rusty-tipi) we are working on supporting Rust natively.
