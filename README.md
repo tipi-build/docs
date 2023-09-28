@@ -15,9 +15,9 @@ If you want to learn more about Tipi check our Key principles and goals.
 
 ### What can I do with Tipi?
 Tipi is a suite that combines 3 main tools to achieve fast, easy and scalable Rust and C++ development:
-* a build cache connected straight to sources in git repositories
-* build environments provisioning on powerful cloud build machines with hundreds of cores and terrabytes of RAM
-* cross platform compilation on Linux, Windows, MacOS or custom.
+* A build cache connected straight to sources in git repositories
+* Build environments provisioning on powerful cloud build machines with hundreds of cores and terrabytes of RAM
+* Cross platform compilation on Linux, Windows, MacOS or custom.
 
 ### How can I start building with Tipi in the cloud?
 To get the full Tipi experience we offer our users a free trial.
