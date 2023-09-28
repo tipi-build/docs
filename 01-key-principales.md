@@ -3,23 +3,23 @@ title: Key Principles and Goals
 aliases: []
 ---
 
-Tipi solves three of the most common problems C++ developers face day to day:
+Tipi helps tackling the biggest challenges in C++ and Rust app development :
 
-1. dependency management
-2. long build times and
-3. environments
+- Dependencies management and reliable build caching
+- Building and iterating fast 
+- Cross-platform build and testing 
 
-by giving you:
+by giving developers:
 
-- fetching dependencies straight from git repositories, no need to wait for package definitions
-- speeding up your workflow with powerful multi-platform cloud environments
-- shipping with a useful set of tools on Linux, MacOS, and Windows platforms
+- Smart dependencies fetching and build caching: no need to wait for packages
+- Powerful cross-platform parrallel build and test cloud environments
+- Build toolchain fully included for Linux, MacOS, and Windows platforms
 
 
-### A new C++ workflow
+### Build from sources without the cost
 
-- Code scanning & conventions over build configuration
-- Zero setup - just coding
+- Automatic CMake and Cargo build caching connected to git
+- Zero setup - just coding 
     - select one environment from our [supported list](https://github.com/tipi-build/environments) or [specify your own](https://tipi.build/documentation/01-environments#customizing-environments)
     - tipi downloads & installs the compiler and libraries in an isolated distro folder automatically
 
@@ -50,7 +50,7 @@ tipi allows you to do a fine-granular selection of your dependencies and pulls o
 
 ### Opinionated defaults (but you choose)
 
-While tipi clearly is set out to enable you to *build anything* without complex scripts, we don't hold you back to customize parts (or all of) the build with `CMakeLists.txt.tpl` or `CMakeLists.txt` files associated with `use-cmake.tipi` files.
+While tipi clearly is set out to enable you to *build anything* without complex scripts (it can generate CMake build scripts from code scan conventions), we don't hold you back to customize parts (or all of) the build with your own `CMakeLists.txt` files associated with `use-cmake.tipi` files.
 
 
 
@@ -66,6 +66,6 @@ _tipi_ will install dependencies, environment descriptions and tools for your en
 I case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk) 
 you should use the mechanisms of file-system junctions and bind mounts.
 
-We guarantee the paths even in non-containerized builds to enable caching of artifacts. 
+The reason for this, is that [tipi guarantees the paths even in non-containerized builds](/documentation/10-tipi-cache) to enable reuse of cached builds artifacts anywhere. 
 
 [^1]: by using `tipi run` to launch the binary you make sure your OS as has all the required libraries in its search path, for ex. the `libstdc++6` on windows.
