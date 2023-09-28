@@ -3,14 +3,20 @@ title: 👋 Welcome to the Tipi Documentation
 aliases: []
 ---
 
-Tipi.build is the right solution for native Rust and C++ developers who have reclaimed their time, accelerated their workflows, and enjoy compiling fast every day.
+Tipi.build is a solution for native developers who want to accelerate their build and test workflows, enjoying [CI/CD at their fingertips](/explore/ci-cd-at-fingertips).
 
 We are regularly adding new features and will publish updates on our blog frequently. Please get in touch to learn more about our ideas and roadmap.
 
-## 🚀 Getting started
-
+## Building with tipi 
 To get started with Tipi and create your account follow the instruction in our Start building with Tipi documentation.
 If you want to learn more about Tipi check our Key principles and goals.
+
+### Supported Languages
+| Programming Language | Support Status |
+|----------------------|----------------|
+| [C & C++](/documentation/0050-getting-started-cpp)          | ✅ <span class="tag is-success">productive</span>              |
+| [rust](/documentation/0100-getting-started-rust)                 | <span class="tag is-warning">alpha</span>          |
+| swift                | <span class="tag is-warning">alpha</span>          |
 
 
 ### What can I do with Tipi?

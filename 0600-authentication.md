@@ -1,6 +1,6 @@
 ---
 title: Authentication
-aliases: [ "04-authentication" ]
+aliases: [ "04-authentication", "06-authentication" ]
 ---
 
 With your **tipi vault** you get a secure storage for - among other things - the access tokens to your private (GitHub) repositories, 

@@ -1,6 +1,6 @@
 ---
 title: Environments
-aliases: [ "00-environments" ]
+aliases: [ "00-environments", "04-environments" ]
 ---
 
 A _tipi.build_ environment consist of 2 elements:

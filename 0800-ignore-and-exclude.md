@@ -1,6 +1,6 @@
 ---
 title: Ignore and exclude
-aliases: [ "07-exclude-and-ignore" ]
+aliases: [ "07-exclude-and-ignore", "08-ignore-and-exclude" ]
 ---
 
 ## Exclude and ignore using `.tipiignore`

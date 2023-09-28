@@ -1,6 +1,6 @@
 ---
 title: Build cache
-aliases: [ "10-tipi-cache" ]
+aliases: [ "10-tipi-cache", "10-build-cache" ]
 ---
 
 Starting from `v0.0.35` tipi provides an automatic versioning-abiding build cache **in remote builds**. 

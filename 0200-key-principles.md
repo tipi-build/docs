@@ -1,9 +1,9 @@
 ---
 title: Key Principles and Goals
-aliases: []
+aliases: [ "02-key-principales" ]
 ---
 
-Tipi helps tackling the biggest challenges in C++ and Rust app development :
+Tipi helps tackling the biggest challenges in native app development :
 
 - Dependencies management and reliable build caching
 - Building and iterating fast 
@@ -18,7 +18,7 @@ by giving developers:
 
 ### Build from sources without the cost
 
-- Automatic CMake and Cargo build caching connected to git
+- Automatic CMake build caching connected to git
 - Zero setup - just coding 
     - select one environment from our [supported list](https://github.com/tipi-build/environments) or [specify your own](https://tipi.build/documentation/01-environments#customizing-environments)
     - tipi downloads & installs the compiler and libraries in an isolated distro folder automatically

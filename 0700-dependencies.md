@@ -1,6 +1,6 @@
 ---
 title: Dependencies and project configuration
-aliases: [ "02-dependencies" ]
+aliases: [ "02-dependencies", "07-dependencies" ]
 ---
 
 ## Intro and Examples

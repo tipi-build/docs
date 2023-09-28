@@ -1,6 +1,6 @@
 ---
 title: Build by Convention
-aliases: [ "01-conventions" ]
+aliases: [ "01-conventions", "03-build-by-conventions" ]
 ---
 
 ## Why ?
