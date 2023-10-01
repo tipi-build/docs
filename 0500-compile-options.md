@@ -1,6 +1,6 @@
 ---
 title: Compile options
-aliases: [ "05-compile-options" ]
+aliases: [ "05-compile-options", "03-compile-options" ]
 ---
 
 Specify the compiletime environment with CLI arguments or store in the `opts` files.

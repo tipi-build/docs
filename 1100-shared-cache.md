@@ -1,6 +1,6 @@
 ---
 title: Share build cache across my team
-aliases: []
+aliases: [ "09-shared-cache" ]
 ---
 
 By default all tipi users use their private, independent build cache.
