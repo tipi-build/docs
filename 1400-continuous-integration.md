@@ -1,13 +1,13 @@
 ---
 title: Continuous integration
-order: 11 
+aliases: [ "05-continuous-integration" ]
 ---
 
-## Continous integration with GitHub actions 
+## With GitHub Actions 
 
 The tipi subscription can be used to run your build and test your project in github actions.
 
-Run `tipi ci` to generate the yaml configuration for Github CI.
+Run `tipi ci` to generate the YAML configuration for GitHub CI.
 
 ### Authenticating on tipi.build from CI workflows
 Information are available as reference here : [Command Line authentication](13-environment-variables#command-line-authentication) to handle authentication in CI workflows.
