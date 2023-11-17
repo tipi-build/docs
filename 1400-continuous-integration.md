@@ -5,7 +5,7 @@ aliases: [ "05-continuous-integration" ]
 
 ## With GitHub Actions 
 
-The tipi subscription can be used to run your build and test your project in github actions.
+The tipi subscription can be used to run your build and test your project in GitHub actions.
 
 Run `tipi ci` to generate the YAML configuration for GitHub CI.
 
