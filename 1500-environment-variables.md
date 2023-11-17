@@ -1,17 +1,14 @@
 ---
 title: Environment variables
-order: 12 
+aliases: [ "06-environment-variables" ]
 ---
-
-# Environment variables
-
 
 
 
 ## Using a private tipi.build instance: `TIPI_ENDPOINT`
 
 tipi.build can be run on premise or in a private deployment. All users of that deployment need to specify `TIPI_ENDPOINT` in their environment
-to thir `tipi` CLI to access the correct installation.
+to their `tipi` CLI to access the correct installation.
 
 ## Command line authentication
 
@@ -19,20 +16,20 @@ In non-interactive situation (a CI/CD job, other automated usages) it might be r
 credentials to access private repositories or make use of the tipi subscription.
 
 - `TIPI_ACCESS_TOKEN` and `TIPI_REFRESH_TOKEN` are JWT tokens enabling `tipi` to get access to the tipi subscription.
-- `TIPI_VAULT_PASSPHRASE` has to be supplied in situations where the user's Vault must be decrypted (ex. accessing private repos)
+- `TIPI_VAULT_PASSPHRASE` has to be supplied in situations where the user's Vault must be decrypted (ex. accessing private repositories)
 
 ## Customizing tools distribution `TIPI_DISTRO_JSON`
 
-_Tipi_ uses a json file which contains the required tools used by tipi to build projects (like `cmake` or `make`). These tools are automatically downloaded and installed on demand by tipi at runtime before running projects build.
+_Tipi_ uses a JSON file which contains the required tools used by tipi to build projects (like `cmake` or `make`). These tools are automatically downloaded and installed on demand by tipi at run-time before running projects build.
 
 The contents of the file can be changed as per your needs for maximum usage flexibility setting the environment variable `TIPI_DISTRO_JSON`.
 
 The environment variable may point to:
 
 - an absolute or relative file path
-- an HTTP(s) url
+- an HTTP(s) URL
 
-The original json file can be found at https://github.com/tipi-build/distro/blob/master/distro.json
+The original JSON file can be found at https://github.com/tipi-build/distro/blob/master/distro.json
 
 Below some examples of what you can set as `TIPI_DISTRO_JSON`:
 
@@ -44,7 +41,7 @@ export TIPI_DISTRO_JSON="/home/user/projects/tipi/distro.json"
 export TIPI_DISTRO_JSON="https://company.com/tipi/distro.json"
 ```
 
-If `TIPI_DISTRO_JSON` is a HTTP(s) url, tipi will download the file and check file integrity agains the value in the environment variable `TIPI_DISTRO_JSON_SHA1`
+If `TIPI_DISTRO_JSON` is a HTTP(s) URL, tipi will download the file and check file integrity against the value in the environment variable `TIPI_DISTRO_JSON_SHA1`
 
 ## Customizing tools distribution `TIPI_DISTRO_JSON_SHA1`
 
