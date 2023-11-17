@@ -31,6 +31,15 @@ You will be prompted with a link to authenticate the device on tipi.build. After
 
 On non-interactive usages of `tipi` credentials can be provided by setting the following environment variables: `TIPI_ACCESS_TOKEN`, `TIPI_REFRESH_TOKEN`, `TIPI_VAULT_PASSPHRASE`.
 
+These are available in files at the root of the tipi folder.
+
+> The tipi folder is either `/usr/local/share/.tipi/` on Unix platforms or `C:\\.tipi` on Windows.
+
+The content of these variables should be set as follow. : 
+  - Content of the `.access_token` file as `TIPI_ACCESS_TOKEN`  environment variable
+  - Content of the `.refresh_token` file as `TIPI_REFRESH_TOKEN` environment variable
+  - `TIPI_VAULT_PASSPHRASE` plain as environment variable
+
 ## Authentication with a Personal Access Token on Github
 
 tipi.build grants access to your repositories automatically during the onboarding. 
