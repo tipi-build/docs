@@ -7,7 +7,7 @@ aliases: [ "01-conventions", "03-build-by-conventions" ]
 
 Why did we ever write Makefile, CMakeLists.txt or configure IDE project settings? And why are we still doing it ?
 
-Andrew Koenig once coined FTSE, the [Fundamental theorem of software engineering](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering): 
+Andrew Koenig once coined FTSE, the [Fundamental theorem of software engineering](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering):
 
 > **"We can solve any problem by introducing an extra level of indirection."**
 
@@ -23,7 +23,7 @@ _Tipi_ leverages all the fabulous work done in these layer to finally make build
 
 ## Convention by example
 
-Take the idea of building a game project. This game project will contain: 
+Take the idea of building a game project. This game project will contain:
 
 1. The game domain with the player characters, game menu and so on
 2. The game app itself
@@ -41,7 +41,7 @@ The directory could look like this:
 
 `game.cpp` has a main function each, therefore they are *apps* by convention.
 
-The main function may look like: 
+The main function may look like:
 
 <div class="columns">
   <div class="column is-10">
@@ -51,14 +51,14 @@ The main function may look like:
   </div>
 </div>
 
-During the can of `src/` _tipi_ classifies the `*.hpp` and `*.cpp` which do not have any entry-point to the library code ( *i.e.* the game domain).
+During the scan of `src/` _tipi_ classifies the `*.hpp` and `*.cpp` which do not have any entry-point to the library code ( *i.e.* the game domain).
 
 In `tools/` tipi detects a `main()` function both `map_editor.cpp` and `texture_editor.cpp`, which has the **apps** convention kick-in.
 
 The **apps** convention allows to have supporting file residing locally, therefore `tools/common.cpp` is linked to `map_editor` and `texture_editor`.
 The header `tools/common.hpp` is accessible via `#include "common.hpp"` or `#include <common.hpp>` while the classes in `src/game_classes/*` are exported on the compiler include directories which makes them usable via `#include <game_classes/*.hpp>`.
 
-tipi will give the following summary: 
+tipi will give the following summary:
 
 <div class="columns">
   <div class="column is-10">
@@ -94,7 +94,7 @@ Main conventions:
 > - by adding parameters: `tipi -s library-dir`
 > - by adding dependency descriptors in the `.tipi/deps` file: `"dependency/repo": { "s" : [ "library-dir" ] }`
 >
-> ...with `-s` (or the `s` key) specifying the additional search path for _source_ files. Multiple entries can be specified 
+> ...with `-s` (or the `s` key) specifying the additional search path for _source_ files. Multiple entries can be specified
 > both a multiple `-s` parameters or multiple entries in the `s` key.
 
 #### Split libraries
@@ -128,7 +128,7 @@ Another typical convention C++ programmers use is having implementation and head
 
 These are libraries that don't have any special source folder, their headers are directly rooted at the top of their repositories.
 
-When this is detected the same mechanism as for **same directory libraries** applies. 
+When this is detected the same mechanism as for **same directory libraries** applies.
 
 > In this kind of structure disambiguation it might be required to to tell which directories are part of the lib using the `tipi -s` switch or the matching `.tipi/deps` configuration.
 
@@ -176,7 +176,7 @@ This can be useful for custom test framework or in cases you need to use specifi
 
 #### Tweaking convention build
 
-_Tipi_ relies on CMake and the way me use it can be customized by adding `CMakeLists.txt.tpl` files in your project.
+_Tipi_ relies on CMake and the way we use it can be customized by adding `CMakeLists.txt.tpl` files in your project.
 
 The `CMakeLists.txt.tpl` can be placed anywhere in the project and are applied to the matching sub-tree.
 

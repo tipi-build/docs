@@ -7,7 +7,7 @@ Tipi.build is a solution for native developers who want to accelerate their buil
 
 We are regularly adding new features and will publish updates on our blog frequently. Please get in touch to learn more about our ideas and roadmap.
 
-## Building with tipi 
+## Building with tipi
 * To get started with Tipi follow the steps [here](/documentation/0050-getting-started-cpp)
 * If you want to learn more about Tipi check our [Key principles and goals](/documentation/0200-key-principles).
 
@@ -23,8 +23,8 @@ _Missing your favorite language ? You can support it by adding a fitting [tipi-b
 ### What can I do with Tipi?
 Tipi is a suite that combines 3 main tools to achieve fast, easy and scalable Rust and C++ development:
 * A build cache connected straight to sources in git repositories
-* Build environments provisioning on powerful cloud build machines with hundreds of cores and terrabytes of RAM
-* Cross platform compilation on Linux, Windows, MacOS or custom.
+* Build environments provisioning on powerful cloud build machines with hundreds of cores and terabytes of RAM
+* Cross-platform compilation on Linux, Windows, macOS or custom.
 
 ### How can I start building with Tipi in the cloud?
 To get the full Tipi experience we offer our users a free trial.
@@ -35,7 +35,7 @@ Yes! You can start building with Tipi using your sources on your machine, no nee
 ### Is Tipi Open Source?
 We believe in the power of the community and that is why we created tipi free forever and tipi is an open source project. You can access our Open Source projects on [our GitHub organisation](https://github.com/tipi-build/).
 
-For team remote building and company-wide usage we also have a commercial offer with [Tipi Pro](/pricing). 
+For team remote building and company-wide usage we also have a commercial offer with [Tipi Pro](/pricing).
 
 To get access to a **30-day free trial** check our [**Plans page**](/pricing).
 
