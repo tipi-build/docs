@@ -6,20 +6,20 @@ aliases: [ "02-key-principales" ]
 Tipi helps tackling the biggest challenges in native app development :
 
 - Dependencies management and reliable build caching
-- Building and iterating fast 
-- Cross-platform build and testing 
+- Building and iterating fast
+- Cross-platform build and testing
 
 by giving developers:
 
 - Smart dependencies fetching and build caching: no need to wait for packages
-- Powerful cross-platform parrallel build and test cloud environments
-- Build toolchain fully included for Linux, MacOS, and Windows platforms
+- Powerful cross-platform parallel build and test cloud environments
+- Build toolchain fully included for Linux, macOS, and Windows platforms
 
 
 ### Build from sources without the cost
 
 - Automatic CMake build caching connected to git
-- Zero setup - just coding 
+- Zero setup - just coding
     - select one environment from our [supported list](https://github.com/tipi-build/environments) or [specify your own](https://tipi.build/documentation/01-environments#customizing-environments)
     - tipi downloads & installs the compiler and libraries in an isolated distro folder automatically
 
@@ -56,16 +56,16 @@ While tipi clearly is set out to enable you to *build anything* without complex 
 
 ### tipi installation location ( former TIPI_HOME_DIR )
 
-When launching `tipi` for the first time tipi[^1] will be installed at: 
+When launching `tipi` for the first time tipi[^1] will be installed at:
 
   - On Windows: `C:\.tipi\`
   - On other platforms: `/usr/local/share/.tipi/`
 
 _tipi_ will install dependencies, environment descriptions and tools for your environments in that location.
 
-I case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk) 
+I case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk)
 you should use the mechanisms of file-system junctions and bind mounts.
 
-The reason for this, is that [tipi guarantees the paths even in non-containerized builds](/documentation/10-tipi-cache) to enable reuse of cached builds artifacts anywhere. 
+The reason for this, is that [tipi guarantees the paths even in non-containerized builds](/documentation/10-tipi-cache) to enable reuse of cached builds artifacts anywhere.
 
 [^1]: by using `tipi run` to launch the binary you make sure your OS as has all the required libraries in its search path, for ex. the `libstdc++6` on windows.

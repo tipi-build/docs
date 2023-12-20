@@ -11,7 +11,7 @@ Setup your machine:
     - Command line utility:
 
 ```bash
-# Linux & MacOS:
+# Linux & macOS:
 /bin/bash -c \
  "$(curl -fsSL https://raw.githubusercontent.com/tipi-build/cli/master/install/install_for_macos_linux.sh)"
 ```
@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 >
 > On Linux: `linux-cxx17` or `linux-cxx20`
 >
-> On MacOS: `macos-cxx17` or `macos-cxx20`
+> On macOS: `macos-cxx17` or `macos-cxx20`
 >
 > On Windows: `windows` or `windows-cxx17` or `windows-cxx20` or `vs-16-2019-cxx17` (if you have Build Tools for Visual Studio 2019 installed)
 >
