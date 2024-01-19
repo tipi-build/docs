@@ -218,5 +218,5 @@ tipi build . -t <filename of the toolchain> <other option from tipi that you wan
 ```
 
 The first time you run this command on a new docker, it can take up to an hour.
-This is normal tipi must create the environment and make it quickly available to you in the future.
-Rest assured that the time will be much shorter in the future (from 10 seconds to 5 minutes for the reuse of the same basic environment (docker)).
+Tipi creates the environment and replicates it wordlwide in the different datacenter, in order make it quickly available to you in the future.
+If this operation is successful, the next time the command is run will be available in maximum 2 minutes.
