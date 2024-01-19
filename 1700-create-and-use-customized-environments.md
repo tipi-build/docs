@@ -90,6 +90,7 @@ WORKDIR /home/tipi
 ```dockerfile
 USER tipi
 WORKDIR /home/tipi
+ENV TIPI_DISTRO_MODE=all
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/tipi-build/cli/master/install/install_for_macos_linux.sh"
 ```
 
