@@ -5,7 +5,7 @@ aliases: [ "00-environments", "04-environments" ]
 
 A _tipi.build_ environment consist of 2 elements:
 
-- CMake tool-chain file
+- CMake toolchain file
 - OS image
 
 The OS images are described via the help of Packer files and can be automatically deployed on the tipi.build cloud as many-core build agent or as execution environment for unit test.
@@ -19,7 +19,7 @@ As a good starting point tipi always provides at clean and up-to-date clang with
 - WebAssembly: `tipi -t wasm build . `
 - Linux:  `tipi -t linux build . `
 - Windows: `tipi -t windows build . `
-- MacOS: `tipi -t macos build . `
+- macOS: `tipi -t macos build . `
 
 Variations specifying C++ standard versions are also available (adding the suffix `-cxx17` or `-cxx20`).
 
@@ -41,7 +41,7 @@ All required files will be synchronized bidirectionally to and from the tipi bui
 tipi -t linux-cxx17 .
 ```
 
-When your machine fits your target environment you can also use the tipi provided tool-chain to build locally.
+When your machine fits your target environment you can also use the tipi provided toolchain to build locally.
 
 ## Running apps on remote environments
 
@@ -68,7 +68,7 @@ Will run a command within the tipi environment on your local machine. Note the a
 
 ## Customizing environments
 
-Tipi environments can be customized to your need by creating the required set of CMake tool-chain and Packer file.
+Tipi environments can be customized to your need by creating the required set of CMake toolchain and Packer file.
 
 Examples can be found at [tipi-build/environments](https://github.com/tipi-build/environments) .
 
