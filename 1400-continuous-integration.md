@@ -19,7 +19,8 @@ name: build
 # This workflow is triggered on pushes to the repository.
 on: [push]
 
-env: 
+env:
+  # Learn how to set Github CI Secrets : https://docs.github.com/de/actions/security-guides/using-secrets-in-github-actions
   TIPI_ACCESS_TOKEN: "${{ secrets.TIPI_ACCESS_TOKEN }}"
   TIPI_REFRESH_TOKEN: "${{ secrets.TIPI_REFRESH_TOKEN }}"
   TIPI_VAULT_PASSPHRASE: ${{ secrets.TIPI_VAULT_PASSPHRASE }}
