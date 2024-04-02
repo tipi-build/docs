@@ -10,7 +10,7 @@ The tipi subscription can be used to run your build and test your project in Git
 Run `tipi ci` to generate the YAML configuration for GitHub CI.
 
 ### Authenticating on tipi.build from CI workflows
-Information are available as reference here : [Command Line authentication](13-environment-variables#command-line-authentication) to handle authentication in CI workflows.
+Information is available as reference here : [Command Line authentication](13-environment-variables#command-line-authentication) to handle authentication in CI workflows.
 
 An example `.github/workflows/ci.yaml` would look like the following : 
 
