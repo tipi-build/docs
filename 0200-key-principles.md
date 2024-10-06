@@ -3,20 +3,27 @@ title: Key Principles and Goals
 aliases: [ "02-key-principales" ]
 ---
 
-Tipi helps tackling the biggest challenges in native app development :
+CMake RE helps tackling the biggest challenges in native development :
 
-- Dependencies management and reliable build caching
-- Building and iterating fast
-- Cross-platform build and testing
+- Hermeticity & Reproducibility for CMake
+- Build Caching  
+- Package Management via compatible but enhanced CMake `FetchContent`
+- Build Remoting and Distribution
 
 by giving developers:
 
-- Smart dependencies fetching and build caching: no need to wait for packages
+- Smart dependencies fetching and build caching: no need to bother about packages
 - Powerful cross-platform parallel build and test cloud environments
-- Build toolchain fully included for Linux, macOS, and Windows platforms
+- Build toolchain fully included and extensible for Linux, macOS, and Windows or custom platforms
 
+### Full compatibility & Full Flexibility
+One of the overarching design criteria behing CMake RE is to offer every developer to augment their CMake experience, while allowing a functional workflow when builds are run with plain CMake.
 
-### Build from sources without the cost
+- Local Containerized Reproducible Builds
+- Supporting custom self-hosted build runners
+- Access to fully managed autoscaled cloud build runners 
+
+### Build from sources without paying the cost
 
 - Automatic CMake build caching connected to git
 - Zero setup - just coding
@@ -30,15 +37,15 @@ We automatically provision repeatable build environments on powerful cloud build
 Learn more about how tipi environments are specified: [environment](/documentation/04-environments)
 
 
-### Every project is a library
+### CMakeLists.txt generation on demand 
+If you have a codebase for which you don't have any CMakeLists.txt and would like to integrate it in your codebase, cmake-re is distributed with a tool named `tipi`.
+The tool can be used to generate CMakeLists automatically based on source code scanning.
 
 In a software project there are 2 kinds of entry-points:
+  - Developer entry-points for code reuse
+  - End-user entry-points for application use
 
-- Developer entry-points for code reuse
-- End-user entry-points for application use
-
-By default tipi automatically builds both a library and an application (if something like a `main()` is found) from your sources to ease *reuse*.
-
+`tipi` can automatically builds both a library and an application from codebases missing a CMakeLists and produce proper _CMake Package Config Modern Targets_ by scanning sources to ease *reuse*.
 
 ### Don't pay for what you don't use
 
