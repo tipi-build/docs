@@ -19,11 +19,11 @@ support to reap off full build performance, which we track here.
 
 | Programming Language | Support Status |
 |----------------------|----------------|
-| [C & C++](/documentation/0050-getting-started-cpp)          | ✅ <span class="tag is-success">productive</span>              |
-| [Rust](/documentation/0100-getting-started-rust)                 | 🦀 <span class="tag is-info">beta</span>          |
+| [C & C++](/documentation/0000-getting-started-cmake)          | ✅ <span class="tag is-info">beta</span>              |
+| [Rust](/documentation/0100-getting-started-rust)                 | 🦀 <span class="tag is-warning">alpha</span>           |
 | Swift                | <span class="tag is-warning">alpha</span>          |
 
-_Missing your favorite language ? You can support it by adding a fitting [tipi-build/environments](/documentation/0400-environments)._
+_Missing your favorite language ? You can support it with [custom environments](/documentation/0400-environments)._
 
 ### What can I do with CMake RE?
 CMake RE is a suite that provides the following 4 main foundational features to achieve fast, easy and scalable Rust and C++ development:
