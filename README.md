@@ -10,7 +10,7 @@ CMake RE ( Remote Execution for CMake ) is a solution for native developers to a
 We are regularly adding new features and publish updates on our blog and newsletter frequently. Please get in touch to learn more about our roadmap.
 
 ## Building with CMake RE
-* Get started [here](/documentation/0050-getting-started-cpp)
+* Get started [here](/documentation/0000-getting-started-cmake)
 
 ### Supported Languages
 Any language supported by default CMake is supported by CMake RE, proper
