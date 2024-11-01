@@ -1,5 +1,6 @@
 ---
-title: Getting started with tipi CMakeLists generator
+title: 🔮 EXPERIMENTAL - Getting started with tipi CMakeLists generator
+aliases: [ "0101-getting-started-cpp" ]
 ---
 
 Setup your machine:

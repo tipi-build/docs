@@ -1,19 +1,16 @@
 ---
-title: Share build cache across my team
+title: L1 Build Cache Sharing
 aliases: [ "09-shared-cache" ]
 ---
 
 By default all tipi users use their private, independent build cache.
-For a few dependencies they will benefit from a curated build cache from `tipi-build` hosted on GitHub that includes a short list of projects.
 
-Provided all team members have access to your `my-organisation` group on GitHub and all machines export the `TIPI_POWWOW` environment variable you will then share the build cache:
+Provided all team members have access to `my-organisation` group on GitHub and all machines export the `TIPI_POWWOW` environment variable it's possible to share a build cache.
 
-## Testing cache with one build
-
-During setup we recommend that you run a build like this from your machine:
+Access rights to the repository `my-organization/cache.tipi.build` specifies the  
 
 ```
-TIPI_POWWOW=my-organisation time tipi -t linux-cxx17 build .
+TIPI_POWWOW=my-organisation cmake-re -S . -B build/ -DCMAKE_TOOLCHAIN_FILE=environment/<toolchain-name>.cmake
 ```
 
 Afterwards run the same command on a coworkers machine and enjoy the speedup.

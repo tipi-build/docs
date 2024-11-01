@@ -1,5 +1,5 @@
 ---
-title: Compile options
+title: tipi - Compile options
 aliases: [ "05-compile-options", "03-compile-options" ]
 ---
 

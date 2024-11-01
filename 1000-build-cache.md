@@ -1,26 +1,26 @@
 ---
-title: Build cache
+title: L1 Build cache
 aliases: [ "10-tipi-cache", "10-build-cache" ]
 ---
 
 Starting from `v0.0.35` tipi provides an automatic versioning-abiding build cache **in remote builds**.
 
 ## Usage
-The build cache is **enabled by _default_ on remote builds**. This means that _any_ build executed on tipi.build cloud machines will benefit from automatic caching: see [how to build for different targets in the *tipi build cloud*](/explore/remote-build).
+The build cache is **enabled by _default_ on containerized & `--remote` builds**. This means that _any_ build will benefit from automatic caching.
 
-### On local builds
-For the moment we advice to use remote builds to benefit from the cache and not to use caching on local builds as we cannot provide the same level of isolation and repeatability.
+`cmake-re` builds containerized by default if `--host` is not provided.
 
-However we are working on this and you can enable the preview feature (at your own risks) by setting the environment variable : `TIPI_CACHE_FORCE_ENABLE=ON`.
+### On `--host` builds
+As on `--host` builds as we cannot provide the same level of isolation and repeatability we disable the caching, it can however be enabled if you are willing to provide the guarantees that the host system won't change between cache reuse.
+
+You can hence enable it in these contexts with `TIPI_CACHE_FORCE_ENABLE=ON`.
 
 ## Rationale
-C++ applications often take longer to compile than the developer has time for, which cause slow iteration cycles and thus reduces developer productivity. A common solution is to tighten the scope of the build: consuming dependencies as pre-compiled libraries. This, however, increases the risk of version and ABI mismatches, and thus of shipping bugs to production.
+C++ applications often take longer to compile than the developer has time to wait, which cause slow iteration cycles and thus reduces developer productivity. A common solution is to tighten the scope of the build: consuming dependencies as pre-compiled libraries. This, however, increases the risk of version and ABI mismatches, and thus of shipping bugs to production.
 
-At tipi we decided to provide a solution based on __always building everything from source__ with the same toolchain flags to ensure full correctness of the resulting apps.
+With `cmake-re` we decided to provide a solution based on __maximizing building from source__  with the same toolchain flags to ensure full correctness of the resulting apps, while __maximizing cached builds__ to improve developer iteration cycles : fast+correct.
 
-This naturally alone would results in correct but very slow compilation. That's why tipi.build provides a Global Build Cache connected to revision control.
-
-Each git revision is cached incrementally in a very space efficient _comprehensive pack_ file combining the advantages of pre-built binaries and build from sources.
+Each git revision is cached incrementally in a space efficient _comprehensive pack_ file combining the advantages of pre-built binaries and build from sources.
 
 ## Source mirroring
 
@@ -47,7 +47,7 @@ If the project has never been built by tipi.build or is private, a build is star
 Each _comprehensive pack_ are stored as releases artifacts for each platform, identified by the cache-id that tipi computes from the git repository *origin* URL and that can be overridden via the [`.tipi/id`](#cache-id-file) file.
 
 ### Cache id file
-tipi automatically generates a `.tipi/id` file when building a project, this file is intended to be checked-in the repository and identifies the project cache-id, the resulting id is the `sha1-hash(<host + organization name>)-<project name>`.
+`cmake-re` automatically computes a cache identified when building a project based on the git origin, it's possible to override this with a `.tipi/id` file intended to be checked-in the repository and identifies the project cache-id, the resulting id is the `sha1-hash(<host + organization name>)-<project name>`.
 
 For instance a repository that was cloned from `github.com/tipi-build/simple-example` will have a cache-id of `40999a5-simple-example` influenced by the following `.tipi/id`.
 ```json

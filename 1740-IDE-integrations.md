@@ -1,8 +1,9 @@
 ---
-title: IDE Integration VSCode
-aliases: [ "08-IDE-integrations" ]
+title: tipi - IDE Integration
+aliases: [ "08-IDE-integrations", "1600-IDE-integrations" ]
 ---
 
+## VSCode
 
 _Tipi_ is available as a [command line tool](00-getting-started-cpp) and an official [<img src="~/assets/vscode.png" style="height: 1em; vertical-align: middle;">&nbsp; Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=tipi.tipi-build).
 

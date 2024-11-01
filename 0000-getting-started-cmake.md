@@ -26,7 +26,9 @@ In this getting started guide we will setup your machine to perform local CMake 
 >
 > For local containerized and hermetic build you need to **install docker** on your system, if you can't install it you can rely on `--remote` and a tipi.build account to run the container on our cloud. Or resort to cached but non-hermetic builds with `--host`.
 >
-> ➡ [Docker Engine Installation Guide](https://docs.docker.com/engine/install/)
+> ➡ [Docker Engine Installation Guide](https://docs.docker.com/engine/install/) 
+>
+> ❗️**Docker Engine 26.0.0** or newer required : Check your installed version with `docker version`
 > 
 
 2. [Download our get-started example](https://github.com/tipi-build/get-started) `CMakeLists.txt` and a CMake RE environment decription ( `CMAKE_TOOLCHAIN_FILE` ) : 

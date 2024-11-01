@@ -1,5 +1,5 @@
 ---
-title: Running tests
+title: tipi - Running tests
 aliases: [ "12-running-tests", "09-running-tests" ]
 ---
 

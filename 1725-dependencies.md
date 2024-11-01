@@ -1,5 +1,5 @@
 ---
-title: Dependencies and project configuration
+title: tipi - Integrated Package Manager
 aliases: [ "02-dependencies", "07-dependencies" ]
 ---
 
