@@ -1,6 +1,6 @@
 ---
-title: Data Security and Privacy
-aliases: [ "09-data-privacy" ]
+title: 🛡️ Data Security and Privacy
+aliases: [  "09-data-privacy", "1600-data-privacy"]
 ---
 
 tipi.build is a SaaS deployment of CMake RE L1 remoting.

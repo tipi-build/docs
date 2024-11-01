@@ -1,5 +1,5 @@
 ---
-title: 🔮 EXPERIMENTAL - CMakeLists.txt Generator 
+title: tipi - 🔮 EXPERIMENTAL - CMakeLists.txt Generator 
 aliases: [ "01-conventions", "03-build-by-conventions", "0300-build-by-conventions" ]
 ---
 

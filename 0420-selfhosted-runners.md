@@ -1,5 +1,5 @@
 ---
-title: Self-hosted runners
+title: 💻 Self-hosted runners
 aliases: [ ]
 ---
 

@@ -1,53 +1,37 @@
 ---
-title: Downloading remote build results
+title: Accessing hermetic builds folders
 aliases: [ "11-downloading-build-results" ]
 ---
 
-Starting with tipi `v0.0.51` you can download build results directly onto your machine without downloading the full build directory.
+## Local hermetic build
+All containers builds are stored on the host filesystem. Which means they are directly accessible :
+  * `cmake-re`: In the folder pointed by `-B <build-folder>` 
+  * `tipi` : In `build/<toolchain-name` 
 
-Assuming we have a structure like this:
-```sh
-.
-├── src
-│  ├── string_to_json.cpp
-│  └── stringstream_mayham.cpp
-```
+`cmake-re` creates indirections with symlink to provide access to it, they are located on unixes and windows in `$HOME/.tipi/containers-workdirs`.
 
-We can now build for `linux-cxx17` the sources remotely like this:
-```sh
-tipi -t linux-cxx17 build .
-```
+These are named after the container that were used for the build `$HOME/.tipi/containers-workdirs/<container-name>-<env-hash>`.
 
-## Download a single file
+### Rationale
+*docker* engine doesn't support mounting container volumes from the host, but support binding hosts filesystem into container, therefore instead of relying on our build folder synchronization mechanism used in remote context, we followed the **zero cost abstraction** C++ mantra to provide maximum performance where possible.
 
-Finally we can download the complete binary like this:
-```sh
-tipi -t linux-cxx17 download "./build/linux-cxx17/bin/src/string_to_json"
-```
+The choice for the location and the symlinks indirection is based on leveraging default VirtioFS file sync on macOS platform for *docker* containers, while working for Windows and Linux at the same time.
 
-## Download multiple files with a wildcard
+This choices maximize build speed by using native IO performance without the overhead of containers *overlayfs* while limiting copying from and to containers while it isn't necessary.
 
-Finally we can download the complete binaries like this:
-```sh
-tipi -t linux-cxx17 download "./build/linux-cxx17/bin/src/string*"
-```
-Note that you have to take care of shell expansion. If your local shell is able to find files that match the `*` pattern it will pass just these paths to tipi.
-Adding quotes solves this problem.
 
-This will create a structure like this on your machine:
-```sh
-./build
-├── 24ba3b7
-│  └── bin
-│     └── src
-│        ├── string_to_json
-│        └── stringstream_mayham
-└── linux-cxx17 -> /usr/local/share/.tipi/vC.w/1da57b4-stringstream_mayham.b/24ba3b7
-```
+## `--host` build
+They are on your `--host` symlinked from the **invariant** build cache location.
+  * `cmake-re`: In the folder pointed by `-B <build-folder>` 
+  * `tipi` : In `build/<toolchain-name` 
 
-## Downloading the full build tree
-To always synchronize the full build tree it's possible to build the application by appending **`--sync-build`** to the command line : 
+## `--remote` build
+Starting with `tipi` and `cmake-re` `v0.0.51` you can download build results directly onto your machine without downloading the full build directory.
 
-`tipi -t linux-cxx17 build . --sync-build`
 
-This can be a very big download following the build folder size. 
+- Download a single file `tipi -t linux-cxx17 download "./build/linux-cxx17/bin/src/string_to_json"`
+- Download multiple files with a wildcard `tipi -t linux-cxx17 download './build/linux-cxx17/bin/src/string*'`
+> Note the single quote to avoid local shell expansion, so that all remote files get downloaded.
+
+- To always synchronize the full build tree it's possible to build the application by appending **`--sync-build`** to the command line : 
+  - `tipi -t linux-cxx17 -u build . --sync-build -- -DCMAKE_TOOLCHAIN_FILE=environments/linux.cmake`

@@ -52,7 +52,7 @@ When launching `tipi` for the first time tipi will setup it's home dir at:
 
 _tipi_ will  install dependencies, environment descriptions and tools for your environments in that location.
 
-It will also mirror any source you build there, and use path rewriting in compiler and test outputs to make it transparent to you. This mechanism allows for invariant paths in cache binaries, profiling data which makes build and library cache reuse even possible on bare-metal hosts. You can read more about this mechanism in the section about cmake-re [L1 Build Cache](./1000-build-cache.md).
+It will also mirror any source you build there, and use path rewriting in compiler and test outputs to make it transparent to you. This mechanism allows for invariant paths in cache binaries, profiling data which makes build and library cache reuse even possible on bare-metal hosts. You can read more about this mechanism in the section about cmake-re [L1 Build Cache](./0360-build-cache.md).
 
 I case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk)
 you should use the mechanisms of file-system junctions and bind mounts.

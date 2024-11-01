@@ -28,7 +28,7 @@ In this getting started guide we will setup your machine to perform local CMake 
 >
 > ➡ [Docker Engine Installation Guide](https://docs.docker.com/engine/install/) 
 >
-> ❗️**Docker Engine 26.0.0** or newer required : Check your installed version with `docker version`
+> ❗️**Docker Engine 27.2.0** or newer required : Check your installed version with `docker version`
 > 
 
 2. [Download our get-started example](https://github.com/tipi-build/get-started) `CMakeLists.txt` and a CMake RE environment decription ( `CMAKE_TOOLCHAIN_FILE` ) : 

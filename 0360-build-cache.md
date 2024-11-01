@@ -1,6 +1,6 @@
 ---
-title: L1 Build cache
-aliases: [ "10-tipi-cache", "10-build-cache" ]
+title: 📦 L1 Build cache
+aliases: [ "10-tipi-cache", "10-build-cache", "1000-build-cache" ]
 ---
 
 Starting from `v0.0.35` tipi provides an automatic versioning-abiding build cache **in remote builds**.
@@ -11,9 +11,9 @@ The build cache is **enabled by _default_ on containerized & `--remote` builds**
 `cmake-re` builds containerized by default if `--host` is not provided.
 
 ### On `--host` builds
-As on `--host` builds as we cannot provide the same level of isolation and repeatability we disable the caching, it can however be enabled if you are willing to provide the guarantees that the host system won't change between cache reuse.
+As on `--host` builds `cmake-re` cannot guarantee the same level of isolation and repeatability caching is disabled by default, it can however be enabled if the user is willing to guarantee himself that the host system won't change between cache reuse.
 
-You can hence enable it in these contexts with `TIPI_CACHE_FORCE_ENABLE=ON`.
+It can hence be enabled in these contexts with `TIPI_CACHE_FORCE_ENABLE=ON`.
 
 ## Rationale
 C++ applications often take longer to compile than the developer has time to wait, which cause slow iteration cycles and thus reduces developer productivity. A common solution is to tighten the scope of the build: consuming dependencies as pre-compiled libraries. This, however, increases the risk of version and ABI mismatches, and thus of shipping bugs to production.

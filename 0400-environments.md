@@ -1,5 +1,5 @@
 ---
-title: Environments
+title: 💻 Environments
 aliases: [ "00-environments", "04-environments" ]
 ---
 

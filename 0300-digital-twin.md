@@ -1,5 +1,5 @@
 ---
-title: Developer Machine Digital Twin
+title: 🪩 Developer Machine Digital Twin
 aliases: [ ]
 ---
 

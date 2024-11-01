@@ -1,5 +1,5 @@
 ---
-title: 🔮 EXPERIMENTAL - Getting started with tipi CMakeLists generator
+title: tipi - 🔮 EXPERIMENTAL - Getting started with tipi CMakeLists generator
 aliases: [ "0101-getting-started-cpp" ]
 ---
 

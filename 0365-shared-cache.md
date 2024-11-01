@@ -1,6 +1,6 @@
 ---
-title: L1 Build Cache Sharing
-aliases: [ "09-shared-cache" ]
+title: 📦 L1 Build Cache Sharing
+aliases: [ "09-shared-cache", "1100-shared-cache" ]
 ---
 
 By default all tipi users use their private, independent build cache.
