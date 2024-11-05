@@ -5,23 +5,29 @@ aliases: [ "02-key-principales" ]
 
 CMake RE helps tackling the biggest challenges in native development :
 
-- Hermeticity & Reproducibility for CMake
-- Build Caching  
-- Package Management via compatible but enhanced CMake `FetchContent`
-- Build Remoting and Distribution
+- Build reproducibility for CMake
+- Long build times
+- Dependencies management
 
 by giving developers:
 
-- Smart dependencies fetching and build caching: no need to bother about packages
-- Powerful cross-platform parallel build and test cloud environments
+- Hermeticity & Reproducibility for CMake
+- Build Remoting and Distribution
+- enhanced CMake `FetchContent` for smart dependencies fetching and build caching: no need to bother with packages
+- Powerful cross-platform parallel build and test environments in the cloud
 - Build toolchain fully included and extensible for Linux, macOS, and Windows or custom platforms
 
 ### Full compatibility & Full Flexibility
-One of the overarching design criteria behind CMake RE is to offer every developer to augment their CMake experience, while allowing a functional workflow when builds are run with plain CMake.
 
-- Local Containerized Reproducible Builds
-- Supporting custom self-hosted build runners
-- Access to fully managed autoscaled cloud build runners 
+One of the overarching design thoughts of CMake RE is to augment every developer's CMake experience while keeping a functional plain `cmake` workflow.
+
+By simply replacing the `cmake` command with `cmake-re` you build gains:
+
+- Local containerized reproducible builds
+- Build caching
+- Remote builds in custom self-hosted build runners
+- Access to fully managed autoscaled cloud build runners
+- Build distribution
 
 ### Build from sources without paying the cost
 

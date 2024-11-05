@@ -5,7 +5,7 @@ aliases: []
 
 CMake RE ( Remote Execution for CMake ) is a solution for native developers to accelerate their build and test workflows, shifting CI left to enjoy [building at the speed of their fingertips](/explore/ci-cd-at-fingertips) enabled best-in-class dual layered bulk and fine-grained caching.
 
-`cmake-re` is a thin CMake wrapper augmenting **CMake** with remoting, caching and fine grained test parallelization. As plain CMake it embraces a flexible mindset with zero-lockin, following the motto : _if it works with plain CMake it works faster with CMake RE_.
+`cmake-re` is a thin CMake wrapper augmenting **CMake** with remoting, caching and fine grained test parallelization. As plain CMake it embraces a flexible mindset with zero lock-in, following the motto : _if it works with plain CMake it works faster with CMake RE_.
 
 We are regularly adding new features and publish updates on our blog and newsletter frequently. Please get in touch to learn more about our roadmap.
 
@@ -54,4 +54,4 @@ We love uptime, but sometimes systems fail in our complex environment. We monito
 ### 🧑‍🚀 We are here to help
 
 💡 Tipi is soon getting out of beta! Come back regularly for updates.
-We absolutely listen and act on feedback! Please get in touch at `hello@tipi.build` for any questions or to discuss your project ideas.
+We thrive on feedback! Please get in touch at `hello@tipi.build` for any questions or to discuss your project ideas.

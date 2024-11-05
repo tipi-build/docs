@@ -8,17 +8,17 @@ Starting from `v0.0.35` tipi provides an automatic versioning-abiding build cach
 ## Usage
 The build cache is **enabled by _default_ on containerized & `--remote` builds**. This means that _any_ build will benefit from automatic caching.
 
-`cmake-re` builds containerized by default if `--host` is not provided.
+`cmake-re` runs containerized builds by default if `--host` is not provided.
 
 ### On `--host` builds
 As on `--host` builds `cmake-re` cannot guarantee the same level of isolation and repeatability caching is disabled by default, it can however be enabled if the user is willing to guarantee himself that the host system won't change between cache reuse.
 
-It can hence be enabled in these contexts with `TIPI_CACHE_FORCE_ENABLE=ON`.
+It can hence be enabled in these contexts by defining the environment variable `TIPI_CACHE_FORCE_ENABLE=ON`.
 
 ## Rationale
 C++ applications often take longer to compile than the developer has time to wait, which cause slow iteration cycles and thus reduces developer productivity. A common solution is to tighten the scope of the build: consuming dependencies as pre-compiled libraries. This, however, increases the risk of version and ABI mismatches, and thus of shipping bugs to production.
 
-With `cmake-re` we decided to provide a solution based on __maximizing building from source__  with the same toolchain flags to ensure full correctness of the resulting apps, while __maximizing cached builds__ to improve developer iteration cycles : fast+correct.
+With `cmake-re` we decided to provide a solution based on __maximizing building from source__  with the same toolchain flags to ensure full correctness of the resulting apps, while __maximizing cached builds__ to improve developer iteration cycles: fast+correct.
 
 Each git revision is cached incrementally in a space efficient _comprehensive pack_ file combining the advantages of pre-built binaries and build from sources.
 
@@ -28,7 +28,7 @@ Each git revision is cached incrementally in a space efficient _comprehensive pa
 
 tipi achieves cacheable, correct and repeatable builds for any codebase with caching by relying on the tipi source mirroring mechanisms. This avoids the requirement of required relocatable build or install tree for source code with manually written build scripts and avoids the necessity to patch cached files on extraction.
 
-Whenever you launch a build tipi will produce a mirror of your sources either locally or remotely. This mirroring happens with git by also taking in account your uncommitted or ignored data for the build hash.
+Whenever you launch a build, tipi will produce a mirror of your sources either locally or remotely. This mirroring uses git but also takes in account your uncommitted or ignored data.
 
 If you want to fully ignore data for the build you can add them to the `.tipiignore` file.
 
@@ -36,7 +36,7 @@ If you want to fully ignore data for the build you can add them to the `.tipiign
 ## Comprehensive packs
 ![Multiple revisions are packed together](./assets/cache/04-comprehensive-packs.png)
 
-The cache mechanism first queries the global `cache.tipi.build` storage. If the code compiled has already been built by a secure tipi.build cloud runner for the same compiler and set of flags ( i.e. So-called _ABI-hash_ ) the cache is pulled from the global build cache.
+The cache mechanism first queries the global `cache.tipi.build` storage. If the code has already been built by a secure tipi.build cloud runner for the same compiler and set of flags ( i.e. So-called _ABI-hash_ ) the cache is pulled from the global build cache.
 
 The global `cache.tipi.build` contains a curated list of open-source projects cached for the default toolchains delivered by tipi.
 

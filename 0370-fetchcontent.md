@@ -10,8 +10,8 @@ One of the built-in CMake package manager that is used broadly is the `FetchCont
 
 **Advantages :**
   - Without changes `FetchContent` is automatically cached.
-  - `tipi . -t linux -u` injects automatically the cmake-tipi-provider. 
-  - CMakeLists.txt stays fully compatible without tipi just with plain CMake
+  - `tipi . -t linux -u` automatically injects the cmake-tipi-provider. 
+  - `CMakeLists.txt` stays fully compatible to plain CMake without `tipi` or `cmake-re`
  
 ## How to use it ?
 Exactly as the CMake FetchContent documentation requires, the build will just be cached and faster to restore.

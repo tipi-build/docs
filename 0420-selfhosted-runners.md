@@ -36,7 +36,7 @@ The file specifying how to connect to the selfhosted runner has the following sy
 ```
 
 The file can be passed to `cmake-re` in 2 ways : 
-* Either By setting the environment variable `selfhosted-runner.json`
+* Either By setting the environment variable `TIPI_SELFHOSTED_RUNNER` with the full path to your `selfhosted-runner.json` file
 * Or named `<toolchain-name>.json` stored aside the `<toolchain-name>.cmake` to use for the selfhosted runner.
 
-The second option helps when a dedicated runner with custom hardware need to be used by default for a given `-DCMAKE_TOOLCHAIN_FILE=`.
+The second option is particularly useful to provide useful default dedicated runners for `-DCMAKE_TOOLCHAIN_FILE=` toolchains (for example with custom hardware).

@@ -3,9 +3,9 @@ title: 🪩 Developer Machine Digital Twin
 aliases: [ ]
 ---
 
-`cmake-re` build hermeticity and remoting is based on the concept of digital twins. When a build is launched the developer-machine workspace pointed to by the source directory of cmake-re is replicated / teleported to a fresh instance of the selected [Environment](./0400-environments.md): the developer-machine digital twin.
+`cmake-re` build hermeticity and remoting is based on the concept of digital twins. When a build is launched the developer-machine workspace pointed to by the source directory of cmake-re is replicated to a fresh instance of the selected [Environment](./0400-environments.md): the _developer-machine digital twin_.
 
-A developer-machine digital twin isn't a full copy of the local developer machine, instead it's a short-lived instance of an hermetic environment provided with the necessary inputs for the build ( _i.e._ source code, git access tokens... ) : A freshly provisioned container or virtual machine started on demand in the user local machine or cloud account.
+A developer-machine digital twin isn't a full copy of the local developer machine, instead it's a short-lived instance of an hermetic environment provided with the necessary inputs for the build ( _i.e._ source code, git access tokens... ): A freshly provisioned container or virtual machine started on demand in the user local machine or cloud account.
 
 It is started for the current build session, individual to each user and gets the source code transferred to it directly from client build requests.
 

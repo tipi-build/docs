@@ -8,7 +8,7 @@ All containers builds are stored on the host filesystem. Which means they are di
   * `cmake-re`: In the folder pointed by `-B <build-folder>` 
   * `tipi` : In `build/<toolchain-name` 
 
-`cmake-re` creates indirections with symlink to provide access to it, they are located on unixes and windows in `$HOME/.tipi/containers-workdirs`.
+`cmake-re` creates indirections with symlink to provide access to it, they are located in `$HOME/.tipi/containers-workdirs`.
 
 These are named after the container that were used for the build `$HOME/.tipi/containers-workdirs/<container-name>-<env-hash>`.
 
@@ -17,13 +17,12 @@ These are named after the container that were used for the build `$HOME/.tipi/co
 
 The choice for the location and the symlinks indirection is based on leveraging default VirtioFS file sync on macOS platform for *docker* containers, while working for Windows and Linux at the same time.
 
-This choices maximize build speed by using native IO performance without the overhead of containers *overlayfs* while limiting copying from and to containers while it isn't necessary.
-
+This choice maximizes build speed by using native IO performance without the overhead of docker's *overlayfs* while limiting copying from and to containers whenever possible.
 
 ## `--host` build
-They are on your `--host` symlinked from the **invariant** build cache location.
+They are on your `--host`, symlinked from the **invariant** build cache location.
   * `cmake-re`: In the folder pointed by `-B <build-folder>` 
-  * `tipi` : In `build/<toolchain-name` 
+  * `tipi` : In `build/<toolchain-name>` 
 
 ## `--remote` build
 Starting with `tipi` and `cmake-re` `v0.0.51` you can download build results directly onto your machine without downloading the full build directory.
@@ -33,5 +32,5 @@ Starting with `tipi` and `cmake-re` `v0.0.51` you can download build results dir
 - Download multiple files with a wildcard `tipi -t linux-cxx17 download './build/linux-cxx17/bin/src/string*'`
 > Note the single quote to avoid local shell expansion, so that all remote files get downloaded.
 
-- To always synchronize the full build tree it's possible to build the application by appending **`--sync-build`** to the command line : 
+- To synchronize the full build tree after the remote build append **`--sync-build`** to the build command line : 
   - `tipi -t linux-cxx17 -u build . --sync-build -- -DCMAKE_TOOLCHAIN_FILE=environments/linux.cmake`

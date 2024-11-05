@@ -15,24 +15,24 @@ The OS images are described by `pkr.js` folders and files to provide reproducibl
 They can be used on a local machine with `cmake-re` or on a remote build orchestrator ( _e.g._ tipi.build ).
 
 ## Generalization : Content Adressable Toolchains
-Environments are passed via `-DCMAKE_TOOLCHAIN_FILE=` to `cmake-re`, but the real CMAKE_TOOLCHAIN_FILE used for the build will be substitutd to another location **generalized** by `cmake-re`. 
+Environments are passed via `-DCMAKE_TOOLCHAIN_FILE=` to `cmake-re`, but the real CMAKE_TOOLCHAIN_FILE used for the build will be substituted for another location **generalized** by `cmake-re`. 
 
-Generalization in `cmake-re` means that any `-DCMAKE_TOOLCHAIN_FILE=<tolchain-name>.cmake` passed get it's parent directory transferred in a fixed centralized content-addressable location on every system, the path is based on the folder content.
+Generalization in `cmake-re` means that any `-DCMAKE_TOOLCHAIN_FILE=<tolchain-name>.cmake` passed has it's parent directory transferred to a fixed, centralized and content-addressable location on every system, the path is based on the folder content.
 
-If the folder content is binary equal the toolchains enables toolchains to be used as a shareable cache-key across projects. 
+The toolchain's fingerprint is then used as a (shareable) cache-key across projects. 
 
-A Generalized toolchains is a toolchain and it's accompanying environment specification cleaned up of any developer system-specific elements, essentially this guarantees that :
+A **Generalized toolchain** is a toolchain and it's accompanying environment specification cleaned up of any developer system-specific elements. Essentially this guarantees that:
   1. Toolchains will always be located based on a Content Addressable location 
   2. File times won't affect the environment build process ( e.g. To guarantee cache use on OS Image / Docker creation )
 
 ### Configurability
-Because generalization essentially picks all files in the toolchain directory, while not necessary, it's possible to configure it with [`<toolchain-name>.layers.json files`](./0410-environments-layering.md) to better compose and isolate toolchains from each other sitting in the same folder.
+Because generalization essentially picks all files in the toolchain directory, while not necessary, it's possible to configure it with [`<toolchain-name>.layers.json files`](./0410-environments-layering.md) to better compose and isolate toolchains from each other even when they are located right next to each other.
 
 
 ## OS Image File Lookup Rule
 The environments specifications are pointed to for a build via the `cmake-re` `-DCMAKE_TOOLCHAIN_FILE=<toolchain>.cmake` command line parameter. 
 
-OS Image are described as `.pkr.js/` folders, in order to determine within which OS Image the build will be run, `cmake-re` looks for the **most specialized** OS Image it can find picking : 
+OS Image are described as `.pkr.js/` folders. In order to determine the OS Image `cmake-re` looks for the **most specialized** OS Image it can find picking : 
 1. The `<toolchain>.pkr.js` with the **exact same name** than `<toolchain>.cmake`
 2. The next `.pkr.js` file which **shares the most starting character** with `<toolchain>` in the same folder.
 3. If this doesn't yield any results, it perfoms the same search in the default environments directory `/usr/local/share/.tipi/<distro>/environments/` (or `C:\.tipi\<distro>\environments\`).

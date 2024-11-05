@@ -33,7 +33,7 @@ cmake-re [<<path-to-source>>]
 ```
 
 ### hermetic, `--remote`, `--host`
-Not specifying any of these options provides an hermetic build by default.
+Not specifying any of these options launches a containerized build by default.
 * `--remote`                Builds remotely in an isolated + hermetic environment.
 * `--host`                  Disable local containerized build. Builds locally on this host without isolation or hermeticity but with caching.
 * `-j, --jobs <cpus>`       How many CPU cores have to be dedicated to the build.
@@ -58,7 +58,7 @@ Not specifying any of these options provides an hermetic build by default.
 ## `--build <<build-dir>>` : Build
 Build the CMake Project.
 
-```json
+```
 [ 
   --build {
       <<build-dir>> 
@@ -72,8 +72,8 @@ Build the CMake Project.
 ] 
 ```
 
-* `--target, -t <<target>>` Build <tgt> instead of default targets.
-* `--config <<config>>`     For multi-configuration tools, choose <cfg>.
+* `--target, -t <<tgt>>` Build `<tgt>` instead of default targets.
+* `--config <<cfg>>`     For multi-configuration tools, choose `<cfg>`.
 * `--clean-first`           Build target 'clean' first, then build.
 * `-- <build-tool-options>...` Arguments to forward unchanged to the build tool
 
@@ -81,7 +81,7 @@ Build the CMake Project.
 ## `--run-test` : Test
 Control test executions, run tests on each build together with `--monitor`
 
-```json
+```
 [ 
   --build {
       <<build-dir>> 
@@ -128,4 +128,4 @@ Simply this page.
 
 * `-?, -h, --help`
 * `--version, -V`           Print version information
-* `-v, --verbose`           verbosity level. Can be repeated to trace all e.g. -vv .
+* `-v, --verbose`           verbosity level. Can be repeated to trace all e.g. `-vv`.

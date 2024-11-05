@@ -57,12 +57,11 @@ Add a `<toolchain-name>.layers.json` file next to the `<toolchain-name>.cmake` f
 - `?` single char which is not a directory separator
 - `*` any number of chars which are not a directory separator
 - `**` match everything at any nesting
-- `../` go up one level .... *obviously*
+- `../` go up one level
 - Exclude rules can be written by having them start with `!` (e.g. `!**/.gitignore` will exclude any `.gitignore` file under the *search base folder*)
 
 Some notable things:
 - the *search base folder* is the parent folder of `<toolchain-name>.cmake`
 - if one (or more) `../` folder navigations happen, the *virtual root folder* will be moved up by the corresponding paths / the nesting will be replicated as necessary
 - the rules **have to be** relative to *search base folder*
-- rules are overridden by order so inclusions / exclusions can be combined quite flexibly
-
+- rules are overridden by order so inclusions / exclusions can be combined

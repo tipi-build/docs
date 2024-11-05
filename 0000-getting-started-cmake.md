@@ -5,7 +5,7 @@ aliases: [ "00-getting-started" ]
 
 In this getting started guide we will setup your machine to perform local CMake containerized hermetic and cached builds.
 
-1. Install `cmake-re` a drop in replacement for CMake :
+1. Install `cmake-re` as drop in replacement for CMake:
 
 ```bash
 # Linux & MacOS:
@@ -24,11 +24,11 @@ In this getting started guide we will setup your machine to perform local CMake 
 
 > ##### Prerequisites for Hermetic Builds
 >
-> For local containerized and hermetic build you need to **install docker** on your system, if you can't install it you can rely on `--remote` and a tipi.build account to run the container on our cloud. Or resort to cached but non-hermetic builds with `--host`.
+> For local containerized and hermetic build you need to **install docker** on your system. Ff you can't install it, you can use the tipi.build cloud instead with `--remote` and a tipi.build account. Finally you can launch non-hermetic builds with `--host` builds but still benefit from local caching.
 >
 > ➡ [Docker Engine Installation Guide](https://docs.docker.com/engine/install/) 
 >
-> ❗️**Docker Engine 27.2.0** or newer required : Check your installed version with `docker version`
+> ❗️**Docker Engine 27.2.0** or newer required: Check your installed version with `docker version`
 > 
 
 2. [Download our get-started example](https://github.com/tipi-build/get-started) `CMakeLists.txt` and a CMake RE environment decription ( `CMAKE_TOOLCHAIN_FILE` ) : 
@@ -43,7 +43,7 @@ The **get-started** example presents a CMake Project depending on the [fmtlib](h
 > 
 > Environment Descriptions are made of :
 >   - * A `CMAKE_TOOLCHAIN_FILE`, _e.g._ `environment/linux.cmake`
->   - * An accompanying .pkr.js and Dockerfile, _e.g._ `environments/linux.pkr.js/`, `environments/linux.pkr.js/linux.Dockerfile`
+>   - * An accompanying `.pkr.js` and `Dockerfile`, _e.g._ `environments/linux.pkr.js/`, `environments/linux.pkr.js/linux.Dockerfile`
 >
 > Multiple CMAKE_TOOLCHAIN_FILE with longer names than .pkr.js environments descriptions can share the same base system, more details in [Environments](/documentation/0400-environments).
 > 
@@ -114,16 +114,14 @@ int main() {
       "repository": "linux",
       "tag": "latest"
     }
-  ]
-  ,"_tipi_version":"{{tipi_version_hash}}"
-
-
+  ],
+  "_tipi_version":"{{tipi_version_hash}}"
 }
 ```
 Aside of the `CMAKE_TOOLCHAIN_FILE` the `pkr.js` folder specifies the environment that will be used for the build.
-This is a [packer docker builder configuration](https://developer.hashicorp.com/packer/integrations/hashicorp/docker/latest/components/builder/docker), **different to plain packer** `cmake-re` will build the Docker if it cannot be found on a registry or changed when a `linux.Dockerfile` exists inside the `pkr.js` folder.
+This is a [packer docker builder configuration](https://developer.hashicorp.com/packer/integrations/hashicorp/docker/latest/components/builder/docker), **different to plain packer** `cmake-re` will build the Docker image if it cannot be found on a registry or if any change was made to the `linux.Dockerfile`.
 
-In this case we just take the default linux tipi environment with a full fledged clang toolchain. 
+In this case we just take the default linux tipi environment with its clang toolchain. 
 
 More details in [Environments](/documentation/0400-environments)
 
@@ -133,6 +131,8 @@ More details in [Environments](/documentation/0400-environments)
 $> cmake-re -S . -B build/ -DCMAKE_TOOLCHAIN_FILE=environments/linux.cmake
 ```
 
-This will launch the container on your machine and execute the build inside it, while caching the build execution.
+This will launch the container on your machine and execute the build inside it. Build artifacts will be cached.
 
-You can get the build to rerun on any changes and check your test outputs with `--monitor` and `--run-test all`, alternatively if you don't want to run the containerized build but still use caching on your bare metal host, you can use : `--host`.
+Alternatively you can run the build on your *bare metal* host by adding `--host` to the command line.
+
+> **Hint:** for a "compile & test as you type" experience try adding `--monitor` and `--run-test all` to the command line above. `cmake-re` will then trigger a (re)build and test execution each time a file in your project is changed.
