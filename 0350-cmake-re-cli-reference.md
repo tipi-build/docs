@@ -12,7 +12,7 @@ The key differences to plain `cmake` are :
   * [`--host`](#hermetic---remote---host) Disable local containerized build. Builds locally on this host without isolation or hermeticity but with caching.
   * [`--monitor|-m`](#--monitor-m) Monitors source tree, rebuilding on every changes.
 
-## `cmake-re` : Configure
+## Configure : `cmake-re`
 Configures and Generate the build system. By default CMake RE relies on Ninja
 ```
 cmake-re [<<path-to-source>>]
@@ -32,7 +32,7 @@ cmake-re [<<path-to-source>>]
   [-j|--jobs <cpus>]   
 ```
 
-### hermetic, `--remote`, `--host`
+### Hermetic, `--remote`, `--host`
 Not specifying any of these options launches a containerized build by default.
 * `--remote`                Builds remotely in an isolated + hermetic environment.
 * `--host`                  Disable local containerized build. Builds locally on this host without isolation or hermeticity but with caching.
@@ -52,10 +52,10 @@ Not specifying any of these options launches a containerized build by default.
 
 
 ### `--monitor, -m`
-* `--monitor, -m`           Monitors source tree, rebuilding on every changes, reconfiguring as needed.
+* `--monitor, -m`           Monitors source tree, rebuilding on every change, reconfiguring as needed.
 
  
-## `--build <<build-dir>>` : Build
+## Build : `--build <<build-dir>>`
 Build the CMake Project.
 
 ```
@@ -78,7 +78,7 @@ Build the CMake Project.
 * `-- <build-tool-options>...` Arguments to forward unchanged to the build tool
 
 
-## `--run-test` : Test
+## Test : `--run-test`
 Control test executions, run tests on each build together with `--monitor`
 
 ```

@@ -14,20 +14,16 @@ by giving developers:
 - Hermeticity & Reproducibility for CMake
 - Build Remoting and Distribution
 - enhanced CMake `FetchContent` for smart dependencies fetching and build caching: no need to bother with packages
-- Powerful cross-platform parallel build and test environments in the cloud
+- Powerful cross-platform parallel build and test environments in the cloud or self-hosted
 - Build toolchain fully included and extensible for Linux, macOS, and Windows or custom platforms
 
 ### Full compatibility & Full Flexibility
 
 One of the overarching design thoughts of CMake RE is to augment every developer's CMake experience while keeping a functional plain `cmake` workflow.
 
-By simply replacing the `cmake` command with `cmake-re` you build gains:
+The `cmake-re` command is a compatible drop-in replacement for `cmake`, enabling **hermetic** and **cached** local and remote builds.
 
-- Local containerized reproducible builds
-- Build caching
-- Remote builds in custom self-hosted build runners
-- Access to fully managed autoscaled cloud build runners
-- Build distribution
+Wether the builds is run on a public cloud, on a private self-hosted deployment in containers or on bare-metal hosts this is the developer's choice.
 
 ### Build from sources without paying the cost
 

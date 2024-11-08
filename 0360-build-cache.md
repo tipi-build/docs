@@ -6,17 +6,17 @@ aliases: [ "10-tipi-cache", "10-build-cache", "1000-build-cache" ]
 Starting from `v0.0.35` tipi provides an automatic versioning-abiding build cache **in remote builds**.
 
 ## Usage
-The build cache is **enabled by _default_ on containerized & `--remote` builds**. This means that _any_ build will benefit from automatic caching.
+The build cache is **enabled by _default_ both on containerized and `--remote` builds**. This means that _any_ build will benefit from automatic caching.
 
 `cmake-re` runs containerized builds by default if `--host` is not provided.
 
 ### On `--host` builds
-As on `--host` builds `cmake-re` cannot guarantee the same level of isolation and repeatability caching is disabled by default, it can however be enabled if the user is willing to guarantee himself that the host system won't change between cache reuse.
+As on `--host` builds `cmake-re` cannot guarantee the same level of isolation and repeatability, caching is disabled by default. It can however be enabled if the user is willing to guarantee himself that the host system won't change between cache reuse.
 
 It can hence be enabled in these contexts by defining the environment variable `TIPI_CACHE_FORCE_ENABLE=ON`.
 
 ## Rationale
-C++ applications often take longer to compile than the developer has time to wait, which cause slow iteration cycles and thus reduces developer productivity. A common solution is to tighten the scope of the build: consuming dependencies as pre-compiled libraries. This, however, increases the risk of version and ABI mismatches, and thus of shipping bugs to production.
+C++ applications often take longer to compile than the developer has time to wait, which cause slow iteration cycles and thus reduce developer productivity. A common solution is to tighten the scope of the build: consuming dependencies as pre-compiled libraries. This, however, increases the risk of version and ABI mismatches, and thus of shipping bugs to production.
 
 With `cmake-re` we decided to provide a solution based on __maximizing building from source__  with the same toolchain flags to ensure full correctness of the resulting apps, while __maximizing cached builds__ to improve developer iteration cycles: fast+correct.
 
