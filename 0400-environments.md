@@ -1,77 +1,118 @@
 ---
-title: Environments
+title: 💻 Environments
 aliases: [ "00-environments", "04-environments" ]
 ---
 
-A _tipi.build_ environment consist of 2 elements:
+A _CMake RE_ environment consist of 2 elements:
 
-- CMake toolchain file
-- OS image
+1. CMake toolchain file, as passed via `-DCMAKE_TOOLCHAIN_FILE=`
+2. OS image specification in a `.pkr.js/` folder :
+  - Dockerfile
+  - Virtual Machine Image
 
-The OS images are described via the help of Packer files and can be automatically deployed on the tipi.build cloud as many-core build agent or as execution environment for unit test.
+The OS images are described by `pkr.js` folders and files to provide reproducible, containerized hermetic builds. 
 
-Officially supported environments can be found as `<environment>.pkr.js` + `<environment>.cmake` file pairs in the [tipi-build/environments](https://github.com/tipi-build/environments) GitHub repository.
+They can be used on a local machine with `cmake-re` or on a remote build orchestrator ( _e.g._ tipi.build ).
 
-While emphasizes on providing a default environment for each major platform, community maintained or private environments are welcome.
+## Generalization : Content Adressable Toolchains
+Environments are passed via `-DCMAKE_TOOLCHAIN_FILE=` to `cmake-re`, but the real CMAKE_TOOLCHAIN_FILE used for the build will be substituted for another location **generalized** by `cmake-re`. 
 
-As a good starting point tipi always provides at clean and up-to-date clang with `libc++` STL for following environments:
+Generalization in `cmake-re` means that any `-DCMAKE_TOOLCHAIN_FILE=<tolchain-name>.cmake` passed has it's parent directory transferred to a fixed, centralized and content-addressable location on every system, the path is based on the folder content.
 
-- WebAssembly: `tipi -t wasm build . `
-- Linux:  `tipi -t linux build . `
-- Windows: `tipi -t windows build . `
-- macOS: `tipi -t macos build . `
+The toolchain's fingerprint is then used as a (shareable) cache-key across projects. 
 
-Variations specifying C++ standard versions are also available (adding the suffix `-cxx17` or `-cxx20`).
+A **Generalized toolchain** is a toolchain and it's accompanying environment specification cleaned up of any developer system-specific elements. Essentially this guarantees that:
+  1. Toolchains will always be located based on a Content Addressable location 
+  2. File times won't affect the environment build process ( e.g. To guarantee cache use on OS Image / Docker creation )
 
-> hint: The `.` (dot) in the commands above can be any path containing C++ source files or a C++ CMake project.
+### Configurability
+Because generalization essentially picks all files in the toolchain directory, while not necessary, it's possible to configure it with [`<toolchain-name>.layers.json files`](./0410-environments-layering.md) to better compose and isolate toolchains from each other even when they are located right next to each other.
 
-## Building in the tipi.build cloud
 
-```bash
-tipi  -t linux-cxx17 build .
+## OS Image File Lookup Rule
+The environments specifications are pointed to for a build via the `cmake-re` `-DCMAKE_TOOLCHAIN_FILE=<toolchain>.cmake` command line parameter. 
+
+OS Image are described as `.pkr.js/` folders. In order to determine the OS Image `cmake-re` looks for the **most specialized** OS Image it can find picking : 
+1. The `<toolchain>.pkr.js` with the **exact same name** than `<toolchain>.cmake`
+2. The next `.pkr.js` file which **shares the most starting character** with `<toolchain>` in the same folder.
+3. If this doesn't yield any results, it perfoms the same search in the default environments directory `/usr/local/share/.tipi/<distro>/environments/` (or `C:\.tipi\<distro>\environments\`).
+
+### OS Image Lookup Example 
+Given the following example set of toolchain files : 
+```
+└── environments
+    ├── linux-cxx17.cmake
+    ├── linux-cxx20.cmake
+    ├── linux-cxx23.cmake
+    ├── linux.pkr.js
+    │   └── linux.pkr.js
+    └── linux-cxx23.pkr.js
+        ├── linux-cxx23.Dockerfile
+        └── linux-cxx23.pkr.js
 ```
 
-Will provision an environment as described in `/usr/local/share/.tipi/<distro>/environments/linux.pkr.js` (or `C:\.tipi\<distro>\environments\linux.pkr.js`) on the tipi.build and run the build using your tipi subscription.
+When `cmake-re` is provided `-DCMAKE_TOOLCHAIN_FILE=environments/linux-cxx23.cmake` the OS Image description `environments/linux-cxx23.pkr.js/` will be picked, while if `-DCMAKE_TOOLCHAIN_FILE=environments/linux-cxx17.cmake` or `-DCMAKE_TOOLCHAIN_FILE=environments/linux-cxx20.cmake` is provided the build will run within the environment described by `environments/linux.pkr.js/`.
 
-All required files will be synchronized bidirectionally to and from the tipi build node as necessary.
+Because in this example there are no `environments/linux-cxx23.layers.json` any change to `linux.pkr.js` would also affect rebuilding any code dependent `linux-cxx23.cmake`, if this isn't desired it's possible to add [`linux-cxx23.layers.json`](./0410-environments-layering.md) to isolate environments, while still giving possibility to compose common cmake modules.  
 
-## Building on your local machine
+## Default Environments
+Officially supported environments can be found in the [tipi-build/environments](https://github.com/tipi-build/environments) GitHub repository.
 
-```bash
-tipi -t linux-cxx17 .
+They are unpacked in the default environments directory `/usr/local/share/.tipi/<distro>/environments/` (or `C:\.tipi\<distro>\environments\`).
+
+## Custom Environments
+
+> **Requirement:** The environment shall contain a `cmake-re` remote rpc server
+> This can be setup as in the following example.
+
+To get the minimum required to bootstrap an hermetic build, a ready-made setup script for your environment can be setup for use with CMake RE : 
+
+| System Family  | CMake RE remote server setup script                                                 |
+|----------------|-------------------------------------------------------------------------------------|
+| Centos, Redhat | https://raw.githubusercontent.com/tipi-build/cli/master/install/container/ubuntu.sh |
+| Ubuntu, Debian | https://raw.githubusercontent.com/tipi-build/cli/master/install/container/centos.sh |
+
+### Custom Docker Environment Example
+These scripts could be used as follow to make a build environment based on Ubuntu 22.04 : 
+
+#### `environments/linux.pkr.js/linux.Dockerfile`
+```Dockerfile
+FROM ubuntu:22.04
+ENV TIPI_DISTRO_MODE=all
+
+ARG DEBIAN_FRONTEND=noninteractive # avoid tzdata asking for configuration
+# Install needed tools
+RUN apt update -y && apt install -y curl
+RUN curl -fsSL https://raw.githubusercontent.com/tipi-build/cli/master/install/container/ubuntu.sh -o ubuntu.sh && /bin/bash ubuntu.sh
+EXPOSE 22
 ```
 
-When your machine fits your target environment you can also use the tipi provided toolchain to build locally.
 
-## Running apps on remote environments
+#### `environments/linux.pkr.js/linux.pkr.js`
 
-**Note:** Make use of your subscription to run your application on the remote tipi node.
-
-Run the binary built from the `./app.cpp` source file:
-
-```bash
-tipi -t macos-cxx17 .run build/bin/app
-```
-
-> Notes:
 >
-> - all parameters after `.run` are forwarded to the remote environment
-> - the standard IO is redirected to the calling console
+> **NOTE:** `cmake-re` will pull the image `tipibuild/testapp-cmake-re-containerized` and use it if it exists, if it doesn't exists or is outdated the `environments/linux.pkr.js/linux.Dockerfile` will be used to create or update it.
+>
 
-## Running within the tipi environment for your local machine
-
-```bash
-tipi run build/bin/app
+```js
+{
+  "variables": { },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "tipibuild/testapp-cmake-re-containerized:{{tipi_cli_version}}",
+      "commit": true
+    }
+  ],
+  "post-processors": [
+    { 
+      "type": "docker-tag",
+      "repository": "linux",
+      "tag": "latest"
+    }
+  ]
+  ,"_tipi_version":"{{tipi_version_hash}}"
+}
 ```
 
-Will run a command within the tipi environment on your local machine. Note the absence of `.` in front of `run` vs. `.run` from the previos example.
 
-## Customizing environments
-
-Tipi environments can be customized to your need by creating the required set of CMake toolchain and Packer file.
-
-Examples can be found at [tipi-build/environments](https://github.com/tipi-build/environments) .
-
-Once they are stored in `/usr/local/share/.tipi/<distro>/environments/<environment>.pkr.js` and `/usr/local/share/.tipi/<distro>/environments/<environment>.cmake` a `tipi build . -t <environment>` will start the image creation the tipi cloud and then build the current sources.
-
-[^1]: to have an environment definition curated, please submit a pull request to [tipi-build/environments](https://github.com/tipi-build/environments) on GitHub. Tipi will then take care of having the images maintained and deployment ready at all time.

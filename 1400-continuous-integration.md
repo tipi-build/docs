@@ -3,6 +3,13 @@ title: Continuous integration
 aliases: [ "05-continuous-integration" ]
 ---
 
+## Sharing tipi remote jobs ``
+When using tipi in CI workflow, you might end up having more CI build running than available tipi jobs following your subscription.
+
+You can queue the build execution with `tipi --wait-build-queue`.
+
+This allows remote builds on the CI in order to share tipi remote jobs without interfering.
+
 ## With GitHub Actions 
 
 The tipi subscription can be used to run your build and test your project in GitHub actions.

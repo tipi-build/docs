@@ -1,6 +1,6 @@
 ---
-title: 🚀 Getting started C++
-aliases: [ "00-getting-started" ]
+title: tipi - 🔮 EXPERIMENTAL - Getting started with tipi CMakeLists generator
+aliases: [ "0101-getting-started-cpp" ]
 ---
 
 Setup your machine:

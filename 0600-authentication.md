@@ -3,7 +3,7 @@ title: Authentication
 aliases: [ "04-authentication", "06-authentication" ]
 ---
 
-With your **tipi vault** you get a secure storage for - among other things - the access tokens to your private (GitHub) repositories, 
+For `cmake-re` you can authenticate with your **tipi vault** you get a secure storage for - among other things - the access tokens to your private (GitHub) repositories, 
 meaning that tipi instances on machines you linked to your account get to access privates repositories (that you authorized).
 
 During the on-boarding on [tipi.build](/) you will be asked to create said _vault_ and to provide a passphrase for it. That passphrase is used during the browser session to encrypt the vault and is never sent to our servers.
