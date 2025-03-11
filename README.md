@@ -42,7 +42,7 @@ To get the full Tipi experience we offer our users a free trial.
 Yes! You can benefit from CMake RE from pure local use, guaranteeing build reproducibility with CMake RE containerized builds and CMake RE L1 local caching.
 
 ### Open Source  
-We believe in the power of the community and that is why we created cmake-re free forever and we are contributors of many open source project. You can access our Open Source projects on [our GitHub organisation](https://github.com/tipi-build/).
+We believe in the power of the community and that is why we created cmake-re free and we are contributors of many open source project. You can access our Open Source projects on [our GitHub organisation](https://github.com/tipi-build/).
 
 For teams and company-wide usage we also have a commercial offer, see [Support Plans](/pricing).
 

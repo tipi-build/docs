@@ -10,26 +10,19 @@ One of the built-in CMake package manager that is used broadly is the `FetchCont
 
 **Advantages :**
   - Without changes `FetchContent` is automatically cached.
-  - `tipi . -t linux -u` automatically injects the cmake-tipi-provider. 
+  - `cmake-re` automatically injects the cmake-tipi-provider. 
   - `CMakeLists.txt` stays fully compatible to plain CMake without `tipi` or `cmake-re`
  
+## `HermeticFetchContent` : CMake FetchContent with Hermeticity, SBOMs and foreign build systems support
+We also provides an extension to the `FetchContent` API [HermeticFetchContent](https://github.com/tipi-build/hfc) to use FetchContent as a full fledged package manager.
+
+* ➡ Add `include(HermeticFetchContent)` to CMakelists
+* 📘 Learn more in the [reference documentation](https://tipi-build.github.io/hfc/)
+* 🚀 [Get Started with one of the example](https://github.com/tipi-build/hfc/tree/main/example)
+
 ## How to use it ?
 Exactly as the CMake FetchContent documentation requires, the build will just be cached and faster to restore.
 `export CMAKE_TIPI_PROVIDER_ENABLE=ON`
-
-```cmake
-Include(FetchContent)
-FetchContent_Declare(
-    Boost
-    GIT_REPOSITORY https://github.com/boostorg/boost.git
-    GIT_TAG        32da69a36f84c5255af8a994951918c258bac601 # Boost 1.80
-    )
-FetchContent_MakeAvailable(Boost)
-find_package(boost_filesystem CONFIG REQUIRED)
-
-add_executable(app boost.cpp)
-target_link_libraries(app Boost::filesystem)
-```
 
 ## How does it work ?
 The speedup comes from the fact that instead of using `add_subdirectory` by default as plain FetchContent does, it runs the build of the dependency in a separate CMake context with `cmake-re` git mirroring based caching and installs the build artifacts in a dependency-specific sysroot.
