@@ -4,7 +4,7 @@ aliases: [ "09-shared-cache", "1100-shared-cache" ]
 ---
 
 ## `FetchContent()` as Package Manager
-`cmake-re` [**L1 Build Cache**](./0360-build-cache.md) is a git connected automatic build cache for CMake, it can be used as a C++ package manager or as ⚡ batteries to supercharge your favorite package manager.
+`cmake-re` [**L1 Build Cache**](/documentation/0360-build-cache) is a git connected automatic build cache for CMake, it can be used as a C++ package manager or as ⚡ batteries to supercharge your favorite package manager.
 
 One of the built-in CMake package manager that is used broadly is the `FetchContent()` module. `FetchContent()` is rudimentary and simple and hence slow when starting a fresh build on a CI node or during developer onboarding. The **cmake-tipi-provider** allows to express any dependencies with the best CMake Package Manager out there **FetchContent**.
 
