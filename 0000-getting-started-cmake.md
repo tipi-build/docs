@@ -24,14 +24,14 @@ In this getting started guide we will setup your machine to perform local CMake 
 
 > ##### Prerequisites for Hermetic Builds
 >
-> For local containerized and hermetic build you need to **install docker** on your system. If you can't install it, you can use the tipi.build cloud instead with `--remote`. You can also launch non-hermetic builds with `--host` builds and still benefit from local caching.
+> For local containerized and hermetic builds you need to **install docker** on your system. If you can't install it, you can use the tipi.build cloud instead with `--remote`. You can also launch non-hermetic builds with `--host` builds and still benefit from local caching.
 >
 > ➡ [Docker Engine Installation Guide](https://docs.docker.com/engine/install/) 
 >
 > ❗️**Docker Engine 27.2.0** or newer required: Check your installed version with `docker version`
 > 
 
-2. [Download our get-started example](https://github.com/tipi-build/get-started/archive/refs/heads/main.zip) `CMakeLists.txt` and a CMake RE environment decription ( `CMAKE_TOOLCHAIN_FILE` ) : 
+2. [Download our get-started example](https://github.com/tipi-build/get-started/archive/refs/heads/main.zip) `CMakeLists.txt` and a CMake RE environment description ( `CMAKE_TOOLCHAIN_FILE` ) : 
 ```bash
 git clone https://github.com/tipi-build/get-started.git
 ```
@@ -50,7 +50,7 @@ This will launch the container on your machine and execute the build inside it. 
 > ##### Content of a CMake RE project
 > A CMake RE project is a plain CMake project with the addition of environment descriptions to guarantee the build reproducibility and hermeticity.
 > 
-> This allows CMake builds to always get a well-defined environment for reproducible builds, making **build caching and remoting** possible.
+> This allows CMake builds to always get a well-defined environment for reproducible builds, making **build caching and remote execution** possible.
 > 
 > Environment Descriptions are made of :
 >   - * A `CMAKE_TOOLCHAIN_FILE`, _e.g._ `environment/linux.cmake`
@@ -145,7 +145,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/flags/cxx17.cmake")
   "_tipi_version":"{{tipi_version_hash}}"
 }
 ```
-Aside of the `CMAKE_TOOLCHAIN_FILE` the `pkr.js` folder specifies the environment that will be used for the build.
+Aside from the `CMAKE_TOOLCHAIN_FILE` the `pkr.js` folder specifies the environment that will be used for the build.
 This is a [packer docker builder configuration](https://developer.hashicorp.com/packer/integrations/hashicorp/docker/latest/components/builder/docker), **different to plain packer** `cmake-re` will build the Docker image if it cannot be found on a registry or if any change was made to the `linux.Dockerfile`.
 
 In this specific case we just take the default tipi.build provided linux docker environment with its installed clang toolchain. 

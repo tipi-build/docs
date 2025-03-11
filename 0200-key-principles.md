@@ -3,7 +3,7 @@ title: Key Principles and Goals
 aliases: [ "02-key-principales" ]
 ---
 
-CMake RE helps tackling the biggest challenges in native development :
+CMake RE helps tackle the biggest challenges in native development :
 
 - Build reproducibility for CMake
 - Long build times
@@ -12,18 +12,18 @@ CMake RE helps tackling the biggest challenges in native development :
 by giving developers:
 
 - Hermeticity & Reproducibility for CMake
-- Build Remoting and Distribution
-- enhanced CMake `FetchContent` for smart dependencies fetching and build caching: no need to bother with packages
+- Build Remote Execution and Distribution
+- Enhanced CMake `FetchContent` for smart dependencies fetching and build caching: no need to bother with packages
 - Powerful cross-platform parallel build and test environments in the cloud or self-hosted
 - Build toolchain fully included and extensible for Linux, macOS, and Windows or custom platforms
 
 ### Full compatibility & Full Flexibility
 
-One of the overarching design thoughts of CMake RE is to augment every developer's CMake experience while keeping a functional plain `cmake` workflow.
+One of the overarching design thoughts of CMake RE is to augment every developer's CMake experience while keeping a functional `cmake` workflow.
 
 The `cmake-re` command is a compatible drop-in replacement for `cmake`, enabling **hermetic** and **cached** local and remote builds.
 
-Wether the builds is run on a public cloud, on a private self-hosted deployment in containers or on bare-metal hosts this is the developer's choice.
+Whether the builds is run on a public cloud, on a private self-hosted deployment in containers or on bare-metal hosts this is the developer's choice.
 
 ### Build from sources without paying the cost
 
@@ -41,7 +41,7 @@ Learn more about how tipi environments are specified: [environment](/documentati
 
 ### CMakeLists.txt generation on demand 
 If you have a codebase for which you don't have any CMakeLists.txt and would like to integrate it in your CMake project codebase, cmake-re is distributed with a tool named `tipi`.
-The tool can among many things be used to generate CMakeLists automatically based on source code scanning.
+The tool can, among many things, be used to generate CMakeLists automatically based on source code scanning.
 See [🔮 EXPERIMENTAL - CMakeLists.txt Generator](./1700-build-by-conventions.md)
 
 
@@ -56,7 +56,7 @@ _tipi_ will  install dependencies, environment descriptions and tools for your e
 
 It will also mirror any source you build there, and use path rewriting in compiler and test outputs to make it transparent to you. This mechanism allows for invariant paths in cache binaries, profiling data which makes build and library cache reuse even possible on bare-metal hosts. You can read more about this mechanism in the section about cmake-re [L1 Build Cache](./0360-build-cache.md).
 
-I case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk)
+In case you want to specify an alternate location (if you don't have much space or no permission to write to that part of the disk)
 you should use the mechanisms of file-system junctions and bind mounts.
 
 With this [`cmake-re` guarantees the paths even in non-containerized builds](/documentation/10-tipi-cache) to enable reuse of cached builds artifacts anywhere.
