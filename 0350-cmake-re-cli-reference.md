@@ -4,12 +4,13 @@ title: 👩🏼‍💻 cmake-re --help | Command Line Reference
 
 **CMake RE :** CMake Remote Execution, transparent cmake wrapper with build isolation and caching capabilities.
 
-If you know to use `cmake`, using `cmake-re` is a drop-in replacement which runs cached and hermetic builds by default.
+If you know to use `cmake`, using `cmake-re` is a drop-in which runs cached and hermetic builds by default.
 
 The key differences to plain `cmake` are : 
 
-  * [`--remote`](#hermetic---remote---host) Builds remotely in an isolated + hermetic environment
-  * [`--host`](#hermetic---remote---host) Disable local containerized build. Builds locally on this host without isolation or hermeticity but with caching.
+  * [`--distributed`](#--distributed) Builds on a Remote Build Execution Cluster (e.g. [EngFlow Deployment](https://engflow.com))
+  * [`--remote`](#hermetic---remote---host---distributed) Builds remotely in an isolated + hermetic environment
+  * [`--host`](#hermetic---remote---host---distributed) Disable local containerized build. Builds locally on this host without isolation or hermeticity but with caching.
   * [`--monitor|-m`](#--monitor-m) Monitors source tree, rebuilding on every changes.
 
 ## Configure : `cmake-re`
@@ -32,11 +33,21 @@ cmake-re [<<path-to-source>>]
   [-j|--jobs <cpus>]   
 ```
 
-### Hermetic, `--remote`, `--host`
-Not specifying any of these options launches a containerized build by default.
+### Hermetic, `--remote`, `--host`, `--distributed`
+Not specifying any of these options launches an hermetic containerized build by default.
 * `--remote`                Builds remotely in an isolated + hermetic environment.
 * `--host`                  Disable local containerized build. Builds locally on this host without isolation or hermeticity but with caching.
 * `-j, --jobs <cpus>`       How many CPU cores have to be dedicated to the build.
+
+### `--distributed`
+Distributes the build on a private Remote Build Execution Cluster deployment (e.g. [EngFlow Deployment](https://engflow.com))
+
+Can be used on a default hermetic containerized build or combined with `--remote` or `--host`
+
+#### Environment variables required
+* `RBE_service=<cluster-host>:<port>` : Remote Build Execution Cluster to distribute the build on.
+* `RBE_tls_client_auth_key` : User specific mTLS authentication private key to RBE_service
+* `RBE_tls_client_auth_cert` : User specific mTLS authentication public certificate to RBE_service
 
 ### Mandatory
 * `-S <<path-to-source>`    Path to directory with the `CMakeLists.txt` file of the CMake RE project to build.
