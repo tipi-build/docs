@@ -7,11 +7,11 @@ aliases: [ "06-environment-variables" ]
 
 ## Using a private `cmake-re` deployment instance: `TIPI_ENDPOINT` &amp; `RBE_service`
 
-`cmake-re` can be run on a private cloud deployment or on-prem. All users of that deployment need to specify `TIPI_ENDPOINT` &amp; `RBE_service` in their environment, so that the `cmake-re` and `tipi` CLI access the correct installation.
+`cmake-re` can be run on a private cloud deployment or on-prem. All users of that deployment need to specify `TIPI_ENDPOINT` &amp; `RBE_service` in their environment, so that the `cmake-re` and `tipi` CLI access the correct deployment.
 
 The syntax for these environment variables are : 
-* `TIPI_ENDPOINT=https://<deployment-hostname>` ( without ending `/` )
-* `RBE_service=<cluster-host>:<port>`
+* `TIPI_ENDPOINT=https://<deployment-address>` ( without ending `/` )
+* `RBE_service=<cluster-address>:<port>`
 
 ## Command line authentication
 

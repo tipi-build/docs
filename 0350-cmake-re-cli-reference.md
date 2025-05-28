@@ -4,7 +4,7 @@ title: 👩🏼‍💻 cmake-re --help | Command Line Reference
 
 **CMake RE :** CMake Remote Execution, transparent cmake wrapper with build isolation and caching capabilities.
 
-If you know to use `cmake`, using `cmake-re` is a drop-in which runs cached and hermetic builds by default.
+When familiar with cmake, switching to cmake-re is seamless, with support for cached and hermetic builds by default.
 
 The key differences to plain `cmake` are : 
 
@@ -45,7 +45,7 @@ Distributes the build on a private Remote Build Execution Cluster deployment (e.
 Can be used on a default hermetic containerized build or combined with `--remote` or `--host`
 
 #### Environment variables required
-* `RBE_service=<cluster-host>:<port>` : Remote Build Execution Cluster to distribute the build on.
+* `RBE_service=<cluster-address>:<port>` : Remote Build Execution Cluster to distribute the build on.
 * `RBE_tls_client_auth_key` : User specific mTLS authentication private key to RBE_service
 * `RBE_tls_client_auth_cert` : User specific mTLS authentication public certificate to RBE_service
 
