@@ -5,18 +5,26 @@ aliases: [ "06-environment-variables" ]
 
 
 
-## Using a private tipi.build instance: `TIPI_ENDPOINT`
+## Using a private `cmake-re` deployment instance: `TIPI_ENDPOINT` &amp; `RBE_service`
 
-tipi.build can be run on premise or in a private deployment. All users of that deployment need to specify `TIPI_ENDPOINT` in their environment
-to their `tipi` CLI to access the correct installation.
+`cmake-re` can be run on a private cloud deployment or on-prem. All users of that deployment need to specify `TIPI_ENDPOINT` &amp; `RBE_service` in their environment, so that the `cmake-re` and `tipi` CLI access the correct deployment.
+
+The syntax for these environment variables are : 
+* `TIPI_ENDPOINT=https://<deployment-address>` ( without ending `/` )
+* `RBE_service=<cluster-address>:<port>`
 
 ## Command line authentication
 
 In non-interactive situation (a CI/CD job, other automated usages) it might be required to provide the `tipi` CLI with
 credentials to access private repositories or make use of the tipi subscription.
 
+### tipi vault authentication
 - `TIPI_ACCESS_TOKEN` and `TIPI_REFRESH_TOKEN` are JWT tokens enabling `tipi` to get access to the tipi subscription.
 - `TIPI_VAULT_PASSPHRASE` has to be supplied in situations where the user's Vault must be decrypted (ex. accessing private repositories)
+
+### Distributed build authentication
+- `RBE_tls_client_auth_key` : User specific mTLS authentication private key to RBE_service
+- `RBE_tls_client_auth_cert` : User specific mTLS authentication public certificate to RBE_service
 
 ## Customizing tools distribution `TIPI_DISTRO_JSON`
 
