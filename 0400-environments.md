@@ -56,7 +56,7 @@ When `cmake-re` is provided `-DCMAKE_TOOLCHAIN_FILE=environments/linux-cxx23.cma
 Because in this example there are no `environments/linux-cxx23.layers.json` any change to `linux.pkr.js` would also affect rebuilding any code dependent `linux-cxx23.cmake`, if this isn't desired it's possible to add [`linux-cxx23.layers.json`](./0410-environments-layering.md) to isolate environments, while still giving possibility to compose common cmake modules.  
 
 ## Default Environments
-Officially supported environments can be found in the [tipi-build/environments](https://github.com/tipi-build/environments) GitHub repository.
+Officially supported environments can be found in the [tipi-build/environments](https://github.com/tipi-build/environments) GitHub repository, they can be used as example to build custom environments.
 
 They are unpacked in the default environments directory `/usr/local/share/.tipi/<distro>/environments/` (or `C:\.tipi\<distro>\environments\`).
 
@@ -73,23 +73,31 @@ To get the minimum required to bootstrap an hermetic build, a ready-made setup s
 | Ubuntu, Debian | https://raw.githubusercontent.com/tipi-build/cli/master/install/container/centos.sh |
 
 ### Custom Docker Environment Example
-These scripts could be used as follow to make a build environment based on Ubuntu 22.04 : 
+These scripts could be used as follow to make a build environment based on Ubuntu 24.04 :
 
 #### `environments/linux.pkr.js/linux.Dockerfile`
+
+>
+> **NOTE:** This custom environments doesn't contain any C++, Rust of Swift compiler, only the minimum required to perform cached CMake builds, in custom environments the compiler needs to be provided manually. More examples in [tipi-build/environments](https://github.com/tipi-build/environments)
+
 ```Dockerfile
-FROM ubuntu:22.04
-ENV TIPI_DISTRO_MODE=all
+ARG UBUNTU_24_04="ubuntu@sha256:04f510bf1f2528604dc2ff46b517dbdbb85c262d62eacc4aa4d3629783036096"
+FROM ${UBUNTU_24_04}
 
 ARG DEBIAN_FRONTEND=noninteractive # avoid tzdata asking for configuration
-# Install needed tools
-RUN apt update -y && apt install -y curl
+# Install tipi and cmake-re
+RUN apt update -y && apt install -y curl gettext
 RUN curl -fsSL https://raw.githubusercontent.com/tipi-build/cli/master/install/container/ubuntu.sh -o ubuntu.sh && /bin/bash ubuntu.sh
+USER tipi
+WORKDIR /home/tipi
 EXPOSE 22
 ```
 
+The matching folder `environments/linux.pkr.js/` will be the docker context and all files in this folder will be provided for the build of the container image.
+
+As illustrated in [tipi-build/get-started](https://github.com/tipi-build/get-started), having this container used by `cmake-re` in a build is possible by pointing to the matching CMAKE_TOOLCHAIN_FILE `cmake-re -S . -DCMAKE_TOOLCHAIN_FILE=environments/linux.cmake -B build`.
 
 #### `environments/linux.pkr.js/linux.pkr.js`
-
 >
 > **NOTE:** `cmake-re` will pull the image `tipibuild/testapp-cmake-re-containerized` and use it if it exists, if it doesn't exists or is outdated the `environments/linux.pkr.js/linux.Dockerfile` will be used to create or update it.
 >
@@ -100,7 +108,7 @@ EXPOSE 22
   "builders": [
     {
       "type": "docker",
-      "image": "tipibuild/testapp-cmake-re-containerized:{{tipi_cli_version}}",
+      "image": "tipibuild/testapp-cmake-re-containerized:{{tipi_cli_local_version}}",
       "commit": true
     }
   ],
