@@ -107,7 +107,7 @@ These scripts could be used as follow to make a build environment based on Ubunt
 #### `environments/linux.pkr.js/linux.Dockerfile`
 
 >
-> **NOTE:** This example environment doesn't contain any compiler. The custom environments need to provide the toolchains manually by installing the required tools as required. More complete examples can be found in [tipi-build/environments](https://github.com/tipi-build/environments)
+> **NOTE:** This example environment doesn't contain any compiler. The custom environments need to provide the toolchains manually by installing the required tools. The official reusable environments can serve as-is or as examples : [tipi-build/environments](https://github.com/tipi-build/environments)
 
 ```Dockerfile
 ARG UBUNTU_24_04="ubuntu@sha256:04f510bf1f2528604dc2ff46b517dbdbb85c262d62eacc4aa4d3629783036096"
@@ -146,7 +146,7 @@ The folder `environments/linux.pkr.js/` will be the used as docker build context
   ]
 }
 ```
-> With this environment description `cmake-re` will pull the image `tipibuild/testapp-cmake-re-containerized:latest` and use it is valid.
+> With this environment description `cmake-re` will pull the image `tipibuild/testapp-cmake-re-containerized:latest` and use it if it matches the linux.pkr.js/ content.
 > Should it not exist or be *outdated* the `environments/linux.pkr.js/linux.Dockerfile` will be used to create or update it.
 
 Please note that `cmake-re` will rely on the provided image to contain an installation matching the version of `cmake-re` used on the host system. Interoperability between different versions is not guaranteed. 
@@ -160,7 +160,7 @@ If required, `cmake-re` can inject version information into the environment desc
 > ...
 > ```
 
-**Optionally** the `image` reference in `.pkr.js` environment description can be replaced with a *hard reference* (e.g. the docker image name with a repository digest referencing one exact immutable image) to pin the image. In this case the environment description does not need to contain a Dockerfile.
+**Optionally** the `image` reference in `.pkr.js` environment description can be replaced with a *hard reference* (e.g. the docker image name with a repository manifest digest referencing one exact immutable image) to pin the image. In this case the environment description does not need to contain a Dockerfile.
 
 #### Detection of image validity
 
