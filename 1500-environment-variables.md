@@ -73,3 +73,33 @@ export TIPI_DISTRO_MODE="all" # "full" install - takes ~7gb in TIPI_HOME_DIR
  - or -
 export TIPI_DISTRO_MODE="default" # "light" install for remote builds
 ```
+
+## Tipi container build local registry port `TIPI_LOCAL_REGISTRY_PORT`
+
+> In order to provide a consistent cache keying for containerized (both local and remote) and distributed tipi and cmake-re generate a environment description 
+> that contains a hard reference to the container that will be used to execute the build.
+>
+> This process requires that locally built images (read: a `Dockerfile` is provided as part of the environment specification and there is no matching and valid 
+> image available on the registry) be pushed to a registry to generate that hard reference data if the docker runtime of the host system is not using and OCI
+> compliant internal storage for the images (read: most Docker installations on Linux at time of writing).
+>
+> To automate this process `tipi` and `cmake-re` will start an ephemeral local container registry and push to that as needed to generate the required data.
+
+By default the ephemeral local container registry will be hosted on `127.0.0.1:43113` 
+
+The port can be changed by setting the environment variable `TIPI_LOCAL_REGISTRY_PORT` to any integer value in the range [1024 - 65535].
+
+## Passing additional parameters to the environment build command `TIPI_CONTAINER_BUILD_ADDITIONAL_PARAMETERS`
+
+Additional parameters (docker buildx arguments) can be passed to the environment builder by setting the environment variable `TIPI_CONTAINER_BUILD_ADDITIONAL_PARAMETERS` 
+before running a build that will determine that a container image needs rebuilding.
+
+This can be useful if one needs to set a build tag or image label in a CI setup that is making environment images available to developers:
+
+```bash
+export TIPI_CONTAINER_BUILD_ADDITIONAL_PARAMETERS=--label org.myself.note=hello --tag localref123:latest
+```
+
+After running the build of the container image the image build configuration will contain the `org.myself.note` label and the image will be available as `localref123:latest` on the host.
+
+> Note: changes to this parameters will not be taken into account during the computation of cache keys or the like nor will they trigger a re-build of an otherwise unchanged environment
