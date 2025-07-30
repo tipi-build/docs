@@ -131,18 +131,10 @@ include("${CMAKE_CURRENT_LIST_DIR}/flags/cxx17.cmake")
   "builders": [
     {
       "type": "docker",
-      "image": "tipibuild/tipi-ubuntu:{{tipi_cli_version}}", // The Docker to use
+      "image": "tipibuild/tipi-ubuntu:{{cmake_re_source_hash}}", // The Docker to use
       "commit": true                                         // or update when Dockerfile present
     }
-  ],
-  "post-processors": [
-    { 
-      "type": "docker-tag",
-      "repository": "linux",
-      "tag": "latest"
-    }
-  ],
-  "_tipi_version":"{{tipi_version_hash}}"
+  ]
 }
 ```
 Aside from the `CMAKE_TOOLCHAIN_FILE` the `pkr.js` folder specifies the environment that will be used for the build.
