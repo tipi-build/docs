@@ -136,13 +136,6 @@ The folder `environments/linux.pkr.js/` will be the used as docker build context
       "image": "tipibuild/testapp-cmake-re-containerized:latest",
       "commit": true
     }
-  ],
-  "post-processors": [
-    { 
-      "type": "docker-tag",
-      "repository": "linux",
-      "tag": "latest"
-    }
   ]
 }
 ```
