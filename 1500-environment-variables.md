@@ -103,3 +103,11 @@ export TIPI_CONTAINER_BUILD_ADDITIONAL_PARAMETERS="--label org.myself.note=hello
 After running the build of the container image the image build configuration will contain the `org.myself.note` label and the image will be available as `localref123:latest` on the host.
 
 > ⚠️ Note: changes to this parameters will not be taken into account during the computation of cache keys or the like nor will they trigger a re-build of an otherwise unchanged environment.
+
+## Source map rewriting in compiler output `TIPI_SOURCE_MAP`
+
+By default, `tipi` and `cmake-re` rewrite the paths in the compiler output. Error messages and warnings point to the local files of the main project instead of referencing the internal copies for better ease of use and IDE integrations. To disable this behavior, you can set this environment variable to `OFF`. The default value is `ON`.
+
+```bash
+export TIPI_SOURCE_MAP="OFF"
+```
