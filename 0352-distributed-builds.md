@@ -13,7 +13,7 @@ This supports fully distributed :
 
 The RE API (Remote Execution API) is an open and popular remote execution protocol to enable build and test actions to be executed on remote servers instead of local machines, making builds faster and more scalable.
 
-It founds it's ron in the Google Bazel Build system, it is an open gRPC specification used by many build systemss supporting RBE (Remote Build Execution). `cmake-re` implements it for CMake together with our own fork of `reclient` to remote invocations of compiler, archiver, linker, tests and custom commands.
+Born out of Google's Blaze build system, it is an open gRPC protocol and it is now getting wider adoption outside of Blaze/Bazel. `cmake-re` implements it for CMake together with our own fork of `reclient` to remote invocations of compiler, archiver, linker, tests and custom commands.
 
 ## Usage
 The build distribution only requires authentication certificates to be downloaded from the EngFlow UI and `--distributed` to be passed to the `cmake-re` command line invocations.
