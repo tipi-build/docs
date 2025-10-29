@@ -10,7 +10,6 @@ This supports fully distributed :
 - Linking
 
 ## Remote Execution API (RE-API)
-The Remote Execution & Remote Caching is implemented with the _Remote Execution API_.
 
 The RE-API is an open and popular remote execution protocol to enable builds and test actions to be executed on remote servers instead of local machines, allowing distributed and parallel faster, more scalable builds.
 
