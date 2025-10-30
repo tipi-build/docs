@@ -51,7 +51,7 @@ Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE declares which containe
 >
 > You can use an [existing default environment](/documentation/0400-environments#default-environments) or [specify your own](/documentation/0400-environments#custom-containerized-environments).
 
-The snappiest experience currently is with `--host --distributed` builds, this requires you to have an `--host` build environment matching remote execution, the easiest is to start the build from within the same container than the configured one in the `.pkr.js` file.
+The best experience currently is with `--host --distributed` builds. This requires you to have an `--host` build environment matching remote execution. You can do so by starting the build from within the same container as the one configured in the `.pkr.js` file.
 
 ```bash
 # Disable L1 caching operations
