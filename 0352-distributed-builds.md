@@ -40,7 +40,7 @@ export RBE_tls_client_auth_cert=/path/to/engflow.crt
 
 ### Build `--distributed` your CMake project 
 
-To perform a distributed build, the environment type to use on an EngFlow cluster for the build needs to be provided. This is given in the form of a [_CMake RE Environment Description_](/documentation/0400-environments#custom-containerized-environments).
+In order to run a distributed build, you will need to declare the environment in which it runs. This is given in the form of a [_CMake RE Environment Description_](/documentation/0400-environments#custom-containerized-environments).
 
 Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE specifies which container to use to run the build remotely.
 
