@@ -42,7 +42,7 @@ export RBE_tls_client_auth_cert=/path/to/engflow.crt
 
 In order to run a distributed build, you will need to declare the environment in which it runs. This is given in the form of a [_CMake RE Environment Description_](/documentation/0400-environments#custom-containerized-environments).
 
-Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE specifies which container to use to run the build remotely.
+Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE declares which container image to use when running the build remotely.
 
 > #### Note on environments
 > A _CMake RE Environment Description_, essentially is : 
