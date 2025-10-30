@@ -4,7 +4,7 @@ title: ⚡️ L2 Distributed Builds & Caching
 
 `cmake-re` supports the `--distributed --build` command line flags, scaling CMake builds to thousands of Jobs on RBE build clusters like the EngFlow platform.
 
-This supports fully distributed :
+This supports fully distributed:
 - Compiling
 - Archiving
 - Linking
@@ -16,17 +16,15 @@ The RE API (Remote Execution API) is an open and popular remote execution protoc
 Born out of Google's Blaze build system, it is an open gRPC protocol and it is now getting wider adoption outside of Blaze/Bazel. `cmake-re` implements it for CMake together with our own fork of `reclient` to remote invocations of compiler, archiver, linker, tests and custom commands.
 
 ## Usage
-The build distribution only requires authentication certificates to be downloaded from the EngFlow UI and `--distributed` to be passed to the `cmake-re` command line invocations.
-
 
 ### Authenticate with an mTLS Certificate 
 
 - Head in your browser to `https://<cluster-address>/gettingstarted`
-- Download the mTLS certicates by clicking the Button :
+- Download the mTLS certicates by clicking the Button:
 
 ![Getting Started, Download CMake RE mTLS Certificate](./assets/getting-started-generate-mtls-certificate.png)
 
-This will download a file named `engflow-mTLS.zip` containing an : 
+This will download a file named `engflow-mTLS.zip` containing an: 
 - engflow.crt
 - engflow.key (_This is the private key, never share_)
 
@@ -45,7 +43,7 @@ To perform a distributed build, the environment type to use on an EngFlow cluste
 Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE specifies which container to use to run the build remotely.
 
 > #### Note on environments
-> A _CMake RE Environment Description_, essentially is : 
+> A _CMake RE Environment Description_, essentially is: 
 >   - * A `CMAKE_TOOLCHAIN_FILE`, _e.g._ `environment/linux.cmake`
 >   - * An accompanying `.pkr.js` and `Dockerfile`, _e.g._ `environments/linux.pkr.js/`, `environments/linux.pkr.js/linux.Dockerfile`
 >
