@@ -69,7 +69,7 @@ cmake-re --host --distributed --build ./build -j1000
 > ## What if mismatching local and remote environment is required ?
 > CMake RE makes it particularly hard and will warn about it when it detects mismatches.
 > 
-> 🧪 For expert users & debugging purposes, it's possible to override the mapping between the local environment cmake-re uses and the one use for remote build execution, this can be done leveraging the `RBE_platform` environment variable, as in : 
+> 🧪 Advanced debugging and power-users: it's possible to override the mapping between the local environment cmake-re uses and the one use for remote build execution. This can be done by setting the `RBE_platform` environment variable: 
 > ```bash
 > # official linux environment for cmake-re v0.0.80
 > export RBE_platform=container-image=docker://tipibuild/tipi-ubuntu@sha256:5206328aa68f666b572c4e6ce1bf1b33731a01f36c3a1a4b9a003108f9370a42
