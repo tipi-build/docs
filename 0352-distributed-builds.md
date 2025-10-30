@@ -75,7 +75,7 @@ cmake-re --host --distributed --build ./build -j1000
 > export RBE_platform=container-image=docker://tipibuild/tipi-ubuntu@sha256:5206328aa68f666b572c4e6ce1bf1b33731a01f36c3a1a4b9a003108f9370a42
 > ```
 
->  ## ✈️ Flight mode - How to continue working with a `--distributed --build` without internet connection ?
+>  ## ✈️ Flight mode - How to continue working with a `--distributed --build` without an internet connection?
 >  If one started working on a build tree with the `--distributed` mode but happens to have lost the internet connection (_e.g._ Working from a plane) one can disable the use of remote resources temporarily with : 
 >
 >  ```bash
