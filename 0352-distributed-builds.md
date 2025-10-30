@@ -38,9 +38,9 @@ export RBE_tls_client_auth_cert=/path/to/engflow.crt
 
 ### Build `--distributed` your CMake project 
 
-To perform a distributed build, the environment type to use on an EngFlow cluster for the build needs to be provided. This is given in the form of a [_CMake RE Environment Description_](/documentation/0400-environments#custom-containerized-environments).
+In order to run a distributed build, you will need to declare the environment in which it runs. This is given in the form of a [_CMake RE Environment Description_](/documentation/0400-environments#custom-containerized-environments).
 
-Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE specifies which container to use to run the build remotely.
+Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE declares which container image to use when running the build remotely.
 
 > #### Note on environments
 > A _CMake RE Environment Description_, essentially is: 
@@ -49,7 +49,7 @@ Mainly the `.pkr.js` file aside the CMAKE_TOOLCHAIN_FILE specifies which contain
 >
 > You can use an [existing default environment](/documentation/0400-environments#default-environments) or [specify your own](/documentation/0400-environments#custom-containerized-environments).
 
-The snappiest experience currently is with `--host --distributed` builds, this requires you to have an `--host` build environment matching remote execution, the easiest is to start the build from within the same container than the configured one in the `.pkr.js` file.
+The best experience currently is with `--host --distributed` builds. This requires you to have an `--host` build environment matching remote execution. You can do so by starting the build from within the same container as the one configured in the `.pkr.js` file.
 
 ```bash
 # Disable L1 caching operations
@@ -64,16 +64,16 @@ cmake-re --host --distributed --build ./build -j1000
 
 ## RBE FAQ
 
-> ## What if mismatching local and remote environment is required ?
-> CMake RE makes it particularly hard and will warn about it when it detects mismatches.
+> ## What if I require different local and remote environments?
+> CMake RE makes it particularly hard and will warn you about it when it detects any mismatches.
 > 
-> 🧪 For expert users & debugging purposes, it's possible to override the mapping between the local environment cmake-re uses and the one use for remote build execution, this can be done leveraging the `RBE_platform` environment variable, as in : 
+> 🧪 Advanced debugging and power-users: it's possible to override the mapping between the local environment cmake-re uses and the one use for remote build execution. This can be done by setting the `RBE_platform` environment variable: 
 > ```bash
 > # official linux environment for cmake-re v0.0.80
 > export RBE_platform=container-image=docker://tipibuild/tipi-ubuntu@sha256:5206328aa68f666b572c4e6ce1bf1b33731a01f36c3a1a4b9a003108f9370a42
 > ```
 
->  ## ✈️ Flight mode - How to continue working with a `--distributed --build` without internet connection ?
+>  ## ✈️ Flight mode - How to continue working with a `--distributed --build` without an internet connection?
 >  If one started working on a build tree with the `--distributed` mode but happens to have lost the internet connection (_e.g._ Working from a plane) one can disable the use of remote resources temporarily with : 
 >
 >  ```bash
