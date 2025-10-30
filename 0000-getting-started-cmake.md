@@ -46,6 +46,7 @@ cmake-re -S . -B build/ -DCMAKE_TOOLCHAIN_FILE=environments/linux.cmake
 
 This will launch the container on your machine and execute the build inside it. Build artifacts will be cached.
 
+> **Hint:** For ⚡️ **fast builds** read the [`cmake-re --distributed --build` documentation](/documentation/0352-distributed-builds), which explains how to accelerate builds with **_1000_** of `--jobs`  by leveraging the RE-API. 
 
 > ##### Content of a CMake RE project
 > A CMake RE project is a plain CMake project with the addition of environment descriptions to guarantee the build reproducibility and hermeticity.
@@ -144,4 +145,3 @@ In this specific case we just take the default tipi.build provided linux docker 
 
 More details in [Environments](/documentation/0400-environments)
 
-> **Hint:** for a "compile & test as you type" experience try adding `--monitor` and `--run-test all` to the command line. `cmake-re` will then trigger a (re)build and test execution each time a file changes.
