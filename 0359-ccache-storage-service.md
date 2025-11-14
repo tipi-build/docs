@@ -1,5 +1,5 @@
 ---
-title: 📦 L2 remote caching with `ccache`
+title: 📦 L2 remote caching for Ccache
 aliases: [ ]
 ---
 
