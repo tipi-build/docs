@@ -15,12 +15,12 @@ Once installed `cmake-re` will provide the following tools as part of it's distr
 ## RE-API instead of ccache `remote_storage`
 `ccache` supports it's own remote storage backend, our remote caching for ccache doesn't use this abstraction and instead relies on the more complete [Bazel RE-API](https://github.com/bazelbuild/remote-apis).
 
-Unlike `ccache` remote storage backends our integration supports caching static archives, shared objects and executables, also leveraging advanced compiler identification and system fingerprinting prevent cache poisoning issues. 
+Unlike `ccache` `remote_storage` our integration enables caching static archives, shared objects and executables, also leveraging advanced compiler identification and system fingerprinting to prevent cache poisoning issues. 
 
 The approach allows to maximizes cache HIT rates, with the ability to retrieve the full build graph from cache, not only compilation but also caching expensive linking operations, while reducing the amount of cache poisoning issues by being much more precise on the way cache keys are calculated.
 
 ### Using Bazel RE-API as remote `ccache`
-These tools can then be configured to wire a remote cache to cache via the RE-API, leveraging the `CCACHE_PREFIX` setting.
+These tools can then be configured to wire a remote cache to `ccache` via the RE-API, leveraging the `CCACHE_PREFIX` setting.
 
 1. Install necessary tools
 
