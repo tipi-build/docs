@@ -3,7 +3,7 @@ title: 🛸 Custom build systems
 aliases: [ ]
 ---
 
-While `cmake-re` is optimized for CMake-based builds, it can also operate as a compiler, linker and archiver driver — making it compatible with other build systems that are not directly supported (autotools, Make, Ninja, MSBuild) or usable as [distcc, ccache, sccache alternative](documentation/0359-ccache-storage-service).
+While `cmake-re` is optimized for CMake-based builds, it can also operate as a compiler, linker and archiver launcher — making it compatible with other build systems that are not directly supported (autotools, Make, Ninja, MSBuild) or usable as [distcc, ccache, sccache alternative](documentation/0359-ccache-storage-service).
 
 In this mode of operation it can delivers most of the performances benefits of [⚡️ L2 Distributed Builds & Caching](/documentation/0352-distributed-builds), here follows how to use it.
 
@@ -13,6 +13,8 @@ The binary of `cmake-re` is distributed with the following tools :
 - `tipi-linker-driver`
 - `tipi-ar-driver`
 - `tipi-ranlib-driver`
+- `reproxy`
+- `rewrapper`
 
 ## Ecosystems and tools supported automatically
 - `C` & `C++` : gcc, clang, msvc, ar, ranlib, ld, gold, lld, mold...
@@ -73,10 +75,11 @@ export RANLIB="tipi-ranlib-driver /usr/bin/ranlib"
 ./configure
 
 # Build
-# Caching is better disabled during configure (so long 
-# TIPI_INTERCALATED_COMPILER_LAUNCHER is unset no caching happens), as
-# caching system probing operations will only store non really reusable
-# cache entries.
+# Caching is better disabled during configuration steps.
+# When the environment vairable TIPI_INTERCALATED_COMPILER_LAUNCHER is not set,
+# no calls to the RE-APIs are made and all work is local. 
+# The compiler invocations for configuration purposes are faster to run
+# locally as they are usually using temporary files that can't be cached.
 export TIPI_INTERCALATED_COMPILER_LAUNCHER=rewrapper
 
 make

@@ -1,9 +1,9 @@
 ---
-title: 📦 ccache remote storage
+title: 📦 L2 remote caching with `ccache`
 aliases: [ ]
 ---
 
-While `cmake-re` is optimized for CMake-based builds and automatically provides remote caching for cmake builds, it can also operate as a compiler, linker and archiver driver — making it possible to integrate with `ccache` to provide an RE-API backend as remote shared cache.
+While `cmake-re` is optimized for CMake-based builds and automatically provides remote caching for CMake builds, it can also operate as a compiler, linker and archiver launcher — making it possible to combine RE-API remote cache with a local `ccache`.
 
 Once installed `cmake-re` will provide the following tools as part of it's distribution folder.
 
@@ -11,16 +11,18 @@ Once installed `cmake-re` will provide the following tools as part of it's distr
 - `tipi-linker-driver`
 - `tipi-ar-driver`
 - `tipi-ranlib-driver`
+- `reproxy`
+- `rewrapper`
 
 ## RE-API instead of ccache `remote_storage`
-`ccache` supports it's own remote storage backend, our remote caching for ccache doesn't use this abstraction and instead relies on the more complete [Bazel RE-API](https://github.com/bazelbuild/remote-apis).
+`ccache` supports its own remote storage backend, our solution to integrate remote caching for ccache doesn't use this abstraction and instead relies on the more complete [Bazel RE-API](https://github.com/bazelbuild/remote-apis), combining the best of both systems.
 
-Unlike `ccache` `remote_storage` our integration enables caching static archives, shared objects and executables, also leveraging advanced compiler identification and system fingerprinting to prevent cache poisoning issues. 
+Unlike `ccache` `remote_storage` we extend caching beyond translation-unit compilation, which is the limit of native ccache. Our integration enables caching static archives, shared objects and executables, also leveraging advanced compiler identification and system fingerprinting to prevent cache poisoning issues. 
 
-The approach allows to maximizes cache HIT rates, with the ability to retrieve the full build graph from cache, not only compilation but also caching expensive linking operations, while reducing the amount of cache poisoning issues by being much more precise on the way cache keys are calculated.
+The approach allows to maximize cache HIT rates, with the ability to retrieve the full build graph from cache, not only compilation but also caching expensive linking operations, while reducing the amount of cache poisoning issues by using more precise cache entry matching.
 
-### Using Bazel RE-API as remote `ccache`
-These tools can then be configured to wire a remote cache to `ccache` via the RE-API, leveraging the `CCACHE_PREFIX` setting.
+### Using Bazel RE-API as remote shared `ccache` layer
+Here is how to configure `ccache` to leverage remote caching on an EngFlow RE-API cluster by using the CCACHE_PREFIX setting.
 
 1. Install necessary tools
 
@@ -77,10 +79,11 @@ export RANLIB="tipi-ranlib-driver /usr/bin/ranlib"
 ./configure
 
 # Build
-# Caching is better disabled during configure (so long 
-# TIPI_INTERCALATED_COMPILER_LAUNCHER is unset no caching happens), as
-# caching system probing operations will only store non really reusable
-# cache entries.
+# Caching is better disabled during configuration steps.
+# When the environment vairable TIPI_INTERCALATED_COMPILER_LAUNCHER is not set,
+# no calls to the RE-APIs are made and all work is local. 
+# The compiler invocations for configuration purposes are faster to run
+# locally as they are usually using temporary files that can't be cached.
 export TIPI_INTERCALATED_COMPILER_LAUNCHER=rewrapper
 
 make
@@ -89,12 +92,13 @@ make
 #### CMake
 If you have a CMake codebase [we advise to use `cmake-re`](/documentation/0000-getting-started-cmake) which can further maximize cache HITs through automatic build hermeticity and containerization as it manages caching at the build system level instead of individual invocation only.
 
-If you however want to leverage remote caching with `ccache` instead, here's is how you can wire up remote caching to `ccache`:
+It is also possible to integrate manually with cmake and `ccache` to benefit from local caching and our RE-API based remote caching. Here is an example of such an integration:
 
 ```bash
 # Wire ccache and RE-API Remote Caching
 export CCACHE_PREFIX=tipi-compiler-driver
 
+export CMAKE_C_COMPILER_LAUNCHER=ccache
 export CMAKE_CXX_COMPILER_LAUNCHER=ccache
 export CMAKE_CXX_LINKER_LAUNCHER=tipi-linker-driver
 
@@ -105,17 +109,14 @@ echo "tipi-ranlib-driver /usr/bin/ranlib \$@" > configured-tipi-ranlib-driver &&
 cmake -S . -B ./build/cmake -G Ninja -DCMAKE_AR=$PWD/configured-tipi-ar-driver -DCMAKE_RANLIB=$PWD/configured-tipi-ranlib-driver
 
 # Build
-# Caching is better disabled during configure (so long 
-# TIPI_INTERCALATED_COMPILER_LAUNCHER is unset no caching happens), as
-# caching system probing operations will only store non really reusable
-# cache entries.
+
 export TIPI_INTERCALATED_COMPILER_LAUNCHER=rewrapper
 
 cmake --build ./build/cmake
 ```
 
 > #### Analyzing remote cache HITs
-> In order to check the level of caching achieved and debug / improve it (e.g. detecting generated code files) it is possible to set the RBE_invocation_id as an UUID:
+> In order to download build caching statistics for later analysis (improving cache hit rate or detecting always changing files), you can set the environment variable `RBE_invocation_id` as an UUID. Each separate builds should have a unique value.
 > 
 > ```bash
 > export RBE_invocation_id=`uuidgen`
