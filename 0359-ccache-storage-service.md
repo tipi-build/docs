@@ -22,7 +22,7 @@ Unlike `ccache` `remote_storage` we extend caching beyond translation-unit compi
 The approach allows to maximize cache HIT rates, with the ability to retrieve the full build graph from cache, not only compilation but also caching expensive linking operations, while reducing the amount of cache poisoning issues by using more precise cache entry matching.
 
 ### Using Bazel RE-API as remote shared `ccache` layer
-Here is how to configure `ccache` to leverage remote caching on an EngFlow RE-API cluster by using the CCACHE_PREFIX setting.
+Here is how to configure `ccache` to leverage remote caching on an EngFlow RE-API cluster by using the `CCACHE_PREFIX` setting.
 
 1. Install necessary tools
 
