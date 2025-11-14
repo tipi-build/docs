@@ -3,9 +3,9 @@ title: 🛸 Custom build systems
 aliases: [ ]
 ---
 
-While `cmake-re` is optimized for CMake-based builds, it can also operate as a compiler, linker and archiver driver — making it compatible with other build systems that are not directly supported (autotools, Make, Ninja, MSBuild) or as [distcc, ccache, sccache alternative](documentation/0359-ccache-storage-service).
+While `cmake-re` is optimized for CMake-based builds, it can also operate as a compiler, linker and archiver driver — making it compatible with other build systems that are not directly supported (autotools, Make, Ninja, MSBuild) or usable as [distcc, ccache, sccache alternative](documentation/0359-ccache-storage-service).
 
-In these cases, it can delivers most of the performance benefits of [⚡️ L2 Distributed Builds & Caching](/documentation/0352-distributed-builds), here follows how to use it.
+In this mode of operation it can delivers most of the performances benefits of [⚡️ L2 Distributed Builds & Caching](/documentation/0352-distributed-builds), here follows how to use it.
 
 The binary of `cmake-re` is distributed with the following tools :
 
@@ -15,12 +15,16 @@ The binary of `cmake-re` is distributed with the following tools :
 - `tipi-ranlib-driver`
 
 ## Ecosystems and tools supported automatically
-- `C` & `C++` : gcc,clang,msvc,ar,ranlib,ld,gold,lld,mold...
+- `C` & `C++` : gcc, clang, msvc, ar, ranlib, ld, gold, lld, mold...
 - `Java` : javac
 - `TypeScript` : tsc
 
 ### `env:RBE_labels="type=tool"` : custom tools support
-Through the specification of environment's variables `env:RBE_labels="type=tool"`, `env:RBE_input_list_paths` and `env:RBE_output_list_paths`, any custom tools can be supported and the generic `rewrapper` can be taught which file to cache and upload/download files necessary for the tool execution in a remote execution context.
+Custom tool support can be added by specifying the following environment variables that are consumed by rewrapper to control inputs and remote execution context:
+
+- `env:RBE_labels="type=tool"`
+- `env:RBE_input_list_paths`
+- `env:RBE_output_list_paths`
 
 1. Install necessary tools
 
@@ -56,7 +60,7 @@ export RBE_use_application_default_credentials="true"
 reproxy & 
 ```
 
-5. Override compiler,linker and archiver command invocations.
+5. Override compiler, linker and archiver command invocations.
 #### Autotools / Makefiles
 ```bash
 export CXX="tipi-compiler-driver c++"

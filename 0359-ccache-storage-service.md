@@ -3,7 +3,7 @@ title: 📦 ccache remote storage
 aliases: [ ]
 ---
 
-While `cmake-re` is optimized for CMake-based builds, it can also operate as a compiler, linker and archiver driver — making it possible to integrate with `ccache` to provide an RE-API backend as remote shared cache.
+While `cmake-re` is optimized for CMake-based builds and automatically provides remote caching for cmake builds, it can also operate as a compiler, linker and archiver driver — making it possible to integrate with `ccache` to provide an RE-API backend as remote shared cache.
 
 Once installed `cmake-re` will provide the following tools as part of it's distribution folder.
 
@@ -87,9 +87,10 @@ make
 ```
 
 #### CMake
-If you have a CMake codebase [we advice to use the `cmake-re` wrapper](/documentation/0000-getting-started-cmake) which can further maximize cache HITs through automatic build hermeticity and containerization as it intercepts at the build system level instead of individual invocation only (those settings also being made in a smart fashion).
+If you have a CMake codebase [we advise to use `cmake-re`](/documentation/0000-getting-started-cmake) which can further maximize cache HITs through automatic build hermeticity and containerization as it manages caching at the build system level instead of individual invocation only.
 
-However if for some reasons you are not allowed to modify the `cmake` invocations and are just interested in plugging remote caching into `ccache` you can achieve it on any CMake Codebase as such :
+If you however want to leverage remote caching with `ccache` instead, here's is how you can wire up remote caching to `ccache`:
+
 ```bash
 # Wire ccache and RE-API Remote Caching
 export CCACHE_PREFIX=tipi-compiler-driver
@@ -123,7 +124,7 @@ cmake --build ./build/cmake
 > ccache -C
 > ```
 > 
-> Then during the build all actions will be grouped in an EngFlow Profile that can be downloaded from the RE-API Cluster:
+> All actions will be grouped in an EngFlow Profile using that UUID. The profile can be downloaded from the RE-API Cluster after the build completed:
 > 
 > - `https://<cluster-address>/api/profiling/v1/instances/default/invocations/${RBE_invocation_id}`
 > 
