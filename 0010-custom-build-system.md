@@ -3,7 +3,7 @@ title: 🛸 Custom build systems
 aliases: [ ]
 ---
 
-While `cmake-re` is optimized for CMake-based builds, it can also operate as a compiler, linker and archiver launcher — making it compatible with other build systems that are not directly supported (autotools, Make, Ninja, MSBuild) or usable as [distcc, ccache, sccache alternative](documentation/0359-ccache-storage-service).
+While `cmake-re` is optimized for CMake-based builds, it can also operate as compiler/linker/archiver launcher — making it compatible with other build systems that are not directly supported (autotools, Make, Ninja, MSBuild) or usable as [distcc, ccache, sccache alternative](documentation/0359-ccache-storage-service).
 
 In this mode of operation it can delivers most of the performances benefits of [⚡️ L2 Distributed Builds & Caching](/documentation/0352-distributed-builds), here follows how to use it.
 
@@ -22,7 +22,7 @@ The binary of `cmake-re` is distributed with the following tools :
 - `TypeScript` : tsc
 
 ### `env:RBE_labels="type=tool"` : custom tools support
-Custom tool support can be added by specifying the following environment variables that are consumed by rewrapper to control inputs and remote execution context:
+Custom tool support can be added by specifying the following environment variables that are consumed by `rewrapper` to control inputs and remote execution context:
 
 - `env:RBE_labels="type=tool"`
 - `env:RBE_input_list_paths`

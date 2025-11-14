@@ -3,7 +3,7 @@ title: 📦 L2 remote caching with `ccache`
 aliases: [ ]
 ---
 
-While `cmake-re` is optimized for CMake-based builds and automatically provides remote caching for CMake builds, it can also operate as a compiler, linker and archiver launcher — making it possible to combine RE-API remote cache with a local `ccache`.
+While `cmake-re` is optimized for CMake-based builds and automatically provides remote caching for CMake builds, it can also operate as compiler/linker/archiver launcher — making it possible to combine RE-API remote cache with a local `ccache`.
 
 Once installed `cmake-re` will provide the following tools as part of it's distribution folder.
 
@@ -18,8 +18,6 @@ Once installed `cmake-re` will provide the following tools as part of it's distr
 `ccache` supports its own remote storage backend, our solution to integrate remote caching for ccache doesn't use this abstraction and instead relies on the more complete [Bazel RE-API](https://github.com/bazelbuild/remote-apis), combining the best of both systems.
 
 Unlike `ccache` `remote_storage` we extend caching beyond translation-unit compilation, which is the limit of native ccache. Our integration enables caching static archives, shared objects and executables, also leveraging advanced compiler identification and system fingerprinting to prevent cache poisoning issues. 
-
-The approach allows to maximize cache HIT rates, with the ability to retrieve the full build graph from cache, not only compilation but also caching expensive linking operations, while reducing the amount of cache poisoning issues by using more precise cache entry matching.
 
 ### Using Bazel RE-API as remote shared `ccache` layer
 Here is how to configure `ccache` to leverage remote caching on an EngFlow RE-API cluster by using the `CCACHE_PREFIX` setting.
