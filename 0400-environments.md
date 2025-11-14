@@ -27,7 +27,8 @@ A **Generalized toolchain** is a toolchain and it's accompanying environment spe
 
 ### Configurability
 
-Depending on how the environment descriptions and toolchains are stored changes to unrelated environments can affect the environment description hash that is computed during environment generalization because by default all files in the same directory than the referenced toolchain will be consumed.
+Depending on how the environment descriptions and toolchains are stored, changes to unrelated environments can affect the environment description hash. Because by default all files in the same directory of the referenced toolchain will be consumed.
+
 In order to better compose and isolate environment specifications it is possible to configure the exact contents using [`<toolchain-name>.layers.json files`](./0410-environments-layering.md).
 
 ## OS Image File Lookup Rule
@@ -64,11 +65,11 @@ Officially supported environments can be found in the [tipi-build/environments](
 
 They are unpacked in the default environments directory `/usr/local/share/.tipi/<distro>/environments/` (or `C:\.tipi\<distro>\environments\`).
 
-The `disto` ID key can be found by running `cmake-re --version` or `tipi --help`
+The `distro` ID key can be found by running `cmake-re --version` or `tipi --help`
 
 ```bash
 > $ cmake-re --version
-cmake-re v0.0.72 (distro id: de3f03a)
+cmake-re v7.7.7 (distro id: de3f03a)
 ```
 
 ## Custom containerized environments
