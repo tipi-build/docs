@@ -112,7 +112,7 @@ By default, `tipi` and `cmake-re` rewrite the paths in the compiler output. Erro
 export TIPI_SOURCE_MAP="OFF"
 ```
 
-## Tipi home directory TIPI_HOME_DIR
+## Tipi home directory `TIPI_HOME_DIR`
 
 By default, tipi and cmake-re install their tools, environments, and build artifacts under a platform-specific user directory.
 Setting the environment variable TIPI_HOME_DIR allows you to fully control where tipi and cmake-re store their data.
