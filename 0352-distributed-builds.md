@@ -80,3 +80,10 @@ cmake-re --host --distributed --build ./build -j1000
 >  export RBE_remote_disabled="true"
 >  ```
 > 💡 Don't forget to ajdust the number of jobs `-j` used for the build, to avoid overloading your local machine, when building with `RBE_remote_disabled`.
+
+> ## 🧹 How to force a clean cache for a `--distributed --build`?
+> Sometimes it may be necessary to ensure a build doesn't reuse any previously cached remote actions (_e.g._ investigating a flaky build or simply starting fresh). This can be done by passing a `cache-silo-key` via the `RBE_platform` environment variable:
+>
+> ```bash
+> export RBE_platform="cache-silo-key=<my_unique_silo_key>"
+> ```
